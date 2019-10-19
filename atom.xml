@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-10-18T08:39:53.537Z</updated>
+  <updated>2019-10-19T03:05:53.772Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进程和线程</title>
+    <link href="/2019/10/19/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
+    <id>/2019/10/19/进程和线程/</id>
+    <published>2019-10-19T02:58:43.000Z</published>
+    <updated>2019-10-19T03:05:53.772Z</updated>
+    
+    <summary type="html">
+    
+      何进？ 何线？
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>操作系统基本介绍</title>
