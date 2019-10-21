@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-10-20T11:13:50.853Z</updated>
+  <updated>2019-10-21T11:43:50.809Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>火力少年王</title>
+    <link href="/2019/10/21/%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B/"/>
+    <id>/2019/10/21/火力少年王/</id>
+    <published>2019-10-20T16:00:00.000Z</published>
+    <updated>2019-10-21T11:43:50.809Z</updated>
+    
+    <summary type="html">
+    
+      爱好让我们走在一起
+    
+    </summary>
+    
+    
+      <category term="影视" scheme="/tags/%E5%BD%B1%E8%A7%86/"/>
+    
+  </entry>
   
   <entry>
     <title>暖暖的新家</title>
@@ -57,7 +75,7 @@
     <link href="/2019/10/19/%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4/"/>
     <id>/2019/10/19/妖精的尾巴/</id>
     <published>2019-10-19T13:32:48.000Z</published>
-    <updated>2019-10-20T11:13:44.236Z</updated>
+    <updated>2019-10-21T11:23:20.207Z</updated>
     
     <summary type="html">
     
@@ -75,7 +93,7 @@
     <link href="/2019/10/19/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
     <id>/2019/10/19/进程和线程/</id>
     <published>2019-10-19T02:58:43.000Z</published>
-    <updated>2019-10-20T14:18:31.141Z</updated>
+    <updated>2019-10-21T11:17:50.864Z</updated>
     
     <summary type="html">
     
