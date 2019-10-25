@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">进程和线程 | GhyJn</title>
+  <title itemprop="name">刺客伍六七 | GhyJn</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -341,203 +341,110 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      <link rel="stylesheet" href="/css/bangumi.css">
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1571496764353&amp;di=179f27dde39f31ffb4d5552b549aa977&amp;imgtype=0&amp;src=http%3A%2F%2Fpic36.nipic.com%2F20131214%2F866205_131846671148_2.jpg);" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1571496764353&amp;di=179f27dde39f31ffb4d5552b549aa977&amp;imgtype=0&amp;src=http%3A%2F%2Fpic36.nipic.com%2F20131214%2F866205_131846671148_2.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      进程和线程</h1>
-      <p class="entry-census">
-        <span>
-          <a href="https://ghyjn0.github.io/">
-            <img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="https://ghyjn0.github.io/">君の名は</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2019-10-19<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
 <div id="content" class="site-content">
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+  <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
+    <header class="page-header"><h1 class="cat-title">番组计划</h1> <span class="cat-des"><p>这里将是永远的回忆</p> </span></header>
+    
+    <div class="bangumi">
+      <div class="row" id="rootRow">
         
-        <div class="entry-content">
-          <h1 id="1-进程定义，组成，组织，特征"><a href="#1-进程定义，组成，组织，特征" class="headerlink" title="1.进程定义，组成，组织，特征"></a>1.进程定义，组成，组织，特征</h1><h2 id="（1）定义"><a href="#（1）定义" class="headerlink" title="（1）定义"></a>（1）定义</h2><p><font size="5"> 进程实体： 程序段，数据段，进程控制块（PCB)。一般情况下，我们把进程实体简称为进程。创建进程，就是创建进程实体中的PCB,撤销也是一样的 <font face="STCAIYUN">注意：PCB 是进程存在的唯一标志</font></font></p>
-<h2 id="（2）进程实体和进程区别"><a href="#（2）进程实体和进程区别" class="headerlink" title="（2）进程实体和进程区别"></a>（2）进程实体和进程区别</h2><p><img src="https://i.loli.net/2019/10/19/8bevGH4g7lJ69QO.jpg" alt="define.JPG"></p>
-<h2 id="（3-进程的组成"><a href="#（3-进程的组成" class="headerlink" title="（3) 进程的组成"></a>（3) 进程的组成</h2><p><img src="https://i.loli.net/2019/10/19/NGmIQT1xpEMF3oP.jpg" alt="compent.JPG"><br><img src="https://i.loli.net/2019/10/19/yQrI5KkPv6Mz42q.jpg" alt="compent1.JPG"></p>
-<h2 id="（4）-进程的组织"><a href="#（4）-进程的组织" class="headerlink" title="（4） 进程的组织"></a>（4） 进程的组织</h2><p><img src="https://i.loli.net/2019/10/19/T6tFXSMwjyL75fU.jpg" alt="orangnazitation.JPG"></p>
-<h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><p><img src="https://i.loli.net/2019/10/19/VfCLSP7HOJDKTua.jpg" alt="linklist.JPG"></p>
-<h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><p><img src="https://i.loli.net/2019/10/19/LjwimuMl1Hf5cEB.jpg" alt="Indexes.JPG"></p>
-<h2 id="（5）-进程的特征"><a href="#（5）-进程的特征" class="headerlink" title="（5） 进程的特征"></a>（5） 进程的特征</h2><p><img src="https://i.loli.net/2019/10/19/siAkHx17rJyj8BZ.jpg" alt="featuress.JPG"></p>
-<h2 id="6）-总结"><a href="#6）-总结" class="headerlink" title="(6） 总结"></a>(6） 总结</h2><p><img src="https://i.loli.net/2019/10/19/RwAFr92MfVscdOb.jpg" alt="summary.JPG"></p>
-<h1 id="2-进程状态和转换"><a href="#2-进程状态和转换" class="headerlink" title="2.进程状态和转换"></a>2.进程状态和转换</h1><h2 id="（1）3种基本状态"><a href="#（1）3种基本状态" class="headerlink" title="（1）3种基本状态"></a>（1）3种基本状态</h2><p><img src="https://i.loli.net/2019/10/19/NvQSAGXYskjgiME.jpg" alt="state.JPG"></p>
-<h2 id="（2）另外两种状态"><a href="#（2）另外两种状态" class="headerlink" title="（2）另外两种状态"></a>（2）另外两种状态</h2><p><img src="https://i.loli.net/2019/10/19/q4cnfuAmaXrHEjR.jpg" alt="twostate.JPG"></p>
-<h2 id="（3）状态转换过程"><a href="#（3）状态转换过程" class="headerlink" title="（3）状态转换过程"></a>（3）状态转换过程</h2><p><img src="https://i.loli.net/2019/10/19/H2UxJGBugjiyEeF.png" alt="switchstate.png"></p>
-<h2 id="（4）总结"><a href="#（4）总结" class="headerlink" title="（4）总结"></a>（4）总结</h2><p><img src="https://i.loli.net/2019/10/19/AxPhDEVyQabdmlY.jpg" alt="summary.JPG"></p>
-<h1 id="3-进程控制"><a href="#3-进程控制" class="headerlink" title="3.进程控制"></a>3.进程控制</h1><h2 id="（1）-功能"><a href="#（1）-功能" class="headerlink" title="（1） 功能"></a>（1） 功能</h2><p><img src="https://i.loli.net/2019/10/19/dryhMtN6bCGTgcw.jpg" alt="defin.JPG"></p>
-<h2 id="（2）实现过程"><a href="#（2）实现过程" class="headerlink" title="（2）实现过程"></a>（2）实现过程</h2><p><img src="https://i.loli.net/2019/10/19/EZ1YPhAM6cNITU8.jpg" alt="process1.JPG"></p>
-<h2 id="（3）原语"><a href="#（3）原语" class="headerlink" title="（3）原语"></a>（3）原语</h2><p><img src="https://i.loli.net/2019/10/19/1YEweXgUOF63P7d.jpg" alt="initallanguage.JPG"></p>
-<h3 id="1-切换原语"><a href="#1-切换原语" class="headerlink" title="1.切换原语"></a>1.切换原语</h3><p><img src="https://i.loli.net/2019/10/19/F6AyaxDnLt1h2oM.jpg" alt="switch.JPG"></p>
-<h3 id="2-撤销原语"><a href="#2-撤销原语" class="headerlink" title="2.撤销原语"></a>2.撤销原语</h3><p><img src="https://i.loli.net/2019/10/19/cxeaokEO6SVfHnl.jpg" alt="recover.JPG"></p>
-<h3 id="3-阻塞和唤醒原语"><a href="#3-阻塞和唤醒原语" class="headerlink" title="3.阻塞和唤醒原语"></a>3.阻塞和唤醒原语</h3><p><img src="https://i.loli.net/2019/10/19/x6IMClPZSktzBdX.jpg" alt="block.JPG"></p>
-<h3 id="4-创建原语"><a href="#4-创建原语" class="headerlink" title="4.创建原语"></a>4.创建原语</h3><p><img src="https://i.loli.net/2019/10/19/x6IMClPZSktzBdX.jpg" alt="block.JPG"></p>
-<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p><img src="https://i.loli.net/2019/10/19/TfQmgyz8F57qjHN.jpg" alt="summary.JPG"></p>
-<h1 id="4-进程通信"><a href="#4-进程通信" class="headerlink" title="4.进程通信"></a>4.进程通信</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><p><font size="5"> 进程之间进行信息交流</font><br><img src="https://i.loli.net/2019/10/20/TLw3zV9oshYeCkA.jpg" alt="define.JPG"></p>
-<h2 id="2-方式"><a href="#2-方式" class="headerlink" title="2.方式"></a>2.方式</h2><h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1.共享存储"></a>1.共享存储</h3><p><img src="https://i.loli.net/2019/10/20/Vvm1FOfPLqIrzYa.jpg" alt="share.JPG"></p>
-<h3 id="2-管道存储"><a href="#2-管道存储" class="headerlink" title="2.管道存储"></a>2.管道存储</h3><p><img src="https://i.loli.net/2019/10/20/TNbKfYmWUEdRtu6.jpg" alt="pipe.JPG"></p>
-<h3 id="3-消息传递"><a href="#3-消息传递" class="headerlink" title="3.消息传递"></a>3.消息传递</h3><p><img src="https://i.loli.net/2019/10/20/d7q28zeDZExCnkO.gif" alt="1571577789055.gif"></p>
-<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><p><img src="https://i.loli.net/2019/10/20/nLKqJIQ6ecBydPZ.jpg" alt="summary.JPG"></p>
-<h1 id="5-线程"><a href="#5-线程" class="headerlink" title="5.线程"></a>5.线程</h1><h2 id="1-为什么要引入线程"><a href="#1-为什么要引入线程" class="headerlink" title="1.为什么要引入线程"></a>1.为什么要引入线程</h2><p><img src="https://i.loli.net/2019/10/20/iDQs9ayRo51GtUV.jpg" alt="whythread.JPG"></p>
-<h2 id="2-线程来了"><a href="#2-线程来了" class="headerlink" title="2.线程来了"></a>2.线程来了</h2><p><img src="https://i.loli.net/2019/10/20/WZk2vEgQOCHpMfe.jpg" alt="threadexist.JPG"></p>
-<h2 id="3-线程属性"><a href="#3-线程属性" class="headerlink" title="3.线程属性"></a>3.线程属性</h2><p><img src="https://i.loli.net/2019/10/20/sUJIvDRbTx1htqX.jpg" alt="attribute.JPG"></p>
-<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p><img src="https://i.loli.net/2019/10/20/uPOqoGLa9iHFS25.jpg" alt="key.JPG"></p>
-<h2 id="4-多对一多进程"><a href="#4-多对一多进程" class="headerlink" title="4.多对一多进程"></a>4.多对一多进程</h2><p><img src="https://i.loli.net/2019/10/20/CfKjREaHgOxszVW.jpg" alt="mulitfreading.JPG"></p>
-<h2 id="5-一对一多进程"><a href="#5-一对一多进程" class="headerlink" title="5.一对一多进程"></a>5.一对一多进程</h2><p><img src="https://i.loli.net/2019/10/20/sQVKoiXr4bqNTGt.jpg" alt="onetoone.JPG"></p>
-<h2 id="6-多对多多进程"><a href="#6-多对多多进程" class="headerlink" title="6.多对多多进程"></a>6.多对多多进程</h2><p><img src="https://i.loli.net/2019/10/20/YJMjLh8xXRA2gyV.jpg" alt="manytomany.JPG"></p>
-<h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p><img src="https://i.loli.net/2019/10/20/FzeVcZTERfKQBhj.jpg" alt="summary.JPG"></p>
-<h1 id="6-进程调度"><a href="#6-进程调度" class="headerlink" title="6.进程调度"></a>6.进程调度</h1><h2 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="1.定义"></a>1.定义</h2><p><img src="https://i.loli.net/2019/10/21/2rOJMSoIfEGw4BH.jpg" alt="define.JPG"></p>
-<h2 id="2-三大调度方式"><a href="#2-三大调度方式" class="headerlink" title="2.三大调度方式"></a>2.三大调度方式</h2><h3 id="1-高级调度–作业调度"><a href="#1-高级调度–作业调度" class="headerlink" title="1.高级调度–作业调度"></a>1.高级调度–作业调度</h3><p><img src="https://i.loli.net/2019/10/21/hwV174jKITEgkuN.jpg" alt="advance.JPG"></p>
-<h3 id="2-中级调度–内存调度"><a href="#2-中级调度–内存调度" class="headerlink" title="2.中级调度–内存调度"></a>2.中级调度–内存调度</h3><p><img src="https://i.loli.net/2019/10/21/sUaF9SbiBzWNEGK.jpg" alt="medium.JPG"></p>
-<h3 id="3-低级调度–进程调度"><a href="#3-低级调度–进程调度" class="headerlink" title="3.低级调度–进程调度"></a>3.低级调度–进程调度</h3><p><img src="https://i.loli.net/2019/10/21/5flXsN3GkxYrQoy.jpg" alt="low.JPG"></p>
-<h3 id="4-比较"><a href="#4-比较" class="headerlink" title="4.比较"></a>4.比较</h3><p><img src="https://i.loli.net/2019/10/21/caBFHjfU1ZnDhwz.jpg" alt="compare.JPG"></p>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h2><p><img src="https://i.loli.net/2019/10/21/VOGacFqNpegz9kn.jpg" alt="summary.JPG"></p>
-<h1 id="7-进程切换的过程"><a href="#7-进程切换的过程" class="headerlink" title="7.进程切换的过程"></a>7.进程切换的过程</h1><h2 id="1-何时调度和不能调度"><a href="#1-何时调度和不能调度" class="headerlink" title="1.何时调度和不能调度"></a>1.何时调度和不能调度</h2><p><img src="https://i.loli.net/2019/10/21/FpoADi5dYhEUtZL.jpg" alt="experence.JPG"></p>
-<h2 id="2-进程调度和进程切换的区别"><a href="#2-进程调度和进程切换的区别" class="headerlink" title="2.进程调度和进程切换的区别"></a>2.进程调度和进程切换的区别</h2><p><img src="https://i.loli.net/2019/10/21/Ev6wtjLaS94RH32.jpg" alt="process.JPG"></p>
-<h2 id="3-进程切换的两种方式"><a href="#3-进程切换的两种方式" class="headerlink" title="3.进程切换的两种方式"></a>3.进程切换的两种方式</h2><p><img src="https://i.loli.net/2019/10/21/hG8p7BCeDaAoEtX.jpg" alt="two.JPG"></p>
-<h2 id="4-总结-1"><a href="#4-总结-1" class="headerlink" title="4.总结"></a>4.总结</h2><p><img src="https://i.loli.net/2019/10/21/DbMpz3j4yK6OvRu.jpg" alt="summary.JPG"></p>
-<h1 id="8-调度算法的指标"><a href="#8-调度算法的指标" class="headerlink" title="8.调度算法的指标"></a>8.调度算法的指标</h1><h2 id="1-cpu-利用率"><a href="#1-cpu-利用率" class="headerlink" title="1.cpu 利用率"></a>1.cpu 利用率</h2><p><img src="https://i.loli.net/2019/10/22/gX7D4olUA12iV9J.jpg" alt="cpu.JPG"></p>
-<h2 id="2-系统吞吐量"><a href="#2-系统吞吐量" class="headerlink" title="2.系统吞吐量"></a>2.系统吞吐量</h2><p><img src="https://i.loli.net/2019/10/22/Uh8K17wJsvOtBNS.jpg" alt="system.JPG"></p>
-<h2 id="3-周转时间"><a href="#3-周转时间" class="headerlink" title="3.周转时间"></a>3.周转时间</h2><p><img src="https://i.loli.net/2019/10/22/wKp4jnWDLkAcbVJ.jpg" alt="week.JPG"><br><img src="https://i.loli.net/2019/10/22/InRQmXvEaHW1teA.jpg" alt="avweek.JPG"></p>
-<h2 id="4-等待时间"><a href="#4-等待时间" class="headerlink" title="4.等待时间"></a>4.等待时间</h2><p><img src="https://i.loli.net/2019/10/22/ZklbcnB57YaTDhO.jpg" alt="WAIT.JPG"></p>
-<h2 id="5-响应时间"><a href="#5-响应时间" class="headerlink" title="5.响应时间"></a>5.响应时间</h2><p><font size="5">用户提交请求到第一次产生响应的时间</font></p>
-<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p><img src="https://i.loli.net/2019/10/22/A25JageqGVYT7FC.jpg" alt="SUMMARY.JPG"></p>
-<h1 id="9-早期批处理三大算法"><a href="#9-早期批处理三大算法" class="headerlink" title="9.早期批处理三大算法"></a>9.早期批处理三大算法</h1><h2 id="1-FCFS"><a href="#1-FCFS" class="headerlink" title="1.FCFS"></a>1.FCFS</h2><p><img src="https://i.loli.net/2019/10/22/OkEvf2YNlWyu1BH.jpg" alt="FCFS.JPG"><br><img src="https://i.loli.net/2019/10/22/POyfLwg351HWkjN.jpg" alt="FCFS1.JPG"></p>
-<h2 id="2-SJP"><a href="#2-SJP" class="headerlink" title="2.SJP"></a>2.SJP</h2><h3 id="1-SPF短作业优先算法"><a href="#1-SPF短作业优先算法" class="headerlink" title="1.SPF短作业优先算法"></a>1.SPF短作业优先算法</h3><p><img src="https://i.loli.net/2019/10/22/GN1uc34ophHv2Mz.jpg" alt="SPF.JPG"></p>
-<h3 id="2-SRTN-最短剩余时间算法"><a href="#2-SRTN-最短剩余时间算法" class="headerlink" title="2.SRTN 最短剩余时间算法"></a>2.SRTN 最短剩余时间算法</h3><p><img src="https://i.loli.net/2019/10/22/5C1FZmtwhdsgIzn.jpg" alt="SRTN.JPG"></p>
-<h3 id="3-注意"><a href="#3-注意" class="headerlink" title="3.注意"></a>3.注意</h3><p><img src="https://i.loli.net/2019/10/22/5rKzVmJMx1TF8S2.jpg" alt="carefull.JPG"></p>
-<h3 id="4-总结-2"><a href="#4-总结-2" class="headerlink" title="4.总结"></a>4.总结</h3><p><img src="https://i.loli.net/2019/10/22/wlJIrxVO9jT7cDi.jpg" alt="SJP.JPG"></p>
-<h2 id="3-HRRN"><a href="#3-HRRN" class="headerlink" title="3.HRRN"></a>3.HRRN</h2><p><img src="https://i.loli.net/2019/10/22/nSJRW15wPblhsTt.jpg" alt="hrrn1.JPG"><br><img src="https://i.loli.net/2019/10/22/REaXtyU5xqmJ2nY.jpg" alt="HRRN.JPG"></p>
-<h2 id="三大算法比较"><a href="#三大算法比较" class="headerlink" title="三大算法比较"></a>三大算法比较</h2><p><img src="https://i.loli.net/2019/10/22/foaAyJ7hI8vNKbq.jpg" alt="compare.JPG"></p>
-<h1 id="10-后来的三大算法"><a href="#10-后来的三大算法" class="headerlink" title="10.后来的三大算法"></a>10.后来的三大算法</h1><h2 id="1-时间片轮转算法"><a href="#1-时间片轮转算法" class="headerlink" title="1.时间片轮转算法"></a>1.时间片轮转算法</h2><p><img src="https://i.loli.net/2019/10/22/NVan1dcImC4OR6b.jpg" alt="twoswitch.JPG"></p>
-<p><img src="https://i.loli.net/2019/10/22/UnqCHRlarbzgEpx.jpg" alt="timeswitch.JPG"></p>
-<p><img src="https://i.loli.net/2019/10/22/CuyYWPMHRhUfvsd.jpg" alt="timeswitchcarefull.JPG"><br><img src="https://i.loli.net/2019/10/22/GvkK2uJEt37fzPr.jpg" alt="timmesummary.JPG"></p>
-<h2 id="2-优先级"><a href="#2-优先级" class="headerlink" title="2.优先级"></a>2.优先级</h2><h3 id="1-抢占式"><a href="#1-抢占式" class="headerlink" title="1.抢占式"></a>1.抢占式</h3><p><img src="https://i.loli.net/2019/10/22/G58e4YCNXRBvzga.jpg" alt="preemptive.JPG"></p>
-<h3 id="2-非抢占式"><a href="#2-非抢占式" class="headerlink" title="2.非抢占式"></a>2.非抢占式</h3><p><img src="https://i.loli.net/2019/10/22/HaRF9GIfyKbiSBh.jpg" alt="on preemptive.JPG"></p>
-<h3 id="3-总结-1"><a href="#3-总结-1" class="headerlink" title="3.总结"></a>3.总结</h3><p><img src="https://i.loli.net/2019/10/22/7yDM39oqxBjeTJn.jpg" alt="pripro.JPG"></p>
-<h2 id="3-多级反馈队列"><a href="#3-多级反馈队列" class="headerlink" title="3.多级反馈队列"></a>3.多级反馈队列</h2><p><img src="https://i.loli.net/2019/10/22/CbxoMcKwuO3WvYj.gif" alt="1571725522589.gif"><br><img src="https://i.loli.net/2019/10/22/bRjowHnprlQKVaE.jpg" alt="many2.JPG"></p>
-<h2 id="4-三大算法比较"><a href="#4-三大算法比较" class="headerlink" title="4.三大算法比较"></a>4.三大算法比较</h2><p><img src="https://i.loli.net/2019/10/22/dSntps89HUzhKqJ.jpg" alt="summary.JPG"></p>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏<div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
+          <div class="col s12 m6" id="bangumi-0">
+            <div class="card hoverable" style="overflow: visible;">
+              <div class="card-image waves-effect waves-block waves-light">
+                <div class="activator itempic lazyload" style="background-image: url(https://i.loli.net/2019/10/25/T9rCahgEiW5AzXf.jpg);" data-src="https://i.loli.net/2019/10/25/T9rCahgEiW5AzXf.jpg">
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-title should-ellipsis activator grey-text text-darken-4">
+                  刺客伍六七<i class="fa fa-commenting-o right"></i>
+                </div>
+                <p class="should-ellipsis-full">
+                世界上每一个人都有自己守护的东西，而我呢？</p>
+                <ul class="skill-list">
+                  <li class="skill">
+                    <div>
+                    已追完</div>
+                    <progress class="skill-1" max="100" value="100">
+                    </progress>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                <span class="card-title grey-text text-darken-4">
+                  刺客伍六七<i class="fa fa-close right"></i>
+                </span>
+                <span>
+                  世界上每一个人都有自己守护的东西，而我呢？<br>
+                </span>
+                <span>
+                  放送时间: 2018 .<span>
+                    <p>全片以主人公伍六七寻找失去的记忆为故事主线，配合角色与角色之间的爱恨情仇组成的支线贯穿始终。通过讲述主人公在帮助别人和寻找自我的过程中，认识不同的人，与不同角色之间发生的有趣的，最终用爱化解仇恨与偏见的故事，想带给观众欢乐的同时表达对生活的热爱，爱与包容可以化解一切</p>
+                    <ul class="skill-list">
+                      <li class="skill">
+                        <div>
+                        已追完</div>
+                        <progress class="skill-1" max="100" value="100">
+                        </progress>
+                      </li>
+                    </ul>
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2019/10/19/妖精的尾巴/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg">
+          <div class="col s12 m6" id="bangumi-1">
+            <div class="card hoverable" style="overflow: visible;">
+              <div class="card-image waves-effect waves-block waves-light">
+                <div class="activator itempic lazyload" style="background-image: url(https://i.loli.net/2019/10/25/qGbuR1M4UZI6ytD.jpg);" data-src="https://i.loli.net/2019/10/25/qGbuR1M4UZI6ytD.jpg">
+                </div>
               </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                妖精的尾巴</h3>
-                <hr>
+              <div class="card-content">
+                <div class="card-title should-ellipsis activator grey-text text-darken-4">
+                  刺客伍六七<i class="fa fa-commenting-o right"></i>
+                </div>
+                <p class="should-ellipsis-full">
+                世界上每一个人都有自己守护的东西，而我呢？</p>
+                <ul class="skill-list">
+                  <li class="skill">
+                    <div>
+                    已追完</div>
+                    <progress class="skill-1" max="100" value="100">
+                    </progress>
+                  </li>
+                </ul>
               </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2019/10/16/作系统/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571237575000&di=16480a65026b48a33b2b1f4816f55101&imgtype=0&src=http%3A%2F%2Fedu.worlduc.com%2FuploadImage%2Fphoto%2Fa0%2F201341510221LCZoy.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571237575000&di=16480a65026b48a33b2b1f4816f55101&imgtype=0&src=http%3A%2F%2Fedu.worlduc.com%2FuploadImage%2Fphoto%2Fa0%2F201341510221LCZoy.jpg">
+              <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                <span class="card-title grey-text text-darken-4">
+                  刺客伍六七<i class="fa fa-close right"></i>
+                </span>
+                <span>
+                  世界上每一个人都有自己守护的东西，而我呢？<br>
+                </span>
+                <span>
+                  放送时间: 2018 .<span>
+                    <p>全片以主人公伍六七寻找失去的记忆为故事主线，配合角色与角色之间的爱恨情仇组成的支线贯穿始终。通过讲述主人公在帮助别人和寻找自我的过程中，认识不同的人，与不同角色之间发生的有趣的，最终用爱化解仇恨与偏见的故事，想带给观众欢乐的同时表达对生活的热爱，爱与包容可以化解一切</p>
+                    <ul class="skill-list">
+                      <li class="skill">
+                        <div>
+                        已追完</div>
+                        <progress class="skill-1" max="100" value="100">
+                        </progress>
+                      </li>
+                    </ul>
+                  </span>
+                </span>
               </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                操作系统基本介绍</h3>
-                <hr>
-              </div>
-            </a>
+            </div>
           </div>
         
-      </section>
-      
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "HdBastjxqIazDOi28WG5yQh6-gzGzoHsz",
-        appKey: "TVgaxtgjIotNVCjxnt8pzr3G",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="https://ghyjn0.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg" itemprop="image" alt="君の名は" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="https://ghyjn0.github.io/" itemprop="url" rel="author">君の名は</a>
-            </h3>
-          </div>
-        </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>爱生活，爱自己</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+      </div>
+    </div>
+    
+  </article>
 </div>
-
-
-
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
