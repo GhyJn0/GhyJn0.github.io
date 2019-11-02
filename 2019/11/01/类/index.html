@@ -415,6 +415,218 @@
     }
 }
 </code></pre>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="对象使用"><a href="#对象使用" class="headerlink" title="对象使用"></a>对象使用</h2><ul>
+<li>创建对象： 类名 对象名= new 类名（）；</li>
+<li>访问类中的成员<br>  对象名.成员变量；<br>  对象名.成员函数（）；</li>
+</ul>
+<pre><code class="java">
+public class Student {
+    //成员变量
+    String name;
+    int age;
+    //成员方法
+    public void Xuexi(){
+        System.out.println(&quot;学习&quot;);
+    }
+    public void Game(){
+        System.out.println(&quot;打游戏&quot;);
+    }
+}  
+ public static void main (String[] arg)
+    {
+        Student test= new Student();
+        //赋值成员变量
+        test.name=&quot;王首都&quot;;
+        test.age=20;
+        //调用成员函数（方法）
+        test.Game();
+        test.Xuexi();
+    }</code></pre>
+<p>默认成员变量</p>
+<p><img src="https://i.loli.net/2019/11/02/wg1lKqUJy3mO7nT.jpg" alt="3.JPG"></p>
+<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><p><img src="https://i.loli.net/2019/11/02/4AcY527HFfUQLod.jpg" alt="成员.JPG"></p>
+<ul>
+<li>在类中的位置不同<br>  成员变量：类中，方法外    局部变量：方法中或者方法声明上(形式参数) </li>
+<li>作用范围不一样<br>  成员变量：类中    局部变量：方法中 </li>
+<li>初始化值的不同<br>  成员变量：有默认值    局部变量：没有默认值。必须先定义，赋值，最后使用 </li>
+<li>在内存中的位置不同<br>  成员变量：堆内存    局部变量：栈内存 </li>
+<li>生命周期不同 了解<br>  成员变量：随着对象的创建而存在，随着对象的消失而消失<br>   局部变量：随着方法的调用而存在，随着方法的调用完毕而消失 </li>
+</ul>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
+<li>步骤：</li>
+<li><ol>
+<li>使用 private 关键字来修饰成员变量。         </li>
+</ol>
+</li>
+<li><ol start="2">
+<li>对需要访问的成员变量，提供对应的一对 getXxx 方法 、 setXxx 方法。 </li>
+</ol>
+</li>
+</ul>
+<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3><ul>
+<li>含义<br>  1.private 代表最小权限<br> 2.可以修饰成员变量和成员函数<br> 3.被private 修饰后的成员变量和成员函数，旨在类中才能访问。</li>
+</ul>
+<h4 id="使用格式"><a href="#使用格式" class="headerlink" title="使用格式"></a>使用格式</h4><ul>
+<li><p>格式<br>  private 数据类型 变量名；<br>   public class Student{<br>  private String name;<br>  private int age;<br>  }</p>
+</li>
+<li><p>提供getXXX方法/setXXX方法,访问成员变量</p>
+</li>
+</ul>
+<pre><code class="java">设置类
+public class Teacher {
+    private int age;
+    private String name;
+    public void setName(String n)
+    {
+        name=n;
+    }
+    public void setAge(int a)
+    {
+        age=a;
+    }
+    public int getAge(){
+        return age;
+    }
+    public String getName(){
+        return name;
+    }
+}
+
+初始化对象
+public static void main(String [] args){
+        Teacher Li= new Teacher();
+        Li.setAge(10);
+        Li.setName(&quot;李老师&quot;);
+        System.out.println(&quot;年龄： &quot;+Li.getAge());
+        System.out.println(&quot;姓名： &quot;+Li.getName());
+    }
+
+</code></pre>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><ul>
+<li>setXXX和getXXX 遗留的问题<br>  <font size="4" color="red">形参变量名与成员变量名重名</font>:   <font size="4" color="green">导致成员变量名被隐藏，方法中的变量名，无 法访问到成员变量,赋值失败</font></li>
+</ul>
+<pre><code class="java">public class Teacher {
+    private int age;
+    private String name;
+    public void setName(String name)
+    {
+        name=name;
+    }
+    public void setAge(int age)
+    {
+        age=age;
+    }
+    }
+
+/*年龄： 0
+姓名： null*/</code></pre>
+<ul>
+<li>含义<br>this代表所在类的当前对象的引用（地址值），即对象自己的引用<br><font color="red">（方法被哪个对象调用，方法中的this就代表那个对象。即谁在调用，this就代表谁）</font></li>
+</ul>
+<pre><code class="java">//方法中只有一个变量名时，默认也是使用 this 修饰，可以省略不写。 
+
+public class Teacher {
+    private int age;
+    private String name;
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+    public void setAge(int age)
+    {
+        this.age=age;
+    }
+    public int getAge(){
+        return age;
+    }
+    public String getName(){
+        return name;
+    }
+}</code></pre>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>当一个对象被创建时候，构造方法用来初始化该对象，给对象的成员变量赋初始值</li>
+<li>无论你与否自定义构造方法，所有的类都有构造方法，因为Java自动提供了一个无参数构造方法， 一旦自己定义了构造方法，Java自动提供的默认无参数构造方法就会失效。 </li>
+</ul>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><ul>
+<li>修饰符 构造方法名（参数列表）{<br>//方法体<br>}<br><font size="5" color="red">注意： 方法名与它所在的类名相同。它没有返回值，所  以不需要返回值类型，甚至不需要void。</font></li>
+</ul>
+<pre><code class="java">
+public class Teacher {
+    private int age;
+    private String name;
+
+    //没有构造方法
+    public Teacher(){}
+    //有构造方法
+    public Teacher(String name,int age){
+        this.name=name;
+        this.age=age;
+    }
+   }</code></pre>
+<ul>
+<li><font color="red">注意事项：</font><ol>
+<li>如果你不提供构造方法，系统会给出无参数构造方法。 </li>
+<li>如果你提供了构造方法，系统将不再提供无参数构造方法。</li>
+<li>构造方法是可以重载的，既可以定义参数，也可以不定义参数</li>
+</ol>
+</li>
+</ul>
+<h2 id="标准代码格式"><a href="#标准代码格式" class="headerlink" title="标准代码格式"></a>标准代码格式</h2><pre><code class="text">public class ClassName{
+    成员变量
+    构造方法
+    无参构造方法
+    有参构造方法
+    成员方法
+    getXXX()
+    setXXX()
+}
+</code></pre>
+<pre><code class="java">
+public class Teacher {
+    private int age;
+    private String name;
+
+    //没有构造方法
+    public Teacher(){}
+    //有构造方法
+    public Teacher(String name,int age){
+        this.name=name;
+        this.age=age;
+    }
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+    public void setAge(int age)
+    {
+        this.age=age;
+    }
+    public int getAge(){
+        return age;
+    }
+    public String getName(){
+        return name;
+    }
+}
+
+
+//测试
+
+public static void main(String [] args){
+        //无构造方法
+        Teacher Li=new Teacher();
+        Li.setAge(10);
+        Li.setName(&quot;李老师&quot;);
+        System.out.println(&quot;年龄： &quot;+Li.getAge());
+        System.out.println(&quot;姓名： &quot;+Li.getName());
+        //有构造方法
+        Teacher Wang= new Teacher(&quot;王老师&quot;,18);
+        System.out.println(&quot;年龄： &quot;+Wang.getAge());
+        System.out.println(&quot;姓名： &quot;+Wang.getName());
+
+
+    }
+</code></pre>
 
         </div>
         <!-- .entry-content -->
