@@ -627,6 +627,44 @@ public static void main(String [] args){
 
     }
 </code></pre>
+<h1 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h1><h2 id="概念和格式"><a href="#概念和格式" class="headerlink" title="概念和格式"></a>概念和格式</h2><ul>
+<li><p>概念<br>创建对象时，只有创建对象的语句，却没有把对象地址值赋值给某个变量。<br>  没有变量名的对象</p>
+</li>
+<li><p>格式<br>new 类名（参数列表）;</p>
+</li>
+<li><p>举例<br>new Scanner(System.in);</p>
+</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-创建匿名对象直接调用方法，没有变量名"><a href="#1-创建匿名对象直接调用方法，没有变量名" class="headerlink" title="1. 创建匿名对象直接调用方法，没有变量名"></a>1. 创建匿名对象直接调用方法，没有变量名</h3><p>  new Scanner(System.in).nextInt();</p>
+<h3 id="2-一旦调用两次方法，就是创建了两个对象，浪费"><a href="#2-一旦调用两次方法，就是创建了两个对象，浪费" class="headerlink" title="2. 一旦调用两次方法，就是创建了两个对象，浪费"></a>2. 一旦调用两次方法，就是创建了两个对象，浪费</h3><p>  new Scanner(System.in).nextInt();<br>  new Scanner(System.in).nextInt();（匿名对象只能使用一次）</p>
+<h3 id="3-匿名对象可以作为方法的参数和返回值"><a href="#3-匿名对象可以作为方法的参数和返回值" class="headerlink" title="3. 匿名对象可以作为方法的参数和返回值"></a>3. 匿名对象可以作为方法的参数和返回值</h3><p>作为参数</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Nipersonn {
+    public static  void main(String [] args){
+        Scan(new Scanner(System.in));
+    }
+    public static void Scan(Scanner sc)
+    {
+        System.out.println(sc.nextInt());
+    }
+
+}
+</code></pre>
+<p>作为返回值</p>
+<pre><code class="java">
+import java.util.Scanner;
+
+public class Nipersonn {
+    public static  void main(String [] args){
+       System.out.println(Scan().nextInt());
+    }
+    public static Scanner Scan()
+    {
+        return new Scanner(System.in);
+    }
+
+}</code></pre>
 
         </div>
         <!-- .entry-content -->

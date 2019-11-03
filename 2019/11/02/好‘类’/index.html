@@ -393,6 +393,499 @@
    对象名.成员方法名（）
   </font>
 
+<h1 id="Scanner类"><a href="#Scanner类" class="headerlink" title="Scanner类"></a>Scanner类</h1><ul>
+<li>用途： 获取键盘输入的值</li>
+<li>注意：键盘输入的值获取的都是字符串，而调用.nextInt()方法 是把它转换为对应的格式。</li>
+</ul>
+<pre><code class="java">//导入包
+import java.util.Scanner;
+public class BapScanner {
+
+    public static void main(String [] args){
+
+        //获取键盘数据
+        Scanner sc=new Scanner(System.in);
+        //获取返回字符串值
+        String name=sc.next();
+
+        System.out.println(&quot;姓名：&quot;+name);
+        //获取返回的整数值
+        int age=sc.nextInt();
+        System.out.println(&quot;年龄：&quot;+age);
+
+    }</code></pre>
+<h1 id="Random-类"><a href="#Random-类" class="headerlink" title="Random 类"></a>Random 类</h1><ul>
+<li>用途<br>  获取随机数    </li>
+<li>导入<br>  import java.util.Random</li>
+<li>构造方法<br>  public Random() 创建一个随机生成器</li>
+<li>查看成员方法<br>  public int nextInt(int n) :返回一个伪随机数 范围0&lt;=x&lt;n</li>
+<li>注意<br>  创建一个 Random 对象，每次调用 nextInt() 方法，都会生成一个随机数</li>
+</ul>
+<pre><code class="java">
+/*
+游戏开始时，会随机生成一个1-100之间的整数 number 。
+玩家猜测一个数字 guessNumber ，会与 number 作比 较，
+系统提示大了或者小了，直到玩家猜中，游戏结束
+*/
+import java.util.Random;
+import java.util.Scanner;
+
+public class Randgame {
+    public static void main(String [] args)
+
+    {
+            //生成一个1-100之间随机数
+        int num=new Random().nextInt(100)+1;
+        while(true)
+        {
+            int d=new Scanner(System.in).nextInt();
+            if (d&gt;num)
+            {
+                System.out.println(&quot;太大楼&quot;);
+            }
+            else if (d&lt;num){
+                System.out.println(&quot;太小楼&quot;);
+            }
+            else{
+                System.out.println(&quot;答对楼&quot;);
+                break;
+            }
+        }
+
+    }
+}
+</code></pre>
+<h1 id="ArrayList-类"><a href="#ArrayList-类" class="headerlink" title="ArrayList 类"></a>ArrayList 类</h1><h2 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h2><ul>
+<li>特点<br>  数组长度固定，无法满足需求</li>
+</ul>
+<pre><code class="java">
+public class Student {
+    private String name;
+    private int age;
+    public  Student(){}
+    public Student(String name,int age){
+        this.name=name;
+        this.age=age;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setAge(int age){
+        this.age=age;
+    }
+}
+
+public static void main(String [] args){
+        Student [] arr=new Student[3];
+        Student s= new Student(&quot;wangshoudu&quot;,19);
+        arr[0]=s;
+        Student s1= new Student(&quot;wangshoudu&quot;,19);
+        arr[1]=s1;
+        Student s2= new Student(&quot;wangshoudu&quot;,19);
+        arr[2]=s2;
+        for(int i=0;i&lt;arr.length;i++)
+        {
+            System.out.println(&quot;年龄：&quot;+arr[i].getAge());
+            System.out.println(&quot;姓名：&quot;+arr[i].getName());
+        }
+    }
+
+/*年龄：19
+姓名：wangshoudu
+年龄：19
+姓名：wangshoudu
+年龄：19
+姓名：wangshoudu
+*/</code></pre>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><ul>
+<li>特点<br>  大小可变的数组</li>
+</ul>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
+<li>导包<br>  import java.util.ArrayList</li>
+<li>使用<br>  ArrayList<e>:<e> 一种指定数据类型 ,在出现 E 的地方，我们使 用一种引用数据类型将其替换.<br> ArrayList<string>,ArrayList<student>;</student></string></e></e></li>
+<li>查看构造方法<br>  public ArrayList() 构造一个内容为空的集合<br> ArrayList<string> list=  new ArrayList<string>();<br> ArrayList<string> list=  new ArrayList&lt;&gt;();JDK 7以后</string></string></string></li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li>增加<br>  public boolean add(E e) :将指定的元素添加集合的尾部<br> 参数 E e 在ArrayList 对象时，<e> 指定的类型相同</e></li>
+</ul>
+<pre><code class="java"> import java.util.ArrayList;
+public class Arr {
+    public static void main(String [] args){
+        ArrayList &lt;String&gt; arr= new ArrayList&lt;&gt;();
+        String name=&quot;王首都&quot;;
+        String name1=&quot;徐宁&quot;;
+        arr.add(name);
+        arr.add(name1);
+        System.out.println(arr);
+
+    }
+}
+/*[王首都, 徐宁]*/
+</code></pre>
+<ul>
+<li>删<br>public E remove(int index) ：移除此集合中指定位置上的元素。返回被删除的元素</li>
+</ul>
+<pre><code class="java">import java.util.ArrayList;
+public class Arr {
+    public static void main(String [] args){
+        ArrayList &lt;String&gt; arr= new ArrayList&lt;&gt;();
+        String name=&quot;王首都&quot;;
+        String name1=&quot;徐宁&quot;;
+        arr.add(name);
+        arr.add(name1);
+        arr.remove(1);
+        System.out.println(arr);
+    }
+}
+/*[王首都]*/</code></pre>
+<ul>
+<li>查<br>public E get(int index) ：返回此集合中指定位置上的元素。返回获取的元素</li>
+</ul>
+<pre><code class="java">
+import java.util.ArrayList;
+public class Arr {
+    public static void main(String [] args){
+        ArrayList &lt;String&gt; arr= new ArrayList&lt;&gt;();
+        String name=&quot;王首都&quot;;
+        String name1=&quot;徐宁&quot;;
+        arr.add(name);
+        arr.add(name1);
+        System.out.println(arr.get(1));
+    }
+}
+/*徐宁*/</code></pre>
+<ul>
+<li>大小<br>public int size() ：返回此集合中的元素数。遍历集合时，可以控制索引范围，防止越界。</li>
+</ul>
+<pre><code class="java">import java.util.ArrayList;
+public class Arr {
+    public static void main(String [] args){
+        ArrayList &lt;String&gt; arr= new ArrayList&lt;&gt;();
+        String name=&quot;王首都&quot;;
+        String name1=&quot;徐宁&quot;;
+        arr.add(name);
+        arr.add(name1);
+        for(int i=0;i&lt;arr.size();i++)
+        {
+            System.out.println(arr.get(i));
+        }
+    }
+}
+/*
+王首都
+徐宁
+*/</code></pre>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p><font size="6" color="red">ArrayList对象不能存储基本类型，只能存储引用类型的数据。类似 <int> 不能写，但是存储基本数据类型对应的 包装类型是可以的。所以，想要存储基本类型数据， &lt;&gt; 中的数据类型，必须转换后才能编写<br> </int></font><br>  <img src="https://i.loli.net/2019/11/03/gzvEHKwV4scDZ5G.jpg" alt="int.JPG"></p>
+<pre><code class="java">
+import java.util.ArrayList;
+public class ForceInt {
+    public static void main(String [] args){
+        ArrayList&lt;Integer&gt; arr= new ArrayList&lt;&gt;();
+        for(int i=0;i&lt;5;i++)
+        {
+            arr.add(i);
+        }
+        for (int i=0;i&lt;arr.size();i++)
+        {
+            System.out.println(arr.get(i));
+        }
+
+    }
+}
+/*
+0
+1
+2
+3
+4
+*/</code></pre>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="数值添加集合"><a href="#数值添加集合" class="headerlink" title="数值添加集合"></a>数值添加集合</h3><pre><code class="java"> // 生成6个1~33之间的随机整数,添加到集合,并遍历
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ForceInt {
+    public static void main(String [] args){
+        Random num=new Random();
+        ArrayList&lt;Integer&gt; arr= new ArrayList&lt;&gt;();
+        for (int i=0;i&lt;6;i++)
+        {
+            int a=num.nextInt(33)+1;
+            arr.add(a);
+            System.out.println(&quot;随机数：&quot;+arr.get(i));
+        }
+    }
+}</code></pre>
+<h3 id="对象添加集合"><a href="#对象添加集合" class="headerlink" title="对象添加集合"></a>对象添加集合</h3><pre><code class="java">
+ public class Student {
+    private String name;
+    private int age;
+    public  Student(){}
+    public Student(String name,int age){
+        this.name=name;
+        this.age=age;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setAge(int age){
+        this.age=age;
+    }
+}
+
+import java.util.ArrayList;
+public class ForceInt {
+    public static void main(String [] args){
+        ArrayList&lt;Student&gt; arr=new ArrayList&lt;&gt;();
+        Student a =new Student(&quot;王首都&quot;,18);
+        Student b=new Student(&quot;徐宁&quot;,18);
+        arr.add(a);
+        arr.add(b);
+        for (int i=0;i&lt;arr.size();i++)
+        {
+            Student s=arr.get(i);
+            System.out.println(&quot;姓名:&quot;+s.getName());
+            System.out.println(&quot;年龄:&quot;+s.getAge());
+        }
+
+    }
+}
+/*
+姓名:王首都
+年龄:18
+姓名:徐宁
+年龄:18
+
+*/
+</code></pre>
+<h1 id="String-类"><a href="#String-类" class="headerlink" title="String 类"></a>String 类</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>字符串不变：字符串的值在创建后不能被更改</li>
+</ul>
+<pre><code class="java">String s1 = &quot;abc&quot;;
+s1 += &quot;d&quot;; 
+System.out.println(s1);
+// &quot;abcd&quot;  // 内存中有&quot;abc&quot;，&quot;abcd&quot;两个对象，s1从指向&quot;abc&quot;，改变指向，指向了&quot;abcd&quot;。
+</code></pre>
+<ul>
+<li>String对象不可变的，所以他们可以被共享</li>
+</ul>
+<pre><code class="java">String s1 = &quot;abc&quot;; 
+String s2 = &quot;abc&quot;; 
+// 内存中只有一个&quot;abc&quot;对象被创建，同时被s1和s2共享。</code></pre>
+<ul>
+<li>“abc”等于 char[] data={‘a’,’b’,’c’}</li>
+</ul>
+<pre><code class="java">例如：  String str = &quot;abc&quot;;   
+相当于： 
+char data[] = {&#39;a&#39;, &#39;b&#39;, &#39;c&#39;};      String str = new String(data); 
+// String底层是靠字符数组实现</code></pre>
+<h2 id="生成字符串"><a href="#生成字符串" class="headerlink" title="生成字符串"></a>生成字符串</h2><pre><code class="java">//无参构造
+String str=new String();
+//字符数组构造
+char [] chars={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
+String str1=new String(chars)
+//字节数组构造
+byte []bytes={97,98,99}
+String str3=new String(bytes)</code></pre>
+<h2 id="常用获取方法"><a href="#常用获取方法" class="headerlink" title="常用获取方法"></a>常用获取方法</h2><ul>
+<li>equals()<br>将此字符串与指定对象进行比较</li>
+<li>equalsIgnoreCase()<br>忽略大小写</li>
+<li>length()<br>返回字符串大小</li>
+<li>concat( String str)<br>将指定的字符串连接到该字符串的尾部</li>
+<li>charAt(int index)<br>返回指定索引处的Char值</li>
+<li>indexof(String str)<br>返回指定字符串第一次出现的位置</li>
+<li>substring(int beginIndex)<br>返回一个字符串，从beginIndex开始截取字符串到字符 串结尾。 </li>
+<li>substring(int beginIndex,int endIndex)<br>返回一个字符串，从beginIndex开始截取字符串到endIndex.</li>
+</ul>
+<pre><code class="java">public class Equal {
+    public static void main (String [] args)
+    {
+        String s=&quot;hello&quot;;
+        String s1=&quot;hello&quot;;
+        String s2=&quot;Hello&quot;;
+        //不忽略大小写
+        System.out.println(s.equals(s1));
+        System.out.println(s.equals(s2));
+        //忽略大小写
+        System.out.println(s.equalsIgnoreCase(s1));
+        System.out.println(s.equalsIgnoreCase(s1));
+        //计算字符串长度
+        System.out.println(s1.length());
+        //字符串拼接
+        System.out.println(s1.concat(&quot;+hello&quot;));
+        //返回字符串第i个位置的值
+        System.out.println(s1.charAt(1));
+        //截取i到最后的子字符串
+        System.out.println(s1.substring(1));
+        //截取i到j的子字符串
+        System.out.println(s1.substring(1,3));
+        //返回第一次子字符串位置
+        System.out.println(s1.indexOf(&quot;llo&quot;));
+
+    }
+}
+/*
+true
+false
+true
+true
+5
+hello+hello
+e
+ello
+el
+2
+*/</code></pre>
+<h2 id="转换功能方法"><a href="#转换功能方法" class="headerlink" title="转换功能方法"></a>转换功能方法</h2><ul>
+<li>toCharArray()<br>将字符串转换为新的字符数组</li>
+<li>getBytes()<br>将String 编码转为新的字节数组</li>
+<li>replace（charsqsuece target,charsequence replacement)<br>将target 用 replacement 替换</li>
+<li>split(string regex)<br>将字符串你按照 regex 分割</li>
+</ul>
+<pre><code class="java">public class Equal {
+    public static void main (String [] args)
+    {
+        String s=&quot;hellohello&quot;;
+        String s1=&quot;abcde&quot;;
+        String s2=&quot;aabbccaadd&quot;;
+        char [] a =s.toCharArray();
+        System.out.println(&quot;字符串转换为字符数组&quot;);
+        for(int i=0;i&lt;a.length;i++)
+        {
+            System.out.println(a[i]);
+        }
+        System.out.println(&quot;\n&quot;);
+        System.out.println(&quot;字符串转换为字节数组&quot;);
+        byte [] a1=s1.getBytes();
+        for(int i=0;i&lt;a1.length;i++)
+        {
+            System.out.println(a1[i]);
+        }
+        System.out.println(&quot;\n&quot;);
+        System.out.println(&quot;用gg替代aa&quot;);
+        s2=s2.replace(&quot;aa&quot;,&quot;gg&quot;);
+        System.out.println(s2);
+        System.out.println(&quot;用gg分割s2&quot;);
+        String [] s3=s2.split(&quot;gg&quot;);
+        for(int i=0;i&lt;s3.length;i++)
+        {
+            System.out.println(s3[i]);
+        }
+    }
+}
+/*
+字符串转换为字符数组
+h
+e
+l
+l
+o
+h
+e
+l
+l
+o
+字符串转换为字节数组
+97
+98
+99
+100
+101
+用gg替代aa
+ggbbccggdd
+用gg分割s2
+bbcc
+dd
+*/
+</code></pre>
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h2><h3 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h3><pre><code class="java">//定义一个方法，把数组{1,2,3}按照指定个格式拼接成一个字符串。格式参照如下：[word1#word2#word3]。
+
+public class Equal {
+    public static void main (String [] args)
+    {
+        int chars[]={1,2,3};
+        System.out.println(arraytostring(chars));
+    }
+    public static String arraytostring(int [] arr)
+    {
+        String s=new String(&quot;[&quot;);
+        for(int i=0;i&lt;arr.length;i++)
+        {
+            if (i==arr.length-1){
+                s=s.concat(arr[i]+&quot;]&quot;);
+            }
+            else{
+                s=s.concat(arr[i]+&quot;#&quot;);
+            }
+        }
+        return s;
+    }
+}
+
+</code></pre>
+<h3 id="统计字母"><a href="#统计字母" class="headerlink" title="统计字母"></a>统计字母</h3><pre><code class="java">//键盘录入一个字符，统计字符串中大小写字母及数字字符个数
+import java.util.Scanner;
+public class Tongji {
+    public static  void main(String [] args) {
+    Scanner Iput=new Scanner(System.in);
+    String s=Iput.next();
+    int numcount=0;
+    int bigcount=0;
+    int smallcount=0;
+    for(int i=0;i&lt;s.length();i++)
+    {
+        char ss=s.charAt(i);
+        if (ss&gt;=&#39;a&#39;&amp;&amp;ss&lt;=&#39;z&#39;)
+            smallcount++;
+        else if(ss&gt;=&#39;A&#39;&amp;&amp;ss&lt;=&#39;Z&#39;)
+            bigcount++;
+        else
+            numcount++;
+    }
+    System.out.println(&quot;大写字母：&quot;+bigcount);
+    System.out.println(&quot;小写字母：&quot;+smallcount);
+    System.out.println(&quot;数字：&quot;+numcount);
+
+
+    }
+}
+
+/*
+AAaa11
+大写字母：2
+小写字母：2
+数字：2*/
+</code></pre>
+<h1 id="Array-类"><a href="#Array-类" class="headerlink" title="Array 类"></a>Array 类</h1><ul>
+<li>toString(int [] a)<br>将数组变成字符串</li>
+<li>sort（int[] a)<br>将数组排序</li>
+</ul>
+<pre><code class="java"> import java.util.Arrays;
+public class Ary {
+    public static void main(String [] args){
+        int [] a={1,2,4,3,5,6};
+        //转换为字符串
+        String name=Arrays.toString(a);
+        System.out.println(name);
+        int [] c={1,2,4,3,5,6};
+        //排序升序
+        Arrays.sort(c);
+        System.out.println(Arrays.toString(c));
+
+    }
+}</code></pre>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
