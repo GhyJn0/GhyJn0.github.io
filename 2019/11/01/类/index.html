@@ -66,7 +66,7 @@
   </div>
   <a href="#" class="cd-top faa-float animated"></a>
   <section id="main-container">
-    <div class="headertop filter-dot">
+    <div class="headertop filter-dim">
   <div id="banner_wave_1"></div>
   <div id="banner_wave_2"></div>
   <figure id="centerbg" class="centerbg">
@@ -452,7 +452,7 @@ public class Student {
 <li>在内存中的位置不同<br>  成员变量：堆内存    局部变量：栈内存 </li>
 <li>生命周期不同 了解<br>  成员变量：随着对象的创建而存在，随着对象的消失而消失<br>   局部变量：随着方法的调用而存在，随着方法的调用完毕而消失 </li>
 </ul>
-<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
+<h1 id="类三大特性"><a href="#类三大特性" class="headerlink" title="类三大特性"></a>类三大特性</h1><h2 id="1-封装"><a href="#1-封装" class="headerlink" title="1.封装"></a>1.封装</h2><ul>
 <li>步骤：</li>
 <li><ol>
 <li>使用 private 关键字来修饰成员变量。         </li>
@@ -571,7 +571,7 @@ public class Teacher {
 </ol>
 </li>
 </ul>
-<h2 id="标准代码格式"><a href="#标准代码格式" class="headerlink" title="标准代码格式"></a>标准代码格式</h2><pre><code class="text">public class ClassName{
+<h3 id="标准代码格式"><a href="#标准代码格式" class="headerlink" title="标准代码格式"></a>标准代码格式</h3><pre><code class="text">public class ClassName{
     成员变量
     构造方法
     无参构造方法
@@ -627,6 +627,339 @@ public static void main(String [] args){
 
     }
 </code></pre>
+<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h2><h3 id="为什么要继承"><a href="#为什么要继承" class="headerlink" title="为什么要继承"></a>为什么要继承</h3><p>由于类中存在相同属性和行为时，将这些内容抽取到一个单独类，那么多个类中无需在定义这些属性和行为，减少代码量和空间。<br>举例：<br><img src="https://i.loli.net/2019/11/05/ERerHxM9FKUZyPA.jpg" alt="3.JPG"></p>
+<h3 id="定义和优点"><a href="#定义和优点" class="headerlink" title="定义和优点"></a>定义和优点</h3><ul>
+<li>继承：<br>就是子类继承父类的属性和行为，使得子类对象具有与父类相同的属性、相同的行为。子类可以直接 访问父类中的<font color="red">非私有的属性和行为</font></li>
+<li>优点<br>提高代码的复用性<br>是多态产生的前提</li>
+<li>格式：<br>通过关键字extends<br>public class 父类{<br>//代码<br>}<br>public class 子类 extends  父类{<br>//代码<br>}</li>
+</ul>
+<pre><code class="java">class Employee {
+     String name;
+     public void work(){
+         System.out.println(&quot;好好工作&quot;);
+     }
+}
+
+class Teacher extends Employee{
+    public void PrintName(){
+        System.out.println(&quot;姓名：&quot;+name);
+    }
+
+}
+
+
+public class test {
+    public static void main(String [] args){
+        Teacher t=new Teacher();
+        t.name=&quot;wangshoudu&quot;;
+        t.PrintName();
+        t.work();
+    }
+}
+
+/*
+
+姓名：wangshoudu
+好好工作
+*/</code></pre>
+<h3 id="成员变量重名"><a href="#成员变量重名" class="headerlink" title="成员变量重名"></a>成员变量重名</h3><h4 id="重名"><a href="#重名" class="headerlink" title="重名"></a>重名</h4><ul>
+<li>直接访问：<br>直接通过子类对象访问成员变量： 等号左边是谁，就优先访问谁，没有往上找。没找到报错</li>
+<li>间接访问：<br>通过成员方法访问成员变量<br>该方法属于谁，就调用谁，没有就网上找</li>
+</ul>
+<pre><code class="java">//父类
+public class Fu {
+    int age=100;
+    int id=200;
+    public void MethodF(){
+        System.out.println(&quot;我是父类&quot;+age);
+    }
+}
+//子类
+public class Zi extends  Fu {
+    int age=300;
+    int id =400;
+    public void MethodZ(){
+        System.out.println(&quot;我是父类&quot;+age);
+    }
+
+}
+//测试
+
+
+public class Test1 {
+   public static void main (String [] args)
+   {
+       //创建父类对象
+       Fu nF=new Fu();
+       System.out.println(&quot;我是父类：&quot;+nF.age);
+
+      //创建子类
+       Zi nZ=new Zi();
+       //由于子类变量重载父类变量
+       //直接访问 ：等号左边是谁先调用谁
+       System.out.println(&quot;我是子类：&quot;+nZ.age);//左边是Zi 所以调用是子类
+       System.out.println(&quot;我是父类：&quot;+nF.age);
+       //System.out.println(&quot;我是不存在：&quot;+nZ.qq);//不存在向上找，没找到报错
+
+       //间接访问:通过成员方法
+       nF.MethodF();//调用父类
+       nZ.MethodZ();//调用子类
+       nZ.MethodF();//调用父类，属于父类方法
+   }
+
+}
+/*
+我是父类：100
+我是子类：300
+我是父类100
+我是子类300
+我是父类100
+*/
+</code></pre>
+<h4 id="子类中重名的三种变量"><a href="#子类中重名的三种变量" class="headerlink" title="子类中重名的三种变量"></a>子类中重名的三种变量</h4><ul>
+<li>局部变量<br>直接成员变量名</li>
+<li>子类中成员变量<br>this.成员变量名</li>
+<li>父类中成员变量<br>super.成员变量名</li>
+</ul>
+<pre><code class="java">//父类
+public class Fu {
+    String name=&quot;父类&quot;;
+}
+//子类
+public class Zi extends  Fu{
+    String name=&quot;子类&quot;;
+    public void Pritn(){
+        String name=&quot;子类局部&quot;;
+        System.out.println(name);
+        //调用本类种的成员变量
+        System.out.println(this.name);
+        //在子类中调用父类中的成员变量
+        System.out.println(super.name);
+    }
+}
+//测试
+public class Test3 {
+    public static void main(String [] args)
+    {
+        Zi obj=new Zi();
+        obj.Pritn();
+    }
+}
+/*
+子类局部
+子类
+父类
+*/
+
+</code></pre>
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><ul>
+<li>定义：<br>子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效 果，也称为重写或者复写。声明不变，重新实现</li>
+</ul>
+<h4 id="重写和重载的差异"><a href="#重写和重载的差异" class="headerlink" title="重写和重载的差异"></a>重写和重载的差异</h4><ul>
+<li>重写：<br>方法名称一样，参数列表一样，覆盖，覆写</li>
+<li>重载：<br>方法名称一样，参数列表不一样</li>
+</ul>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>子类必须和父类的方法名一样，参数列表一样，放回值类型也一样。<br>@override,重写方法前面用来检测是否覆盖重写</li>
+<li>子类重写父类，必须要保证权限大于等于父类的权限<br>public &gt;protected&gt;(default)&gt;private，（default)不是关键字default ,而是什么都不写，留空</li>
+<li>子类返回值必须小于父类方法的返回值范围<br>  object&gt;String</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p><img src="https://i.loli.net/2019/11/05/OITwr43iNQfVgUB.jpg" alt="34.JPG"></p>
+<pre><code class="java">public class phone {
+    public void sendMessage(){
+        System.out.println(&quot;发消息&quot;);
+    }
+    public void call(){
+        System.out.println(&quot;打电话&quot;);
+    }
+    public void showNum(){
+        System.out.println(&quot;来电显示&quot;);
+    }
+}
+
+public class Newphone extends phone {
+    @Override
+    public void showNum(){
+        System.out.println(&quot;显示头像&quot;);
+        //不主张这样写，如果此时的来电显示功能要用300行代码就会不简洁
+        System.out.println(&quot;来电显示&quot;);
+        //主张写，通过super.父类方法名（）调用
+        super.showNum();//
+    }
+}
+
+public class Test {
+    public static void main(String [] args){
+       //父类调用
+        new phone().showNum();
+        System.out.println(&quot;===============&quot;);
+        //子类调用
+        new Newphone().showNum();
+    }
+}
+/*
+
+来电显示
+===============
+显示头像
+来电显示
+来电显示
+*/</code></pre>
+<h3 id="继承中构造方法"><a href="#继承中构造方法" class="headerlink" title="继承中构造方法"></a>继承中构造方法</h3><ul>
+<li>特点<br>1.无参数时 ，子类构造方法中有一个默认隐含的super（）调用，所以一定先 调用父类，后调用子类<br>2.子类构造可以通过super 关键字来调用父类重载构造。<br>3.super 的父类构造调用必须是子类构造的第一个语句。不能一个子类构造调用多次super 构造</li>
+<li>总结：<br>子类必须调用父类构造方法，不写赠送给super() ,写了则用指定的super调用，super只能有一个，还必须只有一个。</li>
+</ul>
+<pre><code class="java">
+//无参数时
+public class Zi extends Fu
+{
+    public Zi(){
+        //无参数时会默认调用一个super()方法;
+        super();
+        System.out.println(&quot;子类的方法&quot;);
+    }
+}
+
+public class Fu {
+    public Fu(){
+        System.out.println(&quot;父类的构造方法&quot;);
+    }
+}
+
+
+public class Test {
+    public static void main(String [] args){
+        new Zi();
+    }
+}
+
+/*
+父类的构造方法
+子类的方法
+*/
+//但父类有参数时构造时
+
+public class Fu {
+    public Fu(){
+        System.out.println(&quot;父类的无参构造方法&quot;);
+    }
+    public Fu(int num){
+        System.out.println(&quot;父类有参构造&quot;);
+    }
+}
+
+
+public class Zi extends Fu
+{
+    public Zi(){
+        //无参数时会默认调用一个super()方法;
+        super(10);//如果此时传入参数，就会调用父类的重载的构造方法必须写在第一句否则会报错
+        System.out.println(&quot;子类的方法&quot;);
+        //super（）此时会报错
+    }
+}
+
+public class Test {
+    public static void main(String [] args){
+        new Zi();
+    }
+}
+/*
+父类有参构造
+子类的方法
+*/
+</code></pre>
+<h3 id="继承三大特点"><a href="#继承三大特点" class="headerlink" title="继承三大特点"></a>继承三大特点</h3><ul>
+<li>单继承，一个类的直接父类只能由唯一一个<pre><code class="java">class A(){}
+class B extends A{}//可以
+class C{}
+class D extends A,C{}//不可以</code></pre>
+</li>
+<li>多级继承，我有一个父亲，我的父亲还有父亲（爷爷）<pre><code class="java">class A{}
+class B extends A(){}
+class C extends B(){}</code></pre>
+</li>
+<li>一个子类的直接父亲唯一，但是一个父类可以由多个孩子（二胎）<pre><code class="java">class A(){}
+class B extends A(){}
+class C extends A(){}</code></pre>
+</li>
+</ul>
+<h3 id="总结-super"><a href="#总结-super" class="headerlink" title="总结 super"></a>总结 super</h3><ul>
+<li>1.子类中的成员方法中，访问父类的成员变量</li>
+<li>2.子类的成员方法中，访问父类的成员方法</li>
+<li>3.子类的构造方法中，访问父类的构造方法</li>
+</ul>
+<pre><code class="java">
+public class Fu {
+    String name=&quot;我是父类&quot;;
+    public Fu(){
+        System.out.println(&quot;父类的无参构造方法&quot;);
+    }
+    public Fu(int num){
+        System.out.println(&quot;父类有参构造&quot;);
+    }
+    public void Study(){
+        System.out.println(&quot;我是父类的方法&quot;);
+    }
+}
+
+
+public class Zi extends Fu
+{   String name=&quot;我是子类&quot;;
+    public Zi(){
+        //无参数时会默认调用一个super()方法;
+        super(110);//（3）
+        System.out.println(&quot;子类的方法&quot;);
+    }
+    @Override
+    public void Study(){
+        System.out.println(&quot;我是子类的重写父类的方法&quot;);
+        super.Study();//调用父类的Study()方法（2）
+
+    }
+    public void Diao(){
+        System.out.println(&quot;调用父类的name&quot;+super.name);（1）
+        System.out.println(&quot;调用子类的name&quot;+name);
+    }
+}
+
+</code></pre>
+<h3 id="总结-this"><a href="#总结-this" class="headerlink" title="总结 this"></a>总结 this</h3><ul>
+<li>1.在本类的成员方法中，访问本类的成员变量。</li>
+<li>2.在本类的成员方法中，访问本类的另一个成员方法。</li>
+<li>3.在本类中构造方法中，访问本类的另一个构造方法<br>this ()调用必须第一个语句（且唯一）super()和this（）构造不能同时使用</li>
+</ul>
+<pre><code class="java">
+public class ThisMesaage {
+    String name=&quot;我是成员变量&quot;;
+    public ThisMesaage(){
+        //调用本类的构造函数的重载
+        this(&quot;我调用本类的构造函数的重载&quot;);
+    }
+    public ThisMesaage(String name){
+
+    }
+    public void Vist(){
+        String name=&quot;我是局部变量&quot;;
+
+        System.out.println(&quot;访问局部变量：&quot;+name);
+        //调用本类中的成员变量
+        System.out.println(&quot;访问本类中的成员变量：&quot;+this.name);
+    }
+    public void Method(){
+        System.out.println(&quot;我是method&quot;);
+        //调用本类中的其他成员方法
+        this.Method1();
+    }
+    public void Method1(){
+        System.out.println(&quot;我是method1&quot;);
+    }
+}
+</code></pre>
+<h3 id="super-和this差异"><a href="#super-和this差异" class="headerlink" title="super 和this差异"></a>super 和this差异</h3><ul>
+<li>super 来访问父类，this用来访问本类的</li>
+<li>super()和this()不能同时出现</li>
+</ul>
 <h1 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h1><h2 id="概念和格式"><a href="#概念和格式" class="headerlink" title="概念和格式"></a>概念和格式</h2><ul>
 <li><p>概念<br>创建对象时，只有创建对象的语句，却没有把对象地址值赋值给某个变量。<br>  没有变量名的对象</p>
 </li>
@@ -635,7 +968,7 @@ public static void main(String [] args){
 <li><p>举例<br>new Scanner(System.in);</p>
 </li>
 </ul>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-创建匿名对象直接调用方法，没有变量名"><a href="#1-创建匿名对象直接调用方法，没有变量名" class="headerlink" title="1. 创建匿名对象直接调用方法，没有变量名"></a>1. 创建匿名对象直接调用方法，没有变量名</h3><p>  new Scanner(System.in).nextInt();</p>
+<h2 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-创建匿名对象直接调用方法，没有变量名"><a href="#1-创建匿名对象直接调用方法，没有变量名" class="headerlink" title="1. 创建匿名对象直接调用方法，没有变量名"></a>1. 创建匿名对象直接调用方法，没有变量名</h3><p>  new Scanner(System.in).nextInt();</p>
 <h3 id="2-一旦调用两次方法，就是创建了两个对象，浪费"><a href="#2-一旦调用两次方法，就是创建了两个对象，浪费" class="headerlink" title="2. 一旦调用两次方法，就是创建了两个对象，浪费"></a>2. 一旦调用两次方法，就是创建了两个对象，浪费</h3><p>  new Scanner(System.in).nextInt();<br>  new Scanner(System.in).nextInt();（匿名对象只能使用一次）</p>
 <h3 id="3-匿名对象可以作为方法的参数和返回值"><a href="#3-匿名对象可以作为方法的参数和返回值" class="headerlink" title="3. 匿名对象可以作为方法的参数和返回值"></a>3. 匿名对象可以作为方法的参数和返回值</h3><p>作为参数</p>
 <pre><code class="java">import java.util.Scanner;
@@ -665,6 +998,235 @@ public class Nipersonn {
     }
 
 }</code></pre>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><h2 id="为甚么要用static"><a href="#为甚么要用static" class="headerlink" title="为甚么要用static"></a>为甚么要用static</h2><p><img src="https://i.loli.net/2019/11/04/JkboPEdN6BtsnGU.jpg" alt="1.JPG"></p>
+<h2 id="定义和格式"><a href="#定义和格式" class="headerlink" title="定义和格式"></a>定义和格式</h2><h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3><ul>
+<li><p>特点：<br>当 static 修饰成员变量时，该变量称为类变量。该类的每个对象都共享同一个类变量的值。任何对象都可以更改 该类变量的值，但也可以在不创建该类的对象的情况下对类变量进行操作。（如果一个变量使用了static ,那么这个变量不属于对象，属于所在类，多个对象共享一份数据）</p>
+</li>
+<li><p>格式：<br>static 数据类型 变量名;</p>
+</li>
+<li><p>举例：<br>static int age;</p>
+</li>
+<li><p>调用方式：<br>  类名.静态变量<br> 对象名.静态变量(不推荐使用）</p>
+</li>
+</ul>
+<pre><code class="java">/*
+报到。现在想为每一位新来报到的同学编学号（sid），从第一名同学开始，sid为 1，以此类推。学号必须是唯一的，连续的，并且与班级的人数相符，这样以便知道，要分配给下一名新同学的学 号是多少。这样我们就需要一个变量，与单独的每一个学生对象无关，而是与整个班级同学数量有关。
+*/
+public class Student1 {
+    private String name;
+    private int age;
+    static String cl;
+    private int id;
+    static int IdCount=0;
+    public Student1(){
+        IdCount++;
+    }
+
+    public  int getId() {
+        return id;
+    }
+
+    public Student1(String name, int age){
+        this.name=name;
+        this.age=age;
+        this.id=++IdCount;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public static String getCl() {
+        return cl;
+    }
+}
+
+//测试
+public class Teststudent {
+    public static void main(String [] args){
+        Student1 one=new Student1(&quot;郭靖&quot;,20);
+        Student1 two =new Student1(&quot;小龙女&quot;,18);
+        //one.cl=&quot;101&quot;;不推荐 对象名.静态变量
+        Student1.cl=&quot;神雕侠侣&quot;;//类名.静态变量
+
+        System.out.println(&quot;姓名：&quot;+one.getName()+&quot;年龄：&quot;+one.getAge()+&quot;班级：&quot;+one.getCl()+&quot;学号&quot;+one.getId());
+
+        System.out.println(&quot;姓名：&quot;+two.getName()+&quot;年龄：&quot;+two.getAge()+&quot;班级：&quot;+two.getCl()+&quot;学号&quot;+two.getId());
+    }
+}
+/*
+姓名：郭靖年龄：20班级：神雕侠侣学号1
+姓名：小龙女年龄：18班级：神雕侠侣学号2
+*/
+</code></pre>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
+<li><p>描述：<br>当 static 修饰成员方法时，该方法称为类方法 。静态方法在声明中有 static ，建议使用类名来调用，而不需要 创建类的对象。调用方式非常简单</p>
+</li>
+<li><p>定义：<br>使用static 关键字修饰的成员方法：静态方法</p>
+</li>
+<li><p>格式：<br>修饰符 static 返回值类型 方法名(参数列表){<br>//执行语句<br>}</p>
+</li>
+<li><p>调用方式：<br>类名称.静态方法<br>对象名称.静态方法（不推荐使用）</p>
+</li>
+<li><p>举例：<br>public static void showNum(){<br>System.out.println(“我是静态方法”);<br>}</p>
+</li>
+</ul>
+<pre><code class="java">
+public class StaticWay {
+    public static void Test3(){
+        System.out.println(&quot;静态方法&quot;);
+    }
+    public void Test2(){
+        System.out.println(&quot;成员方法&quot;);
+    }
+
+}
+
+//测试
+public class Test1 {
+    public static void main(String [] args)
+    {
+        StaticWay name= new StaticWay();//首先创建对象
+        //才能调用没有static 方法
+        name.Test2();
+        //对于静态方法来说
+        name.Test3();//正确，不推荐使用
+        StaticWay.Test3();//推荐使用
+        //对于本来当中的静态方法，可以省略名称
+        myTest();
+    }
+    public static void myTest(){
+
+        System.out.println(&quot;自己成员方法&quot;);
+
+    }
+}
+/*
+成员方法
+静态方法
+静态方法
+自己成员方法
+*/</code></pre>
+<ul>
+<li>注意：<br><font size="6" color="red">1.静态方法可以直接访问类变量和静态方法。 </font><br><font size="6" color="red">2.静态方法不能直接访问普通成员变量或成员方法。反之，成员方法可以直接访问类变量或静态方法</font><br><font size="6" color="red">3.静态方法中，不能使用this关键字。</font>
+小贴士：静态方法只能访问静态成员
+
+
+
+
+</li>
+</ul>
+<h2 id="static-内存图"><a href="#static-内存图" class="headerlink" title="static 内存图"></a>static 内存图</h2><p><img src="https://i.loli.net/2019/11/04/c5uP6RO7eWKiSya.jpg" alt="2.JPG"></p>
+<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><ul>
+<li>格式：<br>public class 类名称{<br>   static{<br>   // 静态代码块内容<br>   }<br>}</li>
+<li>特点：<br>当第一次用到本类时，静态代码块执行唯一一次<br>静态代码块优于非静态，所以静态代码块优于构造代码块</li>
+<li>用处：<br>用一次性地对静态成员变量进行赋值</li>
+</ul>
+<pre><code class="java">//静态代码块
+public class Person {
+//静态代码块
+    static {
+        System.out.println(&quot;静态代码类，我只执行一次&quot;);
+    }
+    //构造函数
+    public Person(){
+        System.out.println(&quot;构造函数&quot;);
+    }
+}
+//测试
+public class Test {
+    public static void main(String [] args)
+    {
+        Person name=new Person();
+        Person name1=new Person();
+    }
+}
+/*
+静态代码类，我只执行一次
+构造函数
+构造函数
+*/
+</code></pre>
+<h2 id="static总结"><a href="#static总结" class="headerlink" title="static总结"></a>static总结</h2><pre><code class="text">
+1.无论成员变量，还是成员方法，如果有了static，都推荐使用类名称进行调用
+2. 一旦使用static修饰，那么就成为静态，不属于对象，属于类
+3.如果没有static 关键字 那么必须首先创建对象，然后对象才能使用它
+，如果有static，那么不要创建对象，用类名称方法
+4.静态变量：类名称.静态变量
+5.静态方法：类名称.静态方法（）
+6.对于本类中的静态方法，可以用方法（）调用
+</code></pre>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><h2 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h2><p>父类中的方法，被它的子类们重写，子类各自的实现都不尽相同。那么父类的方法声明和方法主体，只有声明还有 意义，而方法主体则没有存在的意义了。我们把没有方法主体的方法称为抽象方法。Java语法规定，包含抽象方法 的类就是抽象类。<br><img src="https://i.loli.net/2019/11/05/TmQFPEpL5iXyjf1.jpg" alt="25.JPG"></p>
+<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><p>抽象方法必须在抽象类中</p>
+<ul>
+<li>定义格式：<br>修饰符 abstract 返回值类型 方法名 (参数列表)；</li>
+<li>举例：<br>public abstract void run();</li>
+</ul>
+<h2 id="如何使用抽象类和方法"><a href="#如何使用抽象类和方法" class="headerlink" title="如何使用抽象类和方法"></a>如何使用抽象类和方法</h2><ul>
+<li>1.不能直接串接new 抽象类对象；</li>
+<li>2.必须要有子类，继承抽象父类</li>
+<li>3.子类必须覆盖重写抽象父类的所有抽象方法。（覆盖重写：子类去掉抽象方法的abstract 关键字然后补上大括号）</li>
+<li>4.创建子类对象进行使用。</li>
+</ul>
+<pre><code class="java">//抽象父类
+public abstract  class Animal {
+    abstract public void eat();//抽象方法
+}
+//继承子类
+public class cat extends Animal {
+    public void eat(){
+        System.out.println(&quot;我是喵星人&quot;);
+    }
+}
+public class dog extends Animal {
+    public void eat(){
+        System.out.println(&quot;我是汪星人&quot;);
+    }
+}
+//测试
+public class obj {
+    public static void main(String[] args) {
+        cat a=new cat();
+        a.eat();
+        dog b=new dog();
+        b.eat();
+    }
+}
+
+/*
+我是喵星人
+我是汪星人
+*/
+
+
+</code></pre>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><pre><code class="text">关于抽象类的使用，以下为语法上要注意的细节，虽然条目较多，但若理解了抽象的本质，无需死记硬背。
+1. 抽象类不能创建对象，如果创建，编译无法通过而报错。只能创建其非抽象子类的对象。
+理解：假设创建了抽象类的对象，调用抽象的方法，而抽象方法没有具体的方法体，没有意义
+
+2. 抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的。
+理解：子类的构造方法中，有默认的super()，需要访问父类构造方法。
+
+3. 抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类。
+理解：未包含抽象方法的抽象类，目的就是不想让调用者创建该类对象，通常用于某些特殊的类结构设 计。
+
+
+4. 抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错。除非该子类也是抽象 类。
+理解：假设不重写所有抽象方法，则类中可能包含抽象方法。那么创建对象后，调用抽象的方法，没有 意义。 </code></pre>
 
         </div>
         <!-- .entry-content -->
