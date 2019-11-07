@@ -445,7 +445,13 @@
 <h2 id="2-进程互斥"><a href="#2-进程互斥" class="headerlink" title="2.进程互斥"></a>2.进程互斥</h2><h3 id="4个部分"><a href="#4个部分" class="headerlink" title="4个部分"></a>4个部分</h3><p><img src="https://i.loli.net/2019/10/26/IAXnd1moGZahF5r.jpg" alt="jin.JPG"></p>
 <h3 id="遵守的原则"><a href="#遵守的原则" class="headerlink" title="遵守的原则"></a>遵守的原则</h3><p><img src="https://i.loli.net/2019/10/26/Yo6bUH9ckWzFsq1.jpg" alt="yuanze.JPG"></p>
 <h2 id="3-总结-2"><a href="#3-总结-2" class="headerlink" title="3.总结"></a>3.总结</h2><p><img src="https://i.loli.net/2019/10/26/tRiZU2JFNjAgo1M.jpg" alt="summary.JPG"></p>
-<h1 id="12-消费者和生产者模型"><a href="#12-消费者和生产者模型" class="headerlink" title="12.消费者和生产者模型"></a>12.消费者和生产者模型</h1><h2 id="单消费者模型"><a href="#单消费者模型" class="headerlink" title="单消费者模型"></a>单消费者模型</h2><h3 id="1-理解"><a href="#1-理解" class="headerlink" title="1.理解"></a>1.理解</h3><p><img src="https://i.loli.net/2019/10/29/WgPHJVEbtSY2q9y.jpg" alt="image.JPG"></p>
+<h1 id="12-进程互斥和同步实现的办法"><a href="#12-进程互斥和同步实现的办法" class="headerlink" title="12.进程互斥和同步实现的办法"></a>12.进程互斥和同步实现的办法</h1><h2 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h2><p><img src="https://i.loli.net/2019/11/06/7jDunA2iQFwU4HK.jpg" alt="single.JPG"><br><img src="https://i.loli.net/2019/11/06/5RFqfLONcHA4lTd.jpg" alt="shortcoming.JPG"></p>
+<h2 id="双标志先检查法"><a href="#双标志先检查法" class="headerlink" title="双标志先检查法"></a>双标志先检查法</h2><p><img src="https://i.loli.net/2019/11/06/iH1gAtqzrjlSD4C.jpg" alt="Double.JPG"></p>
+<h2 id="双标志后检查法"><a href="#双标志后检查法" class="headerlink" title="双标志后检查法"></a>双标志后检查法</h2><p><img src="https://i.loli.net/2019/11/06/NyQoEs7I5Yx1dri.jpg" alt="doublehou.JPG"></p>
+<h2 id="peterson算法"><a href="#peterson算法" class="headerlink" title="peterson算法"></a>peterson算法</h2><p><img src="https://i.loli.net/2019/11/06/v4Vkog5Zwu9sfGP.jpg" alt="peterson.JPG"></p>
+<p><img src="https://i.loli.net/2019/11/06/bLUJWTPfetkM5zd.jpg" alt="petersonExample.JPG"><br>现实举例：上厕所按照1-》2-》3<br><img src="https://i.loli.net/2019/11/06/ZgUYojNEkthd1M4.jpg" alt="123.JPG"><br>上厕所1-》6-》2<br><img src="https://i.loli.net/2019/11/06/bW2m4QuYHIo3pS8.jpg" alt="16278.JPG"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://i.loli.net/2019/11/06/MUBlcHrRAWo4p1D.jpg" alt="summary.JPG"></p>
+<h1 id="13-消费者和生产者模型"><a href="#13-消费者和生产者模型" class="headerlink" title="13.消费者和生产者模型"></a>13.消费者和生产者模型</h1><h2 id="单消费者模型"><a href="#单消费者模型" class="headerlink" title="单消费者模型"></a>单消费者模型</h2><h3 id="1-理解"><a href="#1-理解" class="headerlink" title="1.理解"></a>1.理解</h3><p><img src="https://i.loli.net/2019/10/29/WgPHJVEbtSY2q9y.jpg" alt="image.JPG"></p>
 <h3 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h3><p><img src="https://i.loli.net/2019/10/29/FhbnJYPSvZuc8U2.jpg" alt="analysse.JPG"></p>
 <h3 id="3-实现"><a href="#3-实现" class="headerlink" title="3.实现"></a>3.实现</h3><p><img src="https://i.loli.net/2019/10/29/ogifCGpj5IwuevS.jpg" alt="how2.JPG"></p>
 <h3 id="4-注意"><a href="#4-注意" class="headerlink" title="4.注意"></a>4.注意</h3><p><img src="https://i.loli.net/2019/10/29/UeuGMHCi74KJItW.jpg" alt="think.JPG"></p>
@@ -485,15 +491,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2019/10/19/你的名字/" rel="prev">
+            <a href="/2019/10/19/妖精的尾巴/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/10/19/L3XmwroQSeJjW89.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/10/19/L3XmwroQSeJjW89.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                你的名字</h3>
+                妖精的尾巴</h3>
                 <hr>
               </div>
             </a>
@@ -588,6 +594,12 @@
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
+
+
+  
+
+
+
 </footer> -->
 <footer id="colophon" class="site-footer" role="contentinfo">
   <div class="site-info">
@@ -605,6 +617,13 @@
       </p>
     </div>
   </div><!-- .site-info -->
+
+
+
+
+
+ 
+  
 </footer>
 
 

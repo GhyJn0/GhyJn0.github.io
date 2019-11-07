@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-11-03T13:51:14.642Z</updated>
+  <updated>2019-11-06T12:51:53.944Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接口</title>
+    <link href="/2019/11/06/%E6%8E%A5%E5%8F%A3/"/>
+    <id>/2019/11/06/接口/</id>
+    <published>2019-11-06T12:17:26.000Z</published>
+    <updated>2019-11-06T12:51:53.944Z</updated>
+    
+    <summary type="html">
+    
+      基本学习
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>猴赛‘类’</title>
@@ -41,7 +59,7 @@
     <link href="/2019/11/01/%E7%B1%BB/"/>
     <id>/2019/11/01/类/</id>
     <published>2019-11-01T13:36:40.000Z</published>
-    <updated>2019-11-05T11:56:41.575Z</updated>
+    <updated>2019-11-06T11:51:41.978Z</updated>
     
     <summary type="html">
     
@@ -129,24 +147,6 @@
   </entry>
   
   <entry>
-    <title>妖精的尾巴</title>
-    <link href="/2019/10/19/%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4/"/>
-    <id>/2019/10/19/妖精的尾巴/</id>
-    <published>2019-10-19T13:32:48.000Z</published>
-    <updated>2019-10-21T11:23:20.207Z</updated>
-    
-    <summary type="html">
-    
-      妖精究竟是否有尾巴
-    
-    </summary>
-    
-    
-      <category term="影视" scheme="/tags/%E5%BD%B1%E8%A7%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>你的名字</title>
     <link href="/2019/10/19/%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/"/>
     <id>/2019/10/19/你的名字/</id>
@@ -165,11 +165,29 @@
   </entry>
   
   <entry>
+    <title>妖精的尾巴</title>
+    <link href="/2019/10/19/%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4/"/>
+    <id>/2019/10/19/妖精的尾巴/</id>
+    <published>2019-10-19T13:32:48.000Z</published>
+    <updated>2019-10-21T11:23:20.207Z</updated>
+    
+    <summary type="html">
+    
+      妖精究竟是否有尾巴
+    
+    </summary>
+    
+    
+      <category term="影视" scheme="/tags/%E5%BD%B1%E8%A7%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>进程和线程</title>
     <link href="/2019/10/19/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
     <id>/2019/10/19/进程和线程/</id>
     <published>2019-10-19T02:58:43.000Z</published>
-    <updated>2019-10-29T05:55:49.343Z</updated>
+    <updated>2019-11-06T11:17:44.744Z</updated>
     
     <summary type="html">
     
