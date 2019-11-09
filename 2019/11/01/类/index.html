@@ -958,8 +958,158 @@ public class ThisMesaage {
 </code></pre>
 <h3 id="super-和this差异"><a href="#super-和this差异" class="headerlink" title="super 和this差异"></a>super 和this差异</h3><ul>
 <li>super 来访问父类，this用来访问本类的</li>
-<li>super()和this()不能同时出现</li>
+<li>super()和this()不能同时出现<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2></li>
 </ul>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>接口就是一种公共的规范标准，只要符合就可以使用。</p>
+<ul>
+<li>举例：usb接口<br>只要符合usb接口的规范，那么各种设备就可以使用u盘，打印机，夜调灯，usb小风扇</li>
+<li>格式<br>public  interface  类名{}</li>
+<li>接口使用方法<br>1.接口不能直接使用，用实现类来实现接口<br>public class 新类名 implements 接口名称{<br>//<br>}<ol start="2">
+<li>接口实现类必须覆盖重写接口中所有抽象类方法</li>
+<li>创建实现类的对象，进行使用</li>
+</ol>
+</li>
+</ul>
+<pre><code class="java">//接口类
+public interface MyinterfaceAbstract {
+    //抽象方法
+    public abstract void Mymethod();
+    //抽象方法
+    public void Mymethod1();
+    //抽象方法
+    abstract  void Mymethod2();
+    //抽象方法
+    void Mymethod3();
+}
+//实现类重写所有的抽象类方法
+public class Myinterface implements  MyinterfaceAbstract {
+    @Override
+    public void Mymethod() {
+        System.out.println(&quot;我是方法一&quot;);
+    }
+
+    @Override
+    public void Mymethod1() {
+        System.out.println(&quot;我是方法二&quot;);
+
+    }
+
+    @Override
+    public void Mymethod2() {
+        System.out.println(&quot;我是方法三&quot;);
+
+    }
+
+    @Override
+    public void Mymethod3() {
+        System.out.println(&quot;我是方法四&quot;);
+
+    }
+}
+//测试类
+public class Test {
+    public static void main(String[] args) {
+        Myinterface a =new Myinterface();
+        a.Mymethod();
+        a.Mymethod1();
+        a.Mymethod2();
+        a.Mymethod3();
+    }
+}
+/*
+我是方法一
+我是方法二
+我是方法三
+我是方法四
+*/
+
+
+/*接口当中抽象方法*/
+</code></pre>
+<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><ul>
+<li><p>格式<br>public default 返回值类型方法名称（参数列表）{}</p>
+</li>
+<li><p>场景<br>解决接口升级的问题</p>
+</li>
+<li><p>使用</p>
+</li>
+</ul>
+<p>1.接口默认方法，可以通过接口实现类对象，直接调用<br>2.接口默认方法，也可以被接口实现类进行覆盖重写。</p>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><ul>
+<li>格式<br>public static 返回值类型方法名称（参数列表）{}</li>
+<li>使用</li>
+</ul>
+<p>1.不能通过接口实现类的对象来掉哦那个接口当中的静态方法<br>2.通过接口名称调用其中静态方法<br>接口名称.静态方法名（）</p>
+<h2 id="接口常量"><a href="#接口常量" class="headerlink" title="接口常量"></a>接口常量</h2><ul>
+<li>格式<br>public static final 数据类型 常量名称=数值</li>
+<li>注意<br>一旦使用final ,说明不可改变</li>
+</ul>
+<p>1.接口当中的常量，可以省略public static final ,因为默认是<br>2.接口中的常量，必须进行赋值<br>3.常量的名称，必须是大写，且下划线链接</p>
+<pre><code class="java">//接口
+public interface Myinterface {
+    //定义成员变量，一旦赋值不可修改一旦使用final 不可更改
+    public static final int NUM=10;
+    //抽象方法
+    void Printf();
+    //默认方法
+    public default  void Printf1(){
+        System.out.println(&quot;升级接口，我是默认方法1&quot;);
+    }
+
+    public default  void Printf2(){
+        System.out.println(&quot;升级接口，我是默认方法2&quot;);
+    }
+    //静态方法
+    public static  void Printf3(){
+        System.out.println(&quot;我是静态方法&quot;);
+    }
+
+
+}
+
+//实现类
+public class Soninterface implements Myinterface{
+    @Override
+    public void Printf(){
+        System.out.println(&quot;我是抽象类&quot;);
+    }
+    @Override
+    //重写接口默认函数
+    public void Printf2(){
+        System.out.println(&quot;我是默认方法2的重写&quot;);
+    }
+
+}
+//测试
+public class Test {
+    public static void main(String[] args){
+        //实现类
+        Soninterface a =new Soninterface();
+        //调用抽象方法的重写
+        a.Printf();
+        //调用默认方法
+        a.Printf1();
+        //调用默认方法的重写
+        a.Printf2();
+        //调用静态方法
+        Myinterface.Printf3();
+        System.out.println(&quot;接口常量&quot;+Myinterface.NUM);
+    }
+}
+
+/*
+
+我是抽象类
+升级接口，我是默认方法1
+我是默认方法2的重写
+我是静态方法
+接口常量10
+
+*/
+
+
+
+</code></pre>
 <h1 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h1><h2 id="概念和格式"><a href="#概念和格式" class="headerlink" title="概念和格式"></a>概念和格式</h2><ul>
 <li><p>概念<br>创建对象时，只有创建对象的语句，却没有把对象地址值赋值给某个变量。<br>  没有变量名的对象</p>
 </li>
@@ -1073,7 +1223,7 @@ public class Teststudent {
 姓名：小龙女年龄：18班级：神雕侠侣学号2
 */
 </code></pre>
-<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
+<h3 id="静态方法-1"><a href="#静态方法-1" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
 <li><p>描述：<br>当 static 修饰成员方法时，该方法称为类方法 。静态方法在声明中有 static ，建议使用类名来调用，而不需要 创建类的对象。调用方式非常简单</p>
 </li>
 <li><p>定义：<br>使用static 关键字修饰的成员方法：静态方法</p>
