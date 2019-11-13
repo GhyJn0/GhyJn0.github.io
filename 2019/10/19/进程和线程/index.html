@@ -541,7 +541,224 @@ while(1){
 <li>设置变量i用来实现轮流吸烟</li>
 <li>当i==0时，此时执行1语句offer1=0,执行完后offer1=1，然后再执行5语句，再执行4语句（此时）finish=0&lt;=0阻塞。当第一个吸烟者吸烟时，执行2语句offer1=1&gt;0，然后执行3语句finsh=0,执行完后finsh=1,此时4由阻塞态转为运行态，重新循环</li>
 </ul>
-<h1 id="17-读写问题"><a href="#17-读写问题" class="headerlink" title="17.读写问题"></a>17.读写问题</h1><h1 id="18-哲学家进餐问题"><a href="#18-哲学家进餐问题" class="headerlink" title="18.哲学家进餐问题"></a>18.哲学家进餐问题</h1>
+<h1 id="17-读写问题"><a href="#17-读写问题" class="headerlink" title="17.读写问题"></a>17.读写问题</h1><pre><code class="text">有读者和写者两组并发进程，共享一个文件，
+当两个或以上的读进程同时访问共享数据时
+不会产生副作用，但若某个写进程和其他进程（
+读进程或写进程）同时访问共享数据时则可能导
+致数据不一致的错误。
+因此要求：
+    ①允许多个读者可以同时对文件执行读操作；
+   ②只允许一个写者往文件中写信息；
+   ③任一写者在完成写操作之前不允许其他读者或写者工作；
+   ④写者执行写操作前，应让已有的读者和写者全部退出。</code></pre>
+<p><img src="https://i.loli.net/2019/11/13/Ka6SlME5XtI4LFT.jpg" alt="define.JPG"></p>
+<ul>
+<li>1.为何两个写进程不能同时访问共享文件（写不能并发执行）<br>  防止数据覆盖 </li>
+<li>2.为何读进程和写进程不能同时访问共享文件（读写不能并发）<br>  防止数据读取的不一致</li>
+<li>3.读进程可以同时访问共享文件<br>  读进程可以并发执行读取</li>
+</ul>
+<h2 id="分析存在的关系"><a href="#分析存在的关系" class="headerlink" title="分析存在的关系"></a>分析存在的关系</h2><ul>
+<li>互斥<br>  1.读进程和写进程对共享文件访问<br> 2.写进程和写进程对共享文件访问</li>
+<li>并发<br>  1.读进程的并发执行</li>
+</ul>
+<p> <img src="https://i.loli.net/2019/11/13/n7RoiDHfMxcyK1Z.jpg" alt="rw1.JPG"></p>
+<pre><code class="C">semaphore rw=1; //用于实现对共享文件的互斥访问，表示当前进程访问共享文件
+int count =0 ;//表示当前读进程的个数
+
+//写进程
+write(){
+while (1){
+p(rw)//写之前加锁
+写文件
+v(rw)//写之后解锁
+}
+}
+
+
+//读进程
+read(){
+while(1){
+if(count==0)
+    p(rw)//第一个读进程加锁加锁
+
+count++;//读进程数量
+读取文件
+count--;
+if (count==0)
+    v(rw);//最后一个读进程解锁
+
+}
+}
+
+//存在问题读进程不能并发执行，会出现阻塞
+当读者之间存在并发时，p0,p1两个进程，当执行p0时，
+第一个进程执行p(rw)后，开始并发执行p1，再一次执
+行时发现count==0但是p(rw)回阻塞，导致p1进程必须等
+到p0执行完后，才能执行，所以违背读者和写者问题
+
+</code></pre>
+<h2 id="读者优先"><a href="#读者优先" class="headerlink" title="读者优先"></a>读者优先</h2><pre><code class="C">// 解决读者问题不能并发执行
+semaphore rw=1; //用于实现对共享文件的互斥访问，表示当前进程访问共享文件
+int count =0 ;//表示当前读进程的个数
+semaphore mxture=1 //用于表示对count的互斥访问
+
+//写进程
+write(){
+    while (1)
+    {
+        p(rw)//写之前加锁
+        写文件
+        v(rw)//写之后解锁
+    }
+}
+
+
+//读进程
+read(){
+    while(1)
+    {
+        p(mxture)//用来实现对count的互斥访问
+        if(count==0)
+            p(rw)//第一个读进程加锁加锁
+
+        count++;//读进程数量
+        v(mxture)
+
+        读取文件
+
+        p(mxture)
+        count--;
+        if (count==0)
+            v(rw);//最后一个读进程解锁
+        v(mxture)
+
+    }
+}
+</code></pre>
+<ul>
+<li><p>存在两个进程p0,p1当p0先被访问时，p(rw)先上锁，然后执行P1进程，由于此时count!=0所以p1进程不会执行p(rw)，也就不会被阻塞了。实现了并发</p>
+</li>
+<li><p>问题<br>  只要读进程在读文件就会导致写进程被堵塞，就会导致饥饿现象</p>
+</li>
+</ul>
+<h2 id="写者优先"><a href="#写者优先" class="headerlink" title="写者优先"></a>写者优先</h2><pre><code class="C">semaphore rw=1; //用于实现对共享文件的互斥访问，表示当前进程访问共享文件
+int count =0 ;//表示当前读进程的个数
+semaphore mxture=1 //用于表示对count的互斥访问
+semaphore w=1//用于实现写者优先
+//写进程
+write(){
+    while (1)
+    {
+        p(w)
+        p(rw)//写之前加锁
+        写文件
+        v(rw)//写之后解锁
+        p(w)
+    }
+}
+
+
+//读进程
+read(){
+    while(1)
+    {
+        p(w)
+        p(mxture)//用来实现对count的互斥访问
+        if(count==0)
+            p(rw)//第一个读进程加锁加锁
+
+        count++;//读进程数量
+        v(mxture)
+        v(w)
+        读取文件
+
+        p(mxture)
+        count--;
+        if (count==0)
+            v(rw);//最后一个读进程解锁
+        v(mxture)
+
+    }
+}</code></pre>
+<ul>
+<li>并发<br>  读者 — 读者<br> 读者 — 写者 — 读者<br> 写者 — 写者<br> 写者 — 读者<br> 写者 — 读者 — 写者</li>
+<li>解决<br>  写者饥饿问题</li>
+</ul>
+<h1 id="18-哲学家进餐问题"><a href="#18-哲学家进餐问题" class="headerlink" title="18.哲学家进餐问题"></a>18.哲学家进餐问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://i.loli.net/2019/11/13/Yr3myBgjGfXLtiC.jpg" alt="description.JPG"></p>
+<h2 id="避免死锁方法"><a href="#避免死锁方法" class="headerlink" title="避免死锁方法"></a>避免死锁方法</h2><ul>
+<li>互斥<br>  哲学家对左右筷子的访问</li>
+</ul>
+<ul>
+<li>方法一<br>最多可以允许四个哲学家同时进餐，保证至少有一个哲学家可以拿到左右两个筷子</li>
+</ul>
+<pre><code class="C">   semaphore chopstick[5]={1,1,1,1,1} 
+semaphore r=4
+//用于是实现对5根筷子的互斥访问，并对哲学家按照0-4编号，哲学家i的左边是i,右边是(i+1)%5
+Pi(){
+    while (1){
+        p(r)
+        p(chopstick[i])//左边上锁
+        p(chopstick[(i+1)%5])//右边上锁
+        吃饭
+        v(chopstick[i])//左边解锁
+        v(chopstick[(i+1)%5])//右边解锁
+        v(r)
+        思考
+    }
+}</code></pre>
+<ul>
+<li>方法 二<br>规定奇数号哲学家先拿左筷子再拿右筷子，而偶数号哲学家相反。</li>
+</ul>
+<pre><code class="C">semaphore chopstick[5]={1,1,1,1,1} 
+
+//用于是实现对5根筷子的互斥访问，并对哲学家按照0-4编号，哲学家i的左边是i,右边是(i+1)%5
+Pi(){
+    while (1){
+        //偶先右再左
+        if(i%2==0)
+        {
+            p(chopstick[(i+1)%5])//右边上锁
+            p(chopstick[i])//左边上锁
+            吃饭
+            v(chopstick[(i+1)%5])//右边解锁
+            v(chopstick[i])//左边解锁
+
+
+        }
+        //奇先左再右
+
+        else
+        {
+            p(chopstick[i])//左边上锁
+            p(chopstick[(i+1)%5])//右边上锁
+            吃饭
+            v(chopstick[i])//左边解锁
+            v(chopstick[(i+1)%5])//右边解锁
+            v(r)
+        }
+        思考
+    }
+}</code></pre>
+<ul>
+<li>方法三<br>仅当左右筷子被拿起才可以</li>
+</ul>
+<pre><code class="C">ksemaphore chopstick[5]={1,1,1,1,1} 
+semaphore c=1
+//用于是实现对5根筷子的互斥访问，并对哲学家按照0-4编号，哲学家i的左边是i,右边是(i+1)%5
+Pi(){
+    while (1){
+        p(c)
+        p(chopstick[i])//左边上锁
+        p(chopstick[(i+1)%5])//右边上锁
+        v(c)
+        吃饭
+        v(chopstick[i])//左边解锁
+        v(chopstick[(i+1)%5])//右边解锁
+
+        思考
+    }
+}</code></pre>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -571,15 +788,15 @@ while(1){
           
             <div class="post-nepre half previous">
           
-            <a href="/2019/10/19/你的名字/" rel="prev">
+            <a href="/2019/10/19/妖精的尾巴/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/10/19/L3XmwroQSeJjW89.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/10/19/L3XmwroQSeJjW89.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/10/19/9wzVjGtkKyJoTbW.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                你的名字</h3>
+                妖精的尾巴</h3>
                 <hr>
               </div>
             </a>

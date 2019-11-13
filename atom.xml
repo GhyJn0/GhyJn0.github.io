@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-11-07T11:34:15.738Z</updated>
+  <updated>2019-11-13T13:31:28.611Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>死锁</title>
+    <link href="/2019/11/13/%E6%AD%BB%E9%94%81/"/>
+    <id>/2019/11/13/死锁/</id>
+    <published>2019-11-13T13:31:28.000Z</published>
+    <updated>2019-11-13T13:31:28.611Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>接口</title>
@@ -147,24 +163,6 @@
   </entry>
   
   <entry>
-    <title>妖精的尾巴</title>
-    <link href="/2019/10/19/%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4/"/>
-    <id>/2019/10/19/妖精的尾巴/</id>
-    <published>2019-10-19T13:32:48.000Z</published>
-    <updated>2019-10-21T11:23:20.207Z</updated>
-    
-    <summary type="html">
-    
-      妖精究竟是否有尾巴
-    
-    </summary>
-    
-    
-      <category term="影视" scheme="/tags/%E5%BD%B1%E8%A7%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>你的名字</title>
     <link href="/2019/10/19/%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/"/>
     <id>/2019/10/19/你的名字/</id>
@@ -183,11 +181,29 @@
   </entry>
   
   <entry>
+    <title>妖精的尾巴</title>
+    <link href="/2019/10/19/%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4/"/>
+    <id>/2019/10/19/妖精的尾巴/</id>
+    <published>2019-10-19T13:32:48.000Z</published>
+    <updated>2019-10-21T11:23:20.207Z</updated>
+    
+    <summary type="html">
+    
+      妖精究竟是否有尾巴
+    
+    </summary>
+    
+    
+      <category term="影视" scheme="/tags/%E5%BD%B1%E8%A7%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>进程和线程</title>
     <link href="/2019/10/19/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
     <id>/2019/10/19/进程和线程/</id>
     <published>2019-10-19T02:58:43.000Z</published>
-    <updated>2019-11-09T11:49:50.123Z</updated>
+    <updated>2019-11-13T11:00:34.536Z</updated>
     
     <summary type="html">
     
