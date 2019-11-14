@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-11-13T13:31:28.611Z</updated>
+  <updated>2019-11-14T10:33:20.882Z</updated>
   <id>/</id>
   
   <author>
@@ -21,14 +21,23 @@
     <link href="/2019/11/13/%E6%AD%BB%E9%94%81/"/>
     <id>/2019/11/13/死锁/</id>
     <published>2019-11-13T13:31:28.000Z</published>
-    <updated>2019-11-13T13:31:28.611Z</updated>
+    <updated>2019-11-14T10:33:20.882Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;在并发的环境下，各个进程因竞争资源造成一种相互等待对方手里的资源，导致各个进程阻塞都无法向前推进，叫死锁&lt;/p&gt;
+&lt;h1
+        
+      
+    
     </summary>
     
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
+      <category term="操作系统" scheme="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
