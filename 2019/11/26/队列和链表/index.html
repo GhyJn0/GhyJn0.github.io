@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">死锁 | GhyJn</title>
+  <title itemprop="name">链表，队列，稀疏矩阵 | GhyJn</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -347,11 +347,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://i.loli.net/2019/11/14/uq2PdAmwHcktNXL.jpg);" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/11/14/uq2PdAmwHcktNXL.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=4c96ed59f2f2b211e47b8d48fab04900/1c950a7b02087bf4567fdcc3fbd3572c11dfcf0d.jpg);" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=4c96ed59f2f2b211e47b8d48fab04900/1c950a7b02087bf4567fdcc3fbd3572c11dfcf0d.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      死锁</h1>
+      链表，队列，稀疏矩阵</h1>
       <p class="entry-census">
         <span>
           <a href="https://ghyjn0.github.io/">
@@ -363,7 +363,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2019-11-13<span class="bull">
+        2019-11-26<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -377,82 +377,819 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>在并发的环境下，各个进程因竞争资源造成一种相互等待对方手里的资源，导致各个进程阻塞都无法向前推进，叫死锁</p>
-<h1 id="死锁，饥饿，死循环区别"><a href="#死锁，饥饿，死循环区别" class="headerlink" title="死锁，饥饿，死循环区别"></a>死锁，饥饿，死循环区别</h1><ul>
-<li>死锁：<br>各进程相互等待对方手里的资源导致各个进程阻塞</li>
-<li>饥饿：<br>由于长期得不到想要的资源，某进程无法向前推进的现象</li>
-<li>死循环：<br>进程执行过程中 一直跳不出某个循环的现象。</li>
+          <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><ul>
+<li>基本思想：<br>队列是一种特殊的线性表，特殊之处在于只允许在表的前端进行删除操作，而在表的后端进行插入操作。和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为队尾，进行删除操作的端称为队头。</li>
+<li>操作：<br>入队列（put）：只能在尾部进行入对操作。<br>出队列（poll）：只能在头部进行出对操作</li>
+<li>特点：<br>先进先出</li>
+<li>实现方式<br>数组，<br>链表，<br>语言内置</li>
 </ul>
-<p><img src="https://i.loli.net/2019/11/14/sn26EtfpJrKvWQT.jpg" alt="qubie.JPG"></p>
-<h1 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h1><ul>
-<li>1.互斥条件</li>
-<li>2.不可抢占</li>
-<li>3.请求和保持</li>
-<li>4.循环等待</li>
-</ul>
-<p><font size="6" color="red">注意</font></p>
+<h2 id="数组实现队列"><a href="#数组实现队列" class="headerlink" title="数组实现队列"></a>数组实现队列</h2><ul>
+<li><p>注意</p>
 <ul>
-<li>死锁一定有循环等待，但是发生循环等待不一定有死锁</li>
-</ul>
-<h1 id="什么时候发生死锁"><a href="#什么时候发生死锁" class="headerlink" title="什么时候发生死锁"></a>什么时候发生死锁</h1><ul>
-<li>1.对系统资源的竞争</li>
-<li>2.进程推进顺序非法</li>
-<li>3.信号量的使用不当也会发生死锁</li>
-</ul>
-<p><img src="https://i.loli.net/2019/11/14/ytriYbZJs152nVK.jpg" alt="whysisuo.JPG"></p>
-<h1 id="死锁处理策略"><a href="#死锁处理策略" class="headerlink" title="死锁处理策略"></a>死锁处理策略</h1><ul>
-<li>1.预防死锁</li>
-<li>2.避免死锁</li>
-<li>3.死锁检测</li>
-<li>4.死锁的接触</li>
-</ul>
-<h1 id="死锁的总结"><a href="#死锁的总结" class="headerlink" title="死锁的总结"></a>死锁的总结</h1><p><img src="https://i.loli.net/2019/11/14/3HiO2VrwhabBTKR.jpg" alt="summary.JPG"></p>
-<h1 id="死锁处理策略-1"><a href="#死锁处理策略-1" class="headerlink" title="死锁处理策略"></a>死锁处理策略</h1><h2 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h2><p><img src="https://i.loli.net/2019/11/14/E5r4fkP8ylZ27Rd.jpg" alt="summary.JPG"></p>
-<h2 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h2><h3 id="什么是安全序列"><a href="#什么是安全序列" class="headerlink" title="什么是安全序列"></a>什么是安全序列</h3><p>是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。只要找出一个安全序列，系统就是安全状态。当然安全序列可能有多个。处于安全序列一定不会发生死锁</p>
-<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><ul>
-<li><p>核心：<br>在进程提出资源申请时，先判断此次分配是否会造成系统进入不安全状态，如果会进入不安全状态，就暂时不答应此次请求，让改进程休闲阻塞等待。</p>
+<li><p>判断队列满的条件<br>rear==maxSize-1</p>
 </li>
-<li><p>例子<br><img src="https://i.loli.net/2019/11/14/jJIY8oZt3myhu7w.png" alt="2018100410464656.png"></p>
+<li><p>判断队列空的条件<br>front==rear</p>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2019/11/14/M4Fo2GldsgLZ5CV.jpg" alt="yinhangjia.JPG"></p>
-<p> 找一个安全序列</p>
+</li>
+</ul>
+<pre><code class="java">class queue{
+    private int maxSize;//数组最大长度
+    private int front;//队列头
+    private int  rear;//队列尾
+    private int []arr;//数组
+    //初始化队列基本信息
+    public queue(int arrMaxSize){
+        maxSize=arrMaxSize;//
+        arr= new int[maxSize];
+        front=-1;
+        rear=-1;
+    }
+    //判断队列是否满了
+    public boolean IsFull( ){
+        return rear ==maxSize-1;
+    }
+    //判断队列是否空了
+    public boolean IsEmpty(){
+        return front==rear;
+    }
+    //添加数据
+    public void addQueue(int data){
+        if(!IsFull()){
+            rear+=1;
+            arr[rear]=data;
+        }
+        else{
+            System.out.println(&quot;队列已经满了&quot;);
+        }
+    }
+    //取数据
+    public int getQueue(){
+        if(!IsEmpty()){
+            front+=1;
+            return arr[front];
+        }
+        throw new RuntimeException(&quot;队列空，没有数据&quot;);
+    }
+    //取出所有的数据
+    public void showQueue(){
+        for(int i=0;i&lt;arr.length;i++){
+            System.out.printf(&quot;arr[%d]=%d&quot;,i,arr[i]);
+        }
+    }
+    //取队首数据
+    public int getFront(){
+        if(!IsEmpty()){
+            return arr[front+1];
+        }
+        throw new RuntimeException(&quot;队列为空&quot;);
+
+    }
+}</code></pre>
+<h2 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h2><ul>
+<li>步骤<ul>
+<li>1.front 就指向队列第一元素，初始值为0</li>
+<li>2.rear  指向队列最后一个元素，初始值为0</li>
+<li>3.为空时  front==rear</li>
+<li>4.满时   (rear+1)%maxsize==front</li>
+<li>5.元素的个数  (rear+maxsize-front)%maxsize</li>
+<li>6.删除一个元素 front=(front+1)%maxsize</li>
+<li>7.添加一个元素 rear=(rear+1)%maxsize</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">/*
+ * 循环队列：
+ * 1.front 就指向队列第一元素，初始值为0
+ * 2.rear  指向队列最后一个元素，初始值为0
+ * 3.为空时  front==rear
+ * 4.满时   (rear+1)%maxsize==front
+ * 5.元素的个数  (rear+maxsize-front)%maxsize
+ * 6.删除一个元素 front=(front+1)%maxsize
+ * 7.添加一个元素 rear=(rear+1)%maxsize
+ */
+class LoopQueue{
+    private int maxSize;//数组最大长度
+    private int front;//队列头
+    private int  rear;//队列尾
+    private int []arr;//数组
+    //初始化队列基本信息
+    public LoopQueue(int arrMaxSize){
+        maxSize=arrMaxSize;//
+        arr= new int[maxSize];
+        front=0;
+        rear=0;
+    }
+    public boolean IsFull( ){
+        return (rear+1)%maxSize ==front;
+    }
+    //判断队列是否空了
+    public boolean IsEmpty(){
+        return front==rear;
+    }
+    //添加数据
+    public void addQueue(int data){
+        if(!IsFull()){
+            arr[rear]=data;
+            rear=(rear+1)%maxSize;
+
+        }
+        else{
+            System.out.println(&quot;队列已经满了&quot;);
+        }
+    }
+    //取数据
+    public int getQueue(){
+        if(!IsEmpty()){
+
+            int data= arr[front];
+            front=(front+1)%maxSize;
+            return data;
+        }
+        throw new RuntimeException(&quot;队列空，没有数据&quot;);
+    }
+    //取出所有的数据
+    public void showQueue(){
+        for(int i=front;i&lt;front+SumCount();i++){
+            int value=i%maxSize;
+            System.out.printf(&quot;arr[%d]=%d&quot;,value,arr[value]);
+        }
+    }
+    public int SumCount(){
+        return (rear+maxSize-front)%maxSize;
+    }
+    //取队首数据
+    public int getFront(){
+        if(!IsEmpty()){
+            return arr[front];
+
+        }
+        throw new RuntimeException(&quot;队列为空&quot;);
+
+    }
+
+}</code></pre>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><ul>
+<li><p>特点：</p>
 <ul>
-<li><p>依次检查可用（3，3，2）是否可满足个进程的需求<br>（发现p1的进程还需最多的(1,2,2)&lt;(3,3,2)所以p1可以顺利执行结束。等怕执行完后就会归还资源于是此时的资源就是（2，0，0）+（3，3，2）=（5，3，2））<br><img src="https://i.loli.net/2019/11/14/98RXUtIohY7QPl2.jpg" alt="2.JPG"></p>
-</li>
-<li><p>p1满足，将p1加入安全序列，并更新剩余可用资源值为（5，3，2）</p>
-</li>
-<li><p>依次检查可用（5，3，2）能否满足剩下进程需求</p>
-</li>
-<li><p>p3满足，将p3加入安全序列，并更新剩余可用资源为（7，4，3）</p>
-</li>
-<li><p>依次检查可用（7，4，3）能否满足剩下进程需求</p>
-</li>
-<li><p>p4满足，将p4加入安全序列，并更新剩余可用资源为（7，4，5）</p>
-</li>
-<li><p>依次检查可用（7，4，5）能否满足剩下进程需求</p>
-</li>
-<li><p>p0满足，将p0加入安全序列，并更新剩余可用资源为（7，5，5）</p>
-</li>
-<li><p>依次检查可用（7，5，5）能否满足剩下进程需求</p>
-</li>
-<li><p>p2满足，将p2加入安全序列，并更新剩余可用资源为（10，5，7）</p>
-</li>
-<li><p>依次检查可用（10，5，7）能否满足剩下进程需求</p>
-</li>
-<li><p>安全序列：{p1,p3,p4,,p0,p2}</p>
+<li>链式存储结构的线性表将采用一组任意的存储单元存放线性表中的数据元素。由于不需要按顺序存储。</li>
+<li>1.链表是以节点的方式来存储</li>
+<li>2.每个节点包含data域《-》数据，next域《-》指向下一个节点</li>
+<li>3.链表中的各个节点不一定是连续的</li>
+</ul>
 </li>
 </ul>
-<h4 id="何为银行家算法？"><a href="#何为银行家算法？" class="headerlink" title="何为银行家算法？"></a>何为银行家算法？</h4><p><img src="https://i.loli.net/2019/11/14/4eUqzIaWA2CbNEr.jpg" alt="liucheng.JPG"></p>
-<p><img src="https://i.loli.net/2019/11/14/wOzKqHEmPxRIYvt.jpg" alt="buzhou.JPG"></p>
-<h2 id="死锁检测"><a href="#死锁检测" class="headerlink" title="死锁检测"></a>死锁检测</h2><p><img src="https://i.loli.net/2019/11/14/1tJLIoqbSPzWevy.jpg" alt="fenpei3.JPG"><br>非死锁图</p>
-<p><img src="https://i.loli.net/2019/11/14/8EdmxCXFVpMjcb1.jpg" alt="fenpei3.jpg"></p>
 <ul>
-<li>首先p1进程先执行此时r2，还剩余一个资源，所以此时p1,可以先执行，执行完后p1归还资源，此时r1剩余2，r2还剩余1个，此时p2请求一个r1资源所以p2可以执行。<br>死锁图<br><img src="https://i.loli.net/2019/11/14/ncZzRT9JXDrWMkS.jpg" alt="fenpei2.JPG"></li>
-<li>p3执行后，r2剩余1个资源，r1剩余0个资源 如果此时执行p1，由于r2无法提供给p1两个资源，所以p1执行不了，如果此时执行p2，由于r1没有资源提供不了给p2导致p2也无法执行，造成死锁</li>
+<li>优点和缺点：<br>链表在插入、删除数据元素时比顺序存储要快。<br>查找一个节点时则要比顺序存储要慢</li>
 </ul>
-<h3 id="资源分配图"><a href="#资源分配图" class="headerlink" title="资源分配图"></a>资源分配图</h3><p><font>注意</font><br>最终消除所有边，就程可完全简化的，此时一定没有发生死锁。<br>如果没有消除所有边，一定发生死锁。</p>
-<h2 id="死锁解除"><a href="#死锁解除" class="headerlink" title="死锁解除"></a>死锁解除</h2><p><img src="https://i.loli.net/2019/11/14/AiU9Rsh5nLqYTMz.jpg" alt="hev.JPG"></p>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><pre><code class="java">class Link{
+    public int no;
+    public String name;
+    public Link next;
+    //构造器
+    public Link(int no, String name) {
+        this.no = no;
+        this.name = name;
+    }
+    //重写toString
+    @Override
+    public String toString() {
+        return &quot;Link{&quot; +
+                &quot;no=&quot; + no +
+                &quot;, name=&#39;&quot; + name  +
+                &#39;}&#39;;
+    }
+}</code></pre>
+<h2 id="链表建立"><a href="#链表建立" class="headerlink" title="链表建立"></a>链表建立</h2><pre><code class="java">
+class LinkList{
+    //初始化头节点
+    private Link herohead =new Link(0,&quot;&quot;);
+    //获取头节点
+    public Link getHerohead() {
+        return herohead;
+    }
+        /*链表中随机添加节点
+         * 1.找到当前链表最后节点
+         * 2.将最后的节点指向这个新节点
+         * */
+    public void addLink(Link hero){
+        //头节点不能动，赋值给他一个temp遍历
+        Link temp=herohead;
+        while(true){
+            //找到最后一个节点
+            if(temp.next==null){
+                break;
+            }
+            //没找到让temp向后移动一个
+            temp=temp.next;
+        }
+        temp.next=hero;
+    }
+    /*遍历链表*/
+    public void listLink(){
+        //判断链表是否为空
+        if(herohead.next==null){
+            System.out.println(&quot;链表空&quot;);
+            return;
+        }
+        //头节点不能改，所以赋值给temp，让temp遍历
+        Link temp=herohead.next;
+        while(true){
+            if(temp==null){
+                break;
+            }
+            System.out.println(temp);
+            temp=temp.next;
+        }
+    }
+    /*删除链表*/
+    public void  delete(int num){
+        Link temp=herohead;
+        Boolean flag=false;
+        while (true){
+          if(temp.next==null){
+                break;
+            }
+          if(temp.next.no==num)
+            {
+                flag=true;
+                break;
+            }
+            temp=temp.next;
+        }
+        if(flag){
+            System.out.println(&quot;已经找到要删除的节点&quot;+num);
+            temp.next=temp.next.next;
+
+        }
+        else{
+
+            System.out.println(&quot;没有找到找到要删除的节点&quot;);
+        }
+
+    }
+    /*顺序建立链表*/
+    public void add(Link hero){
+
+        Boolean flag=false;
+        //头节点赋值给temp
+        Link temp=herohead;
+        while(true){
+            //判断是否到达尾部
+            if(temp.next==null){
+                break;
+            }
+            //升序排列
+            else if(temp.next.no&gt;hero.no){
+                break;
+            }
+            //链表中已经存在节点
+            else if(temp.next.no==hero.no){
+               flag=true;
+               break;
+            }
+            //temp往后移动一位
+            temp=temp.next;
+        }
+        if(flag){
+            System.out.println(&quot;数据已存在&quot;+hero.no);
+            return ;
+        }
+        hero.next=temp.next;
+        temp.next=hero;
+    }
+    /*修改节点*/
+    public void update(int num){
+        //头节点赋值给temp
+        Link temp= herohead;
+        //根据flag判断是否存在
+        Boolean flag=false;
+        //遍历链表
+        while(true){
+            //找到编号
+            if(temp.no==num){
+                flag=true;
+                break;
+            }
+            //遍历到尾节点
+            else if(temp==null){
+                break;
+            }
+            //temp往后移动一下
+            temp=temp.next;
+        }
+        //flag 为true 说明找到了目标节点
+        if (flag){
+            String name=new Scanner(System.in).next();
+            temp.name=name;
+            return ;
+        }
+        System.out.println(&quot;没有找到编号&quot;);
+    }
+    /*求链表的长度*/
+    public int length(){
+        Link temp=herohead;
+        int count=0;
+        while(true){
+            if (temp==null){
+                return count-1;
+            }
+            temp=temp.next;
+            count+=1;
+        }
+    }
+    /*查找单表中倒数第k个节点
+    * 1.先判断链表长L与K，小于K停止，大于K继续2
+    * 2.遍历链表前 L-K个,或者用栈来遍历前K个
+    */
+    public Link search(int k){
+        Link temp=herohead;
+        int i=length()-k+1;
+        System.out.println(&quot;i:&quot;+i);
+        if(i&lt;=0){
+            System.out.println(&quot;对不起，不存在&quot;);
+            return null;
+        }
+        while(true){
+            if (i&gt;0){
+                temp=temp.next;
+            }
+            else{
+                System.out.println(&quot;数据：&quot;+temp);
+                return temp;
+            }
+            i-=1;
+        }
+
+    }
+    /*反转链表
+    * 1.先定义一个reverhead=new Link()
+    * 2.从头到尾遍历原来的链表，没遍历一个节点，就将其取出，放reversehead最前端
+    * 3.原来的链表head.next=reversehead
+    * */
+    public void Reversal(Link herohead){
+        if(herohead.next==null){
+            return ;
+        }
+        //指向cur下一个节点
+        Link next=null;
+        //定义一个辅助指针，帮我们遍历原来的链表
+        Link cur=herohead.next;
+        //初始化一个reverse作为新链表节点
+        Link Reversehead=new Link(0,&quot;&quot;);
+
+        while (cur!=null){
+            next=cur.next;//暂时保存当前节点的下一个节点
+            cur.next=Reversehead.next;//当前下一个节点指向新的链表最前端
+            Reversehead.next=cur;//让cur连接到新的链表
+            cur=next;//让cur向后移动一个节点
+        }
+        herohead.next=Reversehead.next;
+    }
+    /*逆序打印单链表
+    * 1.用栈：先来后出*/
+    public void ReverPrint(Link herohead){
+        Link head= herohead;
+        Stack &lt;Link&gt; Lstack=new Stack&lt;Link&gt;();
+        while (head!=null){
+            Lstack.add(head);
+            head=head.next;
+        }
+        while(Lstack.size()&gt;1){
+            System.out.println(Lstack.pop());
+        }
+
+    }
+}</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code class="java">
+import java.util.Scanner;
+import java.util.Stack;
+
+/*
+* 1.链表是以节点的方式来存储
+* 2.每个节点包含data域《-》数据，next域《-》指向下一个节点
+* 3.链表中的各个节点不一定是连续的
+* */
+public class HerNOde {
+    public static void main(String[] args) {
+        //创建节点
+
+
+        Link hero1=new Link(10,&quot;松江&quot;);
+        Link hero2=new Link(20,&quot;卢俊义&quot;);
+        Link hero3=new Link(30,&quot;吴用&quot;);
+        Link hero4=new Link(40,&quot;林冲&quot;);
+        Link hero5=new Link(50,&quot;张顺&quot;);
+
+
+        Link hero11=new Link(1,&quot;松江&quot;);
+        Link hero22=new Link(19,&quot;卢俊义&quot;);
+        Link hero33=new Link(34,&quot;吴用&quot;);
+        Link hero44=new Link(49,&quot;林冲&quot;);
+        Link hero55=new Link(66,&quot;张顺&quot;);
+        //创建链表
+        LinkList obj=new LinkList();
+        LinkList obj1=new LinkList();
+        //链表加入节点
+        obj.addLink(hero1);
+        obj.addLink(hero2);
+        obj.addLink(hero3);
+        obj.addLink(hero4);
+        obj.addLink(hero5);
+        //顺序加入节点
+        obj1.add(hero11);
+        obj1.add(hero55);
+        obj1.add(hero33);
+        obj1.add(hero44);
+        obj1.add(hero22);
+
+        //链表遍历
+        obj.listLink();
+        //链表的更新
+        obj.update(20);
+        //链表的删除
+        obj.delete(100);
+        //链表的长度
+        System.out.println(&quot;链表的长度：&quot;+obj.length());
+        //查找某个数据
+        obj.search(6);
+        //链表的遍历
+        obj.listLink();
+        //链表的反转
+        obj.Reversal(obj.getHerohead());
+        obj.listLink();
+        //反序打印链表
+        obj.ReverPrint(obj.getHerohead());
+
+
+
+    }
+}</code></pre>
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><ul>
+<li>定义：链表由单向的链变成了双向链。 使用这种数据结构，我们可以不再拘束于单链表的单向创建于遍历等操作，大大减少了在使用中存在的问题。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/26/wzmvMhga9CenfVy.png" alt="20181124213245741.png"></p>
+<h3 id="节点信息"><a href="#节点信息" class="headerlink" title="节点信息"></a>节点信息</h3><pre><code class="java">
+class node{
+    public int id;
+    public String name;
+    public node pre;
+    public node next;
+
+    public node(int id,String name) {
+        this.id = id;
+        this.name=name;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;node{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name=&#39;&quot; + name +
+                &#39;}&#39;;
+    }
+}</code></pre>
+<h3 id="双向链表建立"><a href="#双向链表建立" class="headerlink" title="双向链表建立"></a>双向链表建立</h3><pre><code class="java">class DoubleLink{
+    node head=new node(0,&quot;&quot;);
+    //头节点
+    public node getHead() {
+        return head;
+    }
+
+    //双向链表建立
+    public void setLink(int id,String name){
+        node temp=head;
+        node ye=new node(id,name);
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=ye;
+        ye.pre=temp;
+    }
+    //双向链表的遍历
+    public void listLink(){
+        node temp=head.next;
+        while(temp!=null){
+            System.out.println(temp);
+            temp=temp.next;
+        }
+
+    }
+    //双向链表的删除
+    public void deleteLink(int id){
+        node temp=head.next;
+        Boolean flag=true;
+        while(true){
+            if(temp==null)
+            {
+                break;
+            }
+            if(temp.id==id &amp;&amp; temp.next!=null){
+                temp.next.pre=temp.pre;
+                temp.pre.next=temp.next;
+                flag=false;
+                break;
+            }
+            else if (temp.id==id &amp;&amp; temp.next==null){
+                temp.pre.next=null;
+                flag=false;
+                break;
+
+            }
+            temp=temp.next;
+        }
+        if (flag){
+            System.out.println(&quot;对不起，你要删除的数据不存在&quot;);
+        }
+    }
+    //双向链表的更新
+    public void updateLink(int id){
+        node temp=head;
+        Boolean flag=true;
+        while(temp!=null){
+            if(temp.id==id){
+                System.out.println(&quot;请输入更改的姓名&quot;);
+                String nm=new Scanner(System.in).next();
+                temp.name=nm;
+                flag=false;
+                break;
+            }
+            temp=temp.next;
+        }
+        if (flag){
+            System.out.println(&quot;没有找到数据&quot;);
+        }
+
+    }
+}</code></pre>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><pre><code class="java">import java.util.Scanner;
+
+public class Test{
+    public static void main(String[] args) {
+        DoubleLink obj=new DoubleLink();
+        //建立双向链表
+        obj.setLink(1,&quot;diyi&quot;);
+        obj.setLink(2,&quot;dier&quot;);
+        obj.setLink(3,&quot;disan&quot;);
+        //遍历双向链表
+        obj.listLink();
+        //双向链表的删除
+        obj.deleteLink(4);
+        obj.deleteLink(1);
+        obj.listLink();
+        //更新链表数据
+        obj.updateLink(5);
+        obj.updateLink(2);
+        obj.listLink();
+    }
+
+}</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code class="text">node{id=1, name=&#39;diyi}
+node{id=2, name=&#39;dier}
+node{id=3, name=&#39;disan}
+对不起，你要删除的数据不存在
+node{id=2, name=&#39;dier}
+node{id=3, name=&#39;disan}
+没有找到数据
+请输入更改的姓名
+第二
+node{id=2, name=&#39;第二}
+node{id=3, name=&#39;disan}</code></pre>
+<h1 id="环形链表"><a href="#环形链表" class="headerlink" title="环形链表"></a>环形链表</h1><p><img src="https://i.loli.net/2019/11/26/JyqLTrmIQYKwA6d.png" alt="20180507015252992.png"></p>
+<h2 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h2><p>问题描述：N个人围成一圈，从第一个人开始报数，报到m的人出圈，剩下的人继续从1开始报数，报到m的人出圈；如此往复，直到所有人出圈。（模拟此过程，输出出圈的人的序号）</p>
+<h2 id="节点-1"><a href="#节点-1" class="headerlink" title="节点"></a>节点</h2><pre><code class="java">class node{
+    public int id;
+    public node next;
+
+    public node(int id) {
+        this.id = id;
+    }
+}
+</code></pre>
+<h2 id="约瑟夫环链表"><a href="#约瑟夫环链表" class="headerlink" title="约瑟夫环链表"></a>约瑟夫环链表</h2><pre><code class="java">class Josefu{
+    node first=null;
+    node cur=null;
+    //建立环形链表
+    public void setJosefu( int num){
+        for(int i=1;i&lt;=num;i++){
+            node newnode=new node(i);
+            if(first==null){
+                //新节点赋值给first
+                first=newnode;
+                //头节点的next指向自己
+                first.next=first;
+                //cur用来记录最后一个节点
+                cur=first;
+            }
+            else{
+                cur.next=newnode;
+                newnode.next=first;
+                cur=newnode;
+            }
+
+        }
+
+
+    }
+    //遍历环形链表
+    public void listJosefu(){
+        node temp=first;
+        while(temp.next!=first){
+            System.out.println(&quot;编号：&quot;+temp.id);
+            temp=temp.next;
+        }
+        System.out.println(&quot;编号：&quot;+temp.id);
+    }
+    //每3次取出的编号
+    public void getJosefu(){
+        node temp=first;//头节点赋值给temp
+        int count=0;
+        int i=2;
+        while(count!=10){//循环十次
+            while(i&lt;3) {//移动两次
+                temp = temp.next;
+                i++;
+            }
+            System.out.println(&quot;编号：&quot;+temp.next.id);//找到目标节点的上一个节点
+            temp.next=temp.next.next;//删除目标节点
+            count++;//自增
+            i=1;//由于第一次循环temp=temp.next,temp没有算
+        }
+    }
+}</code></pre>
+<h2 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h2><pre><code class="java">public class test {
+    public static void main(String[] args) {
+        Josefu obj=new Josefu();
+        System.out.println(&quot;建立环形链表&quot;);
+        obj.setJosefu(10);
+        System.out.println(&quot;遍历环形链表&quot;);
+        obj.listJosefu();
+        System.out.println(&quot;约瑟夫问题求解&quot;);
+        obj.getJosefu();
+
+    }
+}</code></pre>
+<h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><pre><code class="text">遍历环形链表
+编号：1
+编号：2
+编号：3
+编号：4
+编号：5
+编号：6
+编号：7
+编号：8
+编号：9
+编号：10
+约瑟夫问题求解
+编号：3
+编号：6
+编号：9
+编号：2
+编号：7
+编号：1
+编号：8
+编号：5
+编号：10
+编号：4
+</code></pre>
+<h1 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h1><h2 id="五子棋"><a href="#五子棋" class="headerlink" title="五子棋"></a>五子棋</h2><p>这是一个五子棋的程序，有存盘退出和续上盘的功能，如下图，如何将下图的棋局进行保存呢？<br><img src="https://i.loli.net/2019/11/26/gDRmd34TQbuLIzA.png" alt="1754218-20190826113740245-2089588201.png"><br>那这个问题很简单，很多人可能会想到用二维数组来进行存储。<br><img src="https://i.loli.net/2019/11/26/AqGkLNb1aP9sEey.png" alt="1754218-20190826113740463-2032559019.png"><br>如上图，我们用0表示无子，1表示黑子，2表示蓝子，但是这个程序问题很大，因为该二维数组的很多值都是默认值0，因此记录了很多没有意义的数据，那么这个时候我们就可以使用稀疏数组来对该二维数组进行一个压缩。<br>那么稀疏数组到底是什么呢？<br>当一个数组中大部分元素是0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。</p>
+<pre><code>稀疏数组的处理方法是：
+    记录数组一共有几行几列，有多少个不同的值
+    把具有不同值的元素的行列以及值记录在一个小规模的数组中，从而缩小程序的规模</code></pre><p>那么了解了稀疏数组的概念后，我们通过稀疏数组来改进一下五子棋程序。</p>
+<p><img src="https://i.loli.net/2019/11/26/x9XI5TJZCjL4muc.png" alt="1754218-20190826113741342-237709667.png"></p>
+<p>经过稀疏数组的压缩之后，原数组从原来的11行11列变为了三行三列。<br>该稀疏数组的第一行记录的是原数组的行数和列数以及元素个数。<br>接下来的每一行记录的是有效元素的位置和值，例如第二行记录的是原数组中位于1，2位置上的元素1；第三行记录的是原数组中位于2,3位置上的元素2。</p>
+<h2 id="转换思路"><a href="#转换思路" class="headerlink" title="转换思路"></a>转换思路</h2><ul>
+<li><p>二维数组转稀疏数组的思路：</p>
+<ul>
+<li>遍历原始的二维数组，得到要保存的有效元素个数</li>
+<li>根据有效元素个数创建稀疏数组sparseArr</li>
+<li>将二维数组的有效数据存入稀疏数组即可</li>
+</ul>
+</li>
+<li><p>稀疏数组转原始二维数组的思路：</p>
+<ul>
+<li>先读取稀疏数组的第一行，根据第一行的数据创建原始二维数组</li>
+<li>读取稀疏数组后几行的数据，并赋给原始的二维数组即可</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">public class SparseArray {
+    public static void main(String[] args) {
+        //数组---》稀疏数组
+        int arr[][]=ArraytoSparse();
+        //稀疏数组 ---》数组
+        SparsetoArray(arr);
+
+    }
+
+    private static int [][] SparsetoArray(int [][] args) {
+        //读取稀疏 数组的第一行0,0表示元数据的长度，0，1表示列数
+        int Arr [][] =new int[args[0][0]][args[0][1]];
+        //将稀疏数组转换为数组从第二行开始
+        for(int i=1;i&lt;=args[0][2];i++) {
+            Arr[args[i][0]][args[i][1]] = args[i][2];
+        }
+        //遍历数组
+        for (int []row:Arr){
+            for (int data:row){
+                System.out.printf(&quot;%d\t&quot;,data);
+            }
+            System.out.println();
+        }
+        //返回稀疏数组转换后的数组
+        return Arr;
+
+    }
+
+    private static int [][] ArraytoSparse() {
+        //创建一个原始的二维数组11*11 0：表示没有棋子，1：表示黑子，2：表示篮子
+        int chessArr[][]=new int[11][11];
+        chessArr[1][2]=1;
+        chessArr[2][4]=2;
+        //输出原始数组
+        for(int[] row: chessArr)
+        {
+            for(int data: row){
+                System.out.printf(&quot;%d\t&quot;,data);
+            }
+            System.out.println();
+        }
+        //遍历二维数组，得到非0数据的个数
+        int sum=0;
+        for(int[] row: chessArr)
+        {
+            for(int data: row){
+                if(data!=0)
+                {
+                    sum++;
+                }
+            }
+
+        }
+        //2.创建对应的二维数组
+        int sparseArr[][] =new int [sum+1][3];
+        //给稀疏数组赋值
+        sparseArr[0][0]=11;
+        sparseArr[0][1]=11;
+        sparseArr[0][2]=sum;
+        int count=1;
+        //3.给稀疏数组赋值
+        for(int i=0;i&lt;11;i++)
+        {
+            for (int j=0;j&lt;11;j++)
+            {
+                if(chessArr[i][j]!=0){
+                    sparseArr[count][0]=i;
+                    sparseArr[count][1]=j;
+                    sparseArr[count][2]=chessArr[i][j];
+                    count++;
+                }
+            }
+        }
+        //4.输出稀疏数组
+        System.out.println(&quot;稀疏数组长度：&quot;+sparseArr.length);
+        for(int [] r: sparseArr)
+        {
+            for (int data:r){
+                System.out.printf(&quot;%d\t&quot;,data);
+            }
+            System.out.println();
+        }
+        //返回稀疏数组
+        return sparseArr;
+
+    }
+}
+</code></pre>
+<p>结果</p>
+<pre><code class="text">数组---》稀疏数组
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    1    0    0    0    0    0    0    0    0    
+0    0    0    0    2    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+转化后稀疏数组
+11    11    2    
+1    2    1    
+2    4    2    
+稀疏数组 ---》数组
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    1    0    0    0    0    0    0    0    0    
+0    0    0    0    2    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0    
+0    0    0    0    0    0    0    0    0    0    0</code></pre>
 
         </div>
         <!-- .entry-content -->
@@ -483,15 +1220,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2019/11/22/内存管理/" rel="prev">
+            <a href="/2019/11/26/囚徒困境/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575377006&di=5662ffc035e45980cf25aad99ecf2a64&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.zh51home.com%2Fnews%2FFTBPictures%2FPictures%2F94463%2F183.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575377006&di=5662ffc035e45980cf25aad99ecf2a64&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.zh51home.com%2Fnews%2FFTBPictures%2FPictures%2F94463%2F183.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                内存管理</h3>
+                囚徒困境</h3>
                 <hr>
               </div>
             </a>
@@ -501,15 +1238,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2019/11/06/接口/" rel="next">
+            <a href="/2019/11/22/内存管理/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://imgs.aixifan.com/live/1483602002220/1483602002220.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://imgs.aixifan.com/live/1483602002220/1483602002220.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                接口</h3>
+                内存管理</h3>
                 <hr>
               </div>
             </a>

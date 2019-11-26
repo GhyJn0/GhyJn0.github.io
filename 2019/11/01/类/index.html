@@ -415,6 +415,17 @@
     }
 }
 </code></pre>
+<h1 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h1><ul>
+<li>public ：公共</li>
+<li>protected: 受保护</li>
+<li>private :私有</li>
+<li>default:默认</li>
+</ul>
+<p>public&gt; protected &gt;default&gt;private</p>
+<p><img src="https://i.loli.net/2019/11/20/ApOsd3jml6J9cxU.jpg" alt="1.JPG"></p>
+<ul>
+<li>注意：<br>成员变量使用 private ，隐藏细节。<br>构造方法使用 public ，方便创建对象。<br>成员方法使用 public ，方便调用方法。<br>不加权限修饰符，其访问能力与default修饰符相同 </li>
+</ul>
 <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="对象使用"><a href="#对象使用" class="headerlink" title="对象使用"></a>对象使用</h2><ul>
 <li>创建对象： 类名 对象名= new 类名（）；</li>
 <li>访问类中的成员<br>  对象名.成员变量；<br>  对象名.成员函数（）；</li>
@@ -958,8 +969,98 @@ public class ThisMesaage {
 </code></pre>
 <h3 id="super-和this差异"><a href="#super-和this差异" class="headerlink" title="super 和this差异"></a>super 和this差异</h3><ul>
 <li>super 来访问父类，this用来访问本类的</li>
-<li>super()和this()不能同时出现<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2></li>
+<li>super()和this()不能同时出现</li>
 </ul>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><ul>
+<li>父类：人类<br>子类： 学生，员工</li>
+<li>小明是一个学生，同时也是一个人。<br>小明是一个对象，既有学生形态，也有人类形态。<br>一个对象拥有多种形态，这就是对象多态性</li>
+<li>继承是多态的前提<br>extends继承或者implements实现</li>
+</ul>
+<h3 id="格式和使用"><a href="#格式和使用" class="headerlink" title="格式和使用"></a>格式和使用</h3><ul>
+<li>父类引用指向子类对象<br>父类名称 对象名 =new 子类名称（）；<br>接口名称 对象名 =new 实现类名程（）;</li>
+</ul>
+<h3 id="成员变量使用特点"><a href="#成员变量使用特点" class="headerlink" title="成员变量使用特点"></a>成员变量使用特点</h3><ul>
+<li>直接通过对象名称访问成员变量： 看看左边是什么，优先用谁，没有向上找（不能覆盖）</li>
+<li>间接使用成员方法访问成员变量： 该方法属于谁，优先用谁，没有向上找</li>
+</ul>
+<h3 id="成员方法使用"><a href="#成员方法使用" class="headerlink" title="成员方法使用"></a>成员方法使用</h3><ul>
+<li>看new的是谁就调用谁，没有往上找</li>
+</ul>
+<pre><code class="java">//父类
+
+public class Fu {
+    public void method(){
+        System.out.println(&quot;我是父类方法&quot;);
+    }
+    public void method1(){
+        System.out.println(&quot;我是父类特有的方法&quot;);
+    }
+}
+//子类
+public class Zi extends Fu {
+    @Override
+    public void method(){
+        System.out.println(&quot;我是父类重写方法&quot;);
+    }
+}
+
+
+//test
+public class Test{
+    public static void main(String[] args) {
+        Fu a =new Zi();
+        a.method();
+        a.method1();
+    }
+}
+</code></pre>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><h2 id="基本理解"><a href="#基本理解" class="headerlink" title="基本理解"></a>基本理解</h2><ul>
+<li>定义：不可改变，修饰类的方法和变量，类。</li>
+<li>类： 被修饰的类不能被继承</li>
+<li>方法： 被修饰的方法不能被重写</li>
+<li>变量： 被修饰的变量不能被重新赋值</li>
+</ul>
+<h2 id="格式定义"><a href="#格式定义" class="headerlink" title="格式定义"></a>格式定义</h2><ul>
+<li>修饰类：<br>final class  类名{}</li>
+</ul>
+<ul>
+<li>修饰方法<br> 修饰符 final  返回值类型 方法名（参数列表）{}</li>
+</ul>
+<ul>
+<li>修饰变量<ul>
+<li>局部变量<br>基本类型的局部变量，被赋值一次后，不能再次赋值</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">     public class fl {
+public static void main(String [] args) {
+    final int a=1;
+    //不能再次赋值
+    //a=2;
+    System.out.println(&quot;数据:&quot;+a);
+    method();
+    //method1();
+}
+public static void method() {
+    for(int i=0;i&lt;10;i++)
+    {
+        //每循环一次创建一个变量c
+        final int c=i;
+        System.out.println(&quot;c的值&quot;+c);
+    }
+}
+//public static void method1() {
+    //此时只创建一次变量c
+//    final int c;
+//    for(int i=0;i&lt;10;i++)
+//    {
+    //所以此时只能赋值一次
+//        c=i;
+//        System.out.println(&quot;c的值&quot;+c);
+//    }
+//}
+}
+</code></pre>
 <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>接口就是一种公共的规范标准，只要符合就可以使用。</p>
 <ul>
 <li>举例：usb接口<br>只要符合usb接口的规范，那么各种设备就可以使用u盘，打印机，夜调灯，usb小风扇</li>
@@ -1377,6 +1478,250 @@ public class obj {
 
 4. 抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错。除非该子类也是抽象 类。
 理解：假设不重写所有抽象方法，则类中可能包含抽象方法。那么创建对象后，调用抽象的方法，没有 意义。 </code></pre>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>将一个类A定义在另一个类B里面，里面的那个类A就称为内部类，B则称为外部类。 </p>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><ul>
+<li><p>成员内部类 ：定义在类中方法外的类。</p>
+</li>
+<li><p>格式：<br>class 外部类 {     class 内部类{       } }</p>
+</li>
+<li><p>访问特点：<br>内部类可以直接访问外部类的成员，包括私有成员。<br>外部类要访问内部类的成员，必须要建立内部类的对象。</p>
+</li>
+<li><p>内部类同名变量访问:外部类名称.this.外部类变量名</p>
+</li>
+<li><p>访问内部方式：</p>
+<ul>
+<li><p>间接访问 封装在外部类一个方法中</p>
+<ul>
+<li>直接访问 外部类.内部类 变量名 = new 外部类（）.new 内部类（）；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">//
+
+public class Body {
+    class engine{
+        //内部类
+        private String name=&quot;内部类变量&quot;;
+        public void methodengine(){
+            //内部类随便调用外部类的方法和变量
+            String name=&quot;局部变量&quot;;//局部变量
+            //访问局部变量：变量名
+            System.out.println(&quot;我是：&quot;+name);
+            //访问本类中变量方式：this.变量名
+            System.out.println(&quot;我是：&quot;+this.name);
+            //访问外部类重名的变量： 外部类名.this.变量名
+            System.out.println(&quot;我是：&quot;+Body.this.name);
+
+        }
+    }
+
+
+
+    //外部类
+    private String name=&quot;外部类变量&quot;;
+    //访问内部类间接方式
+    public void main(){
+        //外部类调用内部类创建对象
+        engine obj=new engine();
+        obj.methodengine();
+    }
+
+}
+//测试
+
+public class Main {
+    public static void main(String[] args) {
+    // write your code here
+        Body obj =new Body();
+        obj.main();
+        System.out.println(&quot;==========================&quot;);
+        //创建内部类方式
+        Body.engine obj1= new Body().new engine();
+        obj1.methodengine();
+
+    }
+}
+
+/*我是：局部变量
+我是：内部类变量
+我是：外部类变量
+==========================
+我是：局部变量
+我是：内部类变量
+我是：外部类变量*/
+</code></pre>
+<ul>
+<li>注意： 内用外随便用，外用内，需要内部类对象</li>
+</ul>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><ul>
+<li>格式：<br>new 父类名或者接口名(){     // 方法重写     @Override      public void method() {         // 执行语句     } }</li>
+<li>步骤：</li>
+</ul>
+<p>1.定义子类<br>2. 重写接口中的方法<br>3. 创建子类对象<br>4. 调用重写后的方法</p>
+<pre><code class="java">//父类或者接口
+public interface Fu {
+    public void method();
+    public void method1();
+}
+
+
+
+public class Demo {
+    public static void main(String[] args) {
+        Fu obj =new Fu() {
+            @Override
+            public void method() {
+                System.out.println(&quot;匿名对象重写接口方法1&quot;);
+            }
+            @Override
+            public void method1(){
+                System.out.println(&quot;匿名对象重写接口方法2&quot;);
+            }
+        };
+        //只能使用一次
+        obj.method();
+        obj.method1();
+        System.out.println(&quot;=======================&quot;);
+        //如果此时再用匿名类创建对象必须和上面一样
+        Fu obj1=new Fu(){
+            @Override
+            public void method() {
+                System.out.println(&quot;匿名对象重写接口方法11&quot;);
+            }
+            @Override
+            public void method1(){
+                System.out.println(&quot;匿名对象重写接口方法22&quot;);
+            }
+        };
+        obj.method1();
+        obj.method();
+    }
+}
+</code></pre>
+<ul>
+<li>注意</li>
+</ul>
+<p>1.匿名内部类，在创建对象时后，只能调用唯一一次，如果希望多次创建对象，而且类的内容一样话，必须单独创建类<br>2.匿名对象，在调用方法时，只能调用唯一一次<br>如果希望同一个对象创建多次必须取一个名字。<br>3.匿名对象和匿名内部类不一样</p>
+<h1 id="引用类型用法"><a href="#引用类型用法" class="headerlink" title="引用类型用法"></a>引用类型用法</h1><h2 id="类作为成员变量类型"><a href="#类作为成员变量类型" class="headerlink" title="类作为成员变量类型"></a>类作为成员变量类型</h2><pre><code class="java">public class Role {
+    int id;//编号
+    int blood;//血量
+    String name;//姓名
+    Weapon np;// 类作为成员变量
+
+    public Role(int id, int blood, String name, Weapon np) {
+        this.id = id;
+        this.blood = blood;
+        this.name = name;
+        this.np = np;
+    }
+    void attack(){
+        System.out.println(&quot;玩家编号：&quot;+this.id+&quot;玩家姓名：&quot;+this.name+&quot;玩家血量：&quot;+this.blood+ &quot;玩家使用武器：&quot;+this.np.name);
+    }
+}
+
+public class Weapon {
+    String name;//武器名字
+
+    public Weapon(String name) {
+        this.name = name;
+    }
+}
+
+
+
+public class Test {
+    public static void main(String[] args) {
+        Weapon n=new Weapon(&quot;长剑&quot;);
+        Role obj = new Role(10,20,&quot;xingming&quot;,n);
+        obj.attack();
+
+    }
+}
+
+//玩家编号：10玩家姓名：xingming玩家血量：20玩家使用武器：长剑
+
+</code></pre>
+<h1 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h1><h2 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h2><p>Java提供了两个类型系统，基本类型与引用类型，使用基本类型在于效率，然而很多情况，会创建对象使用，因为对象可以做更多的功能，如果想要我们的基本类型像对象一样操作，就可以使用基本类型对应的包装类，如下：</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>对应的包装类（位于java.lang包中）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td><strong>Integer</strong></td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td><strong>Character</strong></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+<h2 id="5-2-装箱与拆箱"><a href="#5-2-装箱与拆箱" class="headerlink" title="5.2 装箱与拆箱"></a>5.2 装箱与拆箱</h2><p>基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“：</p>
+<ul>
+<li><p><strong>装箱</strong>：从基本类型转换为对应的包装类对象。</p>
+</li>
+<li><p><strong>拆箱</strong>：从包装类对象转换为对应的基本类型。</p>
+</li>
+</ul>
+<p>用Integer与 int为例：（看懂代码即可）</p>
+<p>基本数值—-&gt;包装对象</p>
+<pre><code class="java">Integer i = new Integer(4);//使用构造函数函数
+Integer iii = Integer.valueOf(4);//使用包装类中的valueOf方法</code></pre>
+<p>包装对象—-&gt;基本数值</p>
+<pre><code class="java">int num = i.intValue();</code></pre>
+<h2 id="5-3自动装箱与自动拆箱"><a href="#5-3自动装箱与自动拆箱" class="headerlink" title="5.3自动装箱与自动拆箱"></a>5.3自动装箱与自动拆箱</h2><p>由于我们经常要做基本类型与包装类之间的转换，从Java 5（JDK 1.5）开始，基本类型与包装类的装箱、拆箱动作可以自动完成。例如：</p>
+<pre><code class="java">Integer i = 4;//自动装箱。相当于Integer i = Integer.valueOf(4);
+i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue() + 5;
+//加法运算完成后，再次装箱，把基本数值转成对象。</code></pre>
+<h2 id="5-3-基本类型与字符串之间的转换"><a href="#5-3-基本类型与字符串之间的转换" class="headerlink" title="5.3 基本类型与字符串之间的转换"></a>5.3 基本类型与字符串之间的转换</h2><h3 id="基本类型转换为String"><a href="#基本类型转换为String" class="headerlink" title="基本类型转换为String"></a>基本类型转换为String</h3><p>   基本类型转换String总共有三种方式，查看课后资料可以得知，这里只讲最简单的一种方式： </p>
+<pre><code>基本类型直接与””相连接即可；如：34+&quot;&quot;</code></pre><p>String转换成对应的基本类型 </p>
+<p>除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：</p>
+<ul>
+<li><code>public static byte parseByte(String s)</code>：将字符串参数转换为对应的byte基本类型。</li>
+<li><code>public static short parseShort(String s)</code>：将字符串参数转换为对应的short基本类型。</li>
+<li><code>public static int parseInt(String s)</code>：将字符串参数转换为对应的int基本类型。</li>
+<li><code>public static long parseLong(String s)</code>：将字符串参数转换为对应的long基本类型。</li>
+<li><code>public static float parseFloat(String s)</code>：将字符串参数转换为对应的float基本类型。</li>
+<li><code>public static double parseDouble(String s)</code>：将字符串参数转换为对应的double基本类型。</li>
+<li><code>public static boolean parseBoolean(String s)</code>：将字符串参数转换为对应的boolean基本类型。</li>
+</ul>
+<p>代码使用（仅以Integer类的静态方法parseXxx为例）如：</p>
+<pre><code class="java">public class Demo18WrapperParse {
+    public static void main(String[] args) {
+        int num = Integer.parseInt(&quot;100&quot;);
+    }
+}</code></pre>
+<blockquote>
+<p>注意:如果字符串参数的内容无法正确转换为对应的基本类型，则会抛出<code>java.lang.NumberFormatException</code>异常。</p>
+</blockquote>
 
         </div>
         <!-- .entry-content -->
