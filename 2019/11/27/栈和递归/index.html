@@ -925,8 +925,231 @@ public class CC {
 结果为：115
 </code></pre>
 <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><ul>
-<li>定义：程序反复调用自身即是递归。</li>
+<li><p>定义：程序反复调用自身即是递归。</p>
+</li>
+<li><p>应用：栈问题—》递归</p>
+</li>
+<li><p>步骤：<br>  1.找整个递归的终止条件：递归应该在什么时候结束？</p>
+<p>  2.找返回值：应该给上一级返回什么信息？</p>
+<p>  3.本级递归应该做什么：在这一级递归中，应该完成什么任务？</p>
+<p>参考链接：<a href="http://39.96.217.32/blog/4" target="_blank" rel="noopener">http://39.96.217.32/blog/4</a></p>
+</li>
 </ul>
+<h2 id="迷宫"><a href="#迷宫" class="headerlink" title="迷宫"></a>迷宫</h2><p> <img src="https://i.loli.net/2019/11/29/nz4e2s1uIlZRSd9.jpg" alt="1.JPG"></p>
+<pre><code class="java"> public class recursion {
+    public static void main(String[] args) {
+        //初始化迷宫
+        int [][] map={
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1},
+                {1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1},
+                {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1},
+                {1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1},
+                {1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1},
+                {1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1},
+                {1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1 ,0 ,0, 0 ,0 ,1 ,0 ,1 ,1},
+                {1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1},
+                {1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+        };
+        Print(map);
+        Visit(map,1,1);
+        Print(map);
+
+    }
+    //遍历迷宫
+    public static void Print(int [][] map){
+        System.out.printf(&quot;迷宫如下‘■’代表墙,数字 或者‘☆’表示路径\n&quot;);
+        int i,j;
+        for(i=0;i&lt;map.length;i++){
+            for(j=0;j&lt;map[0].length;j++){
+                if(map[i][j]==1){
+                    System.out.printf(&quot;%2S&quot;,&quot;■&quot;);
+                }
+                else if( map[i][j]==0){
+                    System.out.printf(&quot;  &quot;);
+                }
+                else{
+                    System.out.printf(&quot;%S&quot;,&quot;☆&quot;);
+                }
+            }
+            System.out.println(&quot;&quot;);
+        }
+
+    }
+    // 走迷宫
+    public static Boolean Visit(int [][] map,int i,int j){
+        if(i==10&amp;&amp; j==12){
+            return true;
+        }
+        else{
+            //假设此路同
+            if(map[i][j]==0){
+                map[i][j]=2;
+                //向下走
+                if(Visit(map,i+1,j)){
+                    return true;
+                }
+                //向右走
+                else if(Visit(map,i,j+1)){
+                    return true;
+                }
+                //向左走
+                else if(Visit(map,i-1,j)){
+                    return true;
+                }
+                //向上走
+                else if(Visit(map,i,j-1)){
+                    return true;
+                }
+                //此路不通
+                else {
+                    map[i][j]=3;
+                    return false;
+                }
+            }
+            else{
+                //此路不通 此时 代表遇到1，2，3
+                return false;
+            }
+
+        }
+    }
+}
+</code></pre>
+<p><img src="https://i.loli.net/2019/11/29/RYGtZexfjvpV9qk.jpg" alt="2.JPG"></p>
+<h2 id="八皇后"><a href="#八皇后" class="headerlink" title="八皇后"></a>八皇后</h2><ul>
+<li>定义：所谓八皇后问题就是：将八位皇后放在一张8x8的棋盘上，使得每位皇后都无法吃掉别的皇后，（即任意两个皇后都不在同一条横线，竖线和斜线上），问一共有多少种摆法。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/IkcgbmhUGWZqRS3.jpg" alt="20180730222937381.jpg"></p>
+<pre><code class="java">/*
+* 1.第一个皇后先放第一行第一列
+* 2.第二个皇后放第二行第一列，判断是否ok，如果不ok,继续放在第二列，第三列，意思把所有的列放完，周到一个合适
+* 3. 继续第三个皇后，还是第一列，第二列。。。 直到第8个皇后，也能放在一个不冲突为值，算找到了一个正确姐
+* 4.当得到一个正确解时，在栈会退到上一个时，就会开始回溯，即将第一个皇后，放到一列的所有正确解，全部找到。
+* 5.回头机会第一个皇后放在第二列，后面继续循环1，2，3，4
+* arr={0,4,7,5,2,6,1,3},arr下表 表示第几行，第几个皇后，arr[i]=val,val表示i+1个皇后，放在第val+
+*简单说i表示行，val表示 列
+* */
+public class Queens8 {
+    int  max=8;
+    int [] arr=new int [max];
+    int count=0;
+    public static void main(String[] args) {
+        Queens8 obj=new Queens8();
+        obj.check(0);
+        System.out.println(&quot;总共有&quot;+obj.count+&quot;种&quot;);
+    }
+    /**
+     *放置第N个皇后
+     * */
+    public void check(int n){
+        //如果n==8停止
+        if (n==max){
+            Print();
+            count++;
+            return;
+        }
+        //一次放入判断n列是否冲突
+        for(int i=0;i&lt;max;i++){
+            //表示第n个在第i列
+           arr[n]=i;
+           //判断n是否冲突
+           if(judge(n)){
+               //不冲突继续判断第n+1
+               check(n+1);
+           }
+
+        }
+    }
+    //放置第n个皇后，检测与之前的皇后是否冲突
+    public  boolean judge(int n){
+        for(int i=0;i&lt;n;i++){
+            //arr[i]表示列，所以arr[i]==arr[n]表示同一列，abs(n-i) ==abs(arr[n]-arr[i]);表示同一行
+            if(arr[i]==arr[n]|| Math.abs(n-i)==Math.abs(arr[n]-arr[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    //打印符合的
+    public void  Print(){
+        for(int i=0;i&lt;arr.length;i++){
+            System.out.print(arr[i]+&quot; &quot;);
+        }
+        System.out.println();
+    }
+}
+</code></pre>
+<pre><code class="java">public class EightQueens {
+
+
+    public static int[][] arry=new int[8][8];//棋盘，放皇后
+    public static int map=0;//存储方案结果数量
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+        System.out.println(&quot;八皇后问题&quot;);
+        findQueen(0);
+        System.out.println(&quot;八皇后问题共有：&quot;+map+&quot;种可能&quot;);
+    }
+
+    public static void findQueen(int i){//寻找皇后节点
+        if(i&gt;7){//八皇后的解
+            map++;
+            print();//打印八皇后的解
+            return;
+        }
+
+        for(int m=0;m&lt;8;m++){//深度回溯,递归算法
+            if(check(i,m)){//检查皇后摆放是否合适
+                arry[i][m]=1;
+                findQueen(i+1);
+                arry[i][m]=0;//清零，以免回溯的时候出现脏数据
+            }
+        }
+    }
+
+    public static boolean check(int k,int j){//判断节点是否合适
+        for(int i=0;i&lt;8;i++){//检查行列冲突
+            if(arry[i][j]==1){
+                return false;
+            }
+        }
+        for(int i=k-1,m=j-1; i&gt;=0 &amp;&amp; m&gt;=0; i--,m--){//检查左对角线
+            if(arry[i][m]==1){
+                return false;
+            }
+        }
+        for(int i=k-1,m=j+1; i&gt;=0 &amp;&amp; m&lt;=7; i--,m++){//检查右对角线
+            if(arry[i][m]==1){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void print(){//打印结果
+        System.out.print(&quot;方案&quot;+map+&quot;:&quot;+&quot;\n&quot;);
+        for(int i=0;i&lt;8;i++){
+            for(int m=0;m&lt;8;m++){
+                if(arry[i][m]==1){
+                    //System.out.print(&quot;皇后&quot;+(i+1)+&quot;在第&quot;+i+&quot;行，第&quot;+m+&quot;列\t&quot;);
+                    System.out.print(&quot;o &quot;);
+                }
+                else{
+                    System.out.print(&quot;+ &quot;);
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}
+</code></pre>
 
         </div>
         <!-- .entry-content -->
