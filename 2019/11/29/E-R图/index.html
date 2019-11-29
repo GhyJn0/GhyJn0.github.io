@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | GhyJn</title>
+  <title itemprop="name">E-R图 | GhyJn</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -341,567 +341,212 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/521888love/Wcdn@1.0/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://i.loli.net/2019/11/29/fRaXj13lTUeWquJ.jpg);" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/11/29/fRaXj13lTUeWquJ.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      E-R图</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://ghyjn0.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://ghyjn0.github.io/">君の名は</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-11-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">成长之路</h1>
-    <span class="cat-des">
-      <p>Geek – Only for Love</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="er图的组成元素"><a href="#er图的组成元素" class="headerlink" title="er图的组成元素"></a>er图的组成元素</h1><ul>
+<li>实体：即数据模型中的数据对象，例如人、学生、音乐都可以作为一个数据对象，用长方体来表示。</li>
+<li>属性：即数据对象所具有的属性，例如学生具有姓名、学号、年级等属性，用椭圆形表示。</li>
+<li>关系：用来表现数据对象与数据对象之间的联系，例如学生的实体和成绩表的实体之间有一定的联系，每个学生都有自己的成绩表，这就是一种关系，关系用菱形来表示</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/mFElxcoQIUbN1RB.png" alt="127006636_1_20180312065525628.png"></p>
+<h1 id="实体和联系的三种情况"><a href="#实体和联系的三种情况" class="headerlink" title="实体和联系的三种情况"></a>实体和联系的三种情况</h1><h2 id="两个实体"><a href="#两个实体" class="headerlink" title="两个实体"></a>两个实体</h2><p>数据库实体间有三种对应关系：一对一，一对多，多对多。</p>
+<ul>
+<li>一对一：一个学校只能有一个校长，而一个校长也只能担任一个学校的校长。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/WwAxJ3VKIfneOXk.png" alt="127006636_2_20180312065525831.png"></p>
+<ul>
+<li>一对多：一个学校里有多名教师,而每个教师只能在一个学校教学。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/yGw9vObhPa5UoFX.png" alt="127006636_3_20180312065525894.png"></p>
+<ul>
+<li>多对多：比如：一个学生可以上n种课程，而每一个课程可以有m个学生学习。而上课还可以有一个属性：上课时间。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/l1Tqx3v6PGhQfzJ.png" alt="127006636_4_20180312065525988.png"></p>
+<h2 id="多个实体之间存在关系"><a href="#多个实体之间存在关系" class="headerlink" title="多个实体之间存在关系"></a>多个实体之间存在关系</h2><ul>
+<li>多个实体之间一对多。比如：一门课程可以有n个老师来授课，一个老师只讲一门课程，该门课程可以有m本参考书，而这m本书只供这一门课使用。 </li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/Swckiap1gLTKAHf.png" alt="127006636_5_2018031206552697.png"></p>
+<ul>
+<li>多个实体之间多对多。比如：一个供应商可以给多个(n)项目提供零件，每个项目可以使用多个(m)供应商供应的零件，每种(p)零件可有不同供应商供给</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/oUpaskB6ZIrCYwd.png" alt="127006636_6_20180312065526160 _1_.png"></p>
+<h2 id="弱实体集"><a href="#弱实体集" class="headerlink" title="弱实体集"></a>弱实体集</h2><ul>
+<li>定义：一个实体A对于另一个实体B（A的父实体）具有很强的一来联系，且实体A主码的一部分或全部从其父实体获得。即一个实体的主码由另一个实体的部分或全部属性构成，即一个实体依赖于另一个实体而存在，这样的实体集（A）叫做弱实体集，另外的那个实体集（B）叫做强实体集。</li>
+<li>联系：1）弱实体集A到弱实体集B必然是多对一联系。<br>  2）A应为B的主码提供自己的主码。<br>  在E-R图中，用双边矩形来代表弱实体集，用双边菱形来代表弱实体集之间的联系。 </li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/xaD8miYXwBdo51p.png" alt="127006636_7_20180312065526253.png"></p>
+<h2 id="一对一关系处理"><a href="#一对一关系处理" class="headerlink" title="一对一关系处理"></a>一对一关系处理</h2><p>一个学校和一个校长<br>设计数据库表：扩展表的主键既是扩展表的主键也是主表的外键。<br>在学校表添加外键，同时外键作为校长的主键</p>
+<h2 id="一对多关系处理"><a href="#一对多关系处理" class="headerlink" title="一对多关系处理"></a>一对多关系处理</h2><p>一个班级有多个学生<br><img src="https://i.loli.net/2019/11/29/86urX3Hc1RYkz2p.png" alt="761770-20160327113729292-1506516119.png"></p>
+<p>设计数据库表：只需在 学生表 中多添加一个班级号的ID</p>
+<h2 id="多对多关系处理"><a href="#多对多关系处理" class="headerlink" title="多对多关系处理"></a>多对多关系处理</h2><p>学生和课程<br><img src="https://i.loli.net/2019/11/29/1rCmFfXpAK4wsL2.png" alt="761770-20160327115240573-1643098283.png"><br>设计数据库表：建立第三张表<br><img src="https://i.loli.net/2019/11/29/foG8yt9IArmJZgQ.jpg" alt="3.JPG"></p>
+<h1 id="E-R-关系处理"><a href="#E-R-关系处理" class="headerlink" title="E-R 关系处理"></a>E-R 关系处理</h1><h2 id="1-1联系的转换方法"><a href="#1-1联系的转换方法" class="headerlink" title="1:1联系的转换方法"></a>1:1联系的转换方法</h2><ul>
+<li>两个实体分别转化为一个关系模式，属性即是本来的属性</li>
+<li>关系可以与任意一个实体合并，关系的属性，以及另一个实体的主码要加到合并到的关系模式里面</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/yu6S93oXI2lAg7Z.png" alt="1004904-20160814200615359-1620740821.png"></p>
+<h2 id="1-N联系的转换方法"><a href="#1-N联系的转换方法" class="headerlink" title="1:N联系的转换方法"></a>1:N联系的转换方法</h2><ul>
+<li>两个实体分别转化为一个关系模式，属性即是本来的属性</li>
+<li>关系和n端的实体合并，关系的属性，以及另一个实体的主码要加到合并到的关系模式里面</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/29/yu6S93oXI2lAg7Z.png" alt="1004904-20160814200615359-1620740821.png"></p>
+<h2 id="M-N联系的转换方法"><a href="#M-N联系的转换方法" class="headerlink" title="M:N联系的转换方法"></a>M:N联系的转换方法</h2><ul>
+<li><p>两个实体分别转化为一个关系模式，属性即是本来的属性</p>
+</li>
+<li><p>关系的码为两个实体的主码，以及关系的属性，形成新的关系模式</p>
+<p><img src="https://i.loli.net/2019/11/29/4o81bkyJR5sipWz.png" alt="1004904-20160814201156203-762899764.png"></p>
+</li>
+</ul>
+<h2 id="自己-自己的关系转换"><a href="#自己-自己的关系转换" class="headerlink" title="自己:自己的关系转换"></a>自己:自己的关系转换</h2><p><font size="5" color="red">一元联系类型ER图结构转换为关系模式</font><br><img src="https://i.loli.net/2019/11/29/5LcuWQ8IMxwy6ZB.jpg" alt="20150728110526893.jpg"><br>(1)运动员名次之间存在着1:1联系</p>
+<p>　　 ①运动员（编号，姓名，性别，名次，上一名次编号）</p>
+<p>(2)职工之间存在上下级联系，即1:N联系</p>
+<p>　　 ①职工（工号，姓名，年龄，性别，经理工号）</p>
+<p>(3)工厂的零件之间存在着组合关系（M:N联系）</p>
+<p>　　 ①零件（零件号，零件名，规格）</p>
+<p>　　 ②组成（零件号，子零件号，数量）</p>
+<h1 id="E-R图向关系模型的转换"><a href="#E-R图向关系模型的转换" class="headerlink" title="E-R图向关系模型的转换"></a>E-R图向关系模型的转换</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p><img src="https://i.loli.net/2019/11/29/1nUFVBIkYQxzdpy.jpg" alt="20150728110504289.jpg"></p>
+<h3 id="1-实体转换为模式"><a href="#1-实体转换为模式" class="headerlink" title="1.实体转换为模式"></a>1.实体转换为模式</h3><p>　①系（系编号，系名，电话）<br>　②教师（教工号，姓名，性别，职称）<br>　③课程（课程号，课程名，学分）</p>
+<h3 id="2-处理1对1关系"><a href="#2-处理1对1关系" class="headerlink" title="2.处理1对1关系"></a>2.处理1对1关系</h3><p> 对于1:1联系“主管”，可以在“系”模式中加入教工号（教工号为外键）<br>  ①系（系编号，系名，电话，主管人的教工号）<br>  ②教师（教工号，姓名，性别，职称）<br>　③课程（课程号，课程名，学分）</p>
+<h3 id="3-处理1对N关系"><a href="#3-处理1对N关系" class="headerlink" title="3.处理1对N关系"></a>3.处理1对N关系</h3><p> 对于1:N联系“聘任”，可以在“教师”模式中加入系编号（系编号为外键）。<br> 对于1:N联系“开设”，可以在“课程”模式中加入系编号（系编号为外键）。</p>
+<p>①系（系编号，系名，电话，主管人的教工号）<br>②教师（教工号，姓名，性别，职称，系编号）<br>③课程（课程号，课程名，学分，系编号）</p>
+<h3 id="4-处理N对M关系"><a href="#4-处理N对M关系" class="headerlink" title="4.处理N对M关系"></a>4.处理N对M关系</h3><p>对于M:N联系“任教”，则生成一个新的关系模式：<br>①任教（教工号，课程号，教材）</p>
+<h3 id="5-1对N-N对M-就是最后的关系模型"><a href="#5-1对N-N对M-就是最后的关系模型" class="headerlink" title="5.1对N+ N对M 就是最后的关系模型"></a>5.1对N+ N对M 就是最后的关系模型</h3><p>①系（系编号，系名，电话，主管人的教工号）<br>②教师（教工号，姓名，性别，职称，系编号）<br>③课程（课程号，课程名，学分，系编号）<br>④任教（教工号，课程号，教材</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><font size="5" color="red">三元联系的ER图结构转换为关系模式 </font><br><img src="https://i.loli.net/2019/11/29/zYaWPqJps5DZHyl.jpg" alt="20150911234021180.jpg"></p>
+<p>①仓库（仓库号，仓库名，地址）</p>
+<p>②商店（商店号，商店名）</p>
+<p>③商品（商品号，商品名）</p>
+<p>④进货（商店号，商品号，仓库号，日期，数量）</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/Flora_SM/article/details/84645752" target="_blank" rel="noopener">https://blog.csdn.net/Flora_SM/article/details/84645752</a><br><a href="https://www.cnblogs.com/zhangxue521/p/5770917.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhangxue521/p/5770917.html</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/11/29/数据库四种模式/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=7ed113ef7b094b36dbc713eb93fc50e1/503d269759ee3d6d1a876afb4e166d224f4adeb9.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=7ed113ef7b094b36dbc713eb93fc50e1/503d269759ee3d6d1a876afb4e166d224f4adeb9.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                数据库四种模式</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/11/28/数据库设计/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=6d551082972397ddd62c900269b29e8f/562c11dfa9ec8a136b4a7e85f103918fa0ecc006.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=6d551082972397ddd62c900269b29e8f/562c11dfa9ec8a136b4a7e85f103918fa0ecc006.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                数据库设计</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/29/数据库四种模式/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=7ed113ef7b094b36dbc713eb93fc50e1/503d269759ee3d6d1a876afb4e166d224f4adeb9.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/29/数据库四种模式/">
-    数据库四种模式</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/29/数据库四种模式/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/29/E-R图/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://i.loli.net/2019/11/29/fRaXj13lTUeWquJ.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/29/E-R图/">
-    E-R图</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/29/E-R图/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/28/数据库设计/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=6d551082972397ddd62c900269b29e8f/562c11dfa9ec8a136b4a7e85f103918fa0ecc006.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/28/数据库设计/">
-    数据库设计</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-28</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/28/数据库设计/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/28/java遗忘知识点汇总/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1574957407519&amp;di=ab3ba0e70d902a478628fcf3b7621d05&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F23%2F20170423140215_us4wX.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/28/java遗忘知识点汇总/">
-    java遗忘知识点汇总</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-28</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/28/java遗忘知识点汇总/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/22/内存管理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/22/内存管理/">
-    内存管理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-22</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/22/内存管理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/06/接口/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://imgs.aixifan.com/live/1483602002220/1483602002220.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/06/接口/">
-    接口</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-6</div>
-    <p>
-    基本学习</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/06/接口/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/02/好‘类’/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://www.005.tv/uploads/allimg/160907/111403B33-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/02/好‘类’/">
-    猴赛‘类’</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-2</div>
-    <p>
-    类的介绍和常见封装的类</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/02/好‘类’/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/01/类/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://www.haipic.com/icon/62d6c6e832.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/01/类/">
-    学Java好‘类’</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-1</div>
-    <p>
-    java 类之说</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/01/类/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "HdBastjxqIazDOi28WG5yQh6-gzGzoHsz",
+        appKey: "TVgaxtgjIotNVCjxnt8pzr3G",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://ghyjn0.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg" itemprop="image" alt="君の名は" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://ghyjn0.github.io/" itemprop="url" rel="author">君の名は</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>爱生活，爱自己</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/29/数据库四种模式/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=7ed113ef7b094b36dbc713eb93fc50e1/503d269759ee3d6d1a876afb4e166d224f4adeb9.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/29/数据库四种模式/">
-    数据库四种模式</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/29/数据库四种模式/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/29/E-R图/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://i.loli.net/2019/11/29/fRaXj13lTUeWquJ.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/29/E-R图/">
-    E-R图</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/29/E-R图/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/28/数据库设计/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=6d551082972397ddd62c900269b29e8f/562c11dfa9ec8a136b4a7e85f103918fa0ecc006.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/28/数据库设计/">
-    数据库设计</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-28</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/28/数据库设计/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/28/java遗忘知识点汇总/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1574957407519&amp;di=ab3ba0e70d902a478628fcf3b7621d05&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F23%2F20170423140215_us4wX.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/28/java遗忘知识点汇总/">
-    java遗忘知识点汇总</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-28</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/28/java遗忘知识点汇总/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/22/内存管理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=30bd0cadd9a20cf446c5f6d94639670e/f603918fa0ec08fa3802988d50ee3d6d55fbda9e.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/22/内存管理/">
-    内存管理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-22</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/22/内存管理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/06/接口/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://imgs.aixifan.com/live/1483602002220/1483602002220.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/06/接口/">
-    接口</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-6</div>
-    <p>
-    基本学习</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/06/接口/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/02/好‘类’/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://www.005.tv/uploads/allimg/160907/111403B33-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/02/好‘类’/">
-    猴赛‘类’</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-2</div>
-    <p>
-    类的介绍和常见封装的类</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/02/好‘类’/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/01/类/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://www.haipic.com/icon/62d6c6e832.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/01/类/">
-    学Java好‘类’</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-1</div>
-    <p>
-    java 类之说</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/01/类/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
