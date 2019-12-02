@@ -377,7 +377,125 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          
+          <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。</p>
+<h2 id="简单理解"><a href="#简单理解" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.首先可以将数组的最大值移动到最后面。<br>2.再将次大值移动到倒数第二位。<br>3.以此类推，直到将所有数排列好</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>假设我们有数组arr<br>1.令j为0，arr[j]和arr[j+1]比较，使这两个元素的较大值在排在后面，即若arr[j]&gt;arr[j+1]，两数交换位置，若arr[j]&lt;arr[j+1],不换。</p>
+<p>2.不管换与不换，j++。</p>
+<p>3.此时的arr[j]和arr[j+1]再进行比较，重复上述操作直到j=arr.length-1（这是整个排序过程的第一轮排序，即将整个数组中的最大值移动到最后面，所以这一轮排序是在j=arr.length-2的时候停止）</p>
+<p>4.第一轮结束后我们接着进行第二轮，即将次大值移动到数组的倒数第二个位置。那么这一轮结束的标志就是j=arr.length-3</p>
+<p>5.接着进行第三轮，第四轮…直到第二小的数排好序（你想啊，我们将其他数都排好了，最后一个肯定就是最小值啦）所以我们一共要进行arr.length-1轮排序。</p>
+<p>6.每一轮排序结束的标志是j=arr.length-1-i</p>
+<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://raw.githubusercontent.com/Hufan-ll/test/master/849589-20171015223238449-2146169197.gif" alt="avatar"></p>
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><pre><code class="java">import java.util.Arrays;
+
+public class Buffle {
+    public static void main(String[] args) {
+        int []arr ={ 2, 8, 7, 9, 4, 1, 5, 0 };
+        int i,j,temp;
+        for(i=0;i&lt;arr.length;i++){
+            for(j=0;j&lt;arr.length-1-i;j++){
+                if (arr[j]&gt;arr[j+1]){
+                    temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+}
+</code></pre>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>1.首先可以将数组的最大值移动到最后面。<br>2.再将次大值移动到倒数第二位。<br>3.一旦发现某堂排序中，没有发生交换就停止冒泡排序<br>4.以此类推，直到将所有数排列好</p>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><pre><code class="java">import java.util.Arrays;
+
+public class Buffle {
+    public static void main(String[] args) {
+        int []arr ={ 2, 8, 7, 9, 4, 1, 5, 0 };
+        int i,j,temp;
+        boolean flag=false;
+        for(i=0;i&lt;arr.length-1;i++){
+            for(j=0;j&lt;arr.length-1-i;j++){
+                if (arr[j]&gt;arr[j+1]){
+                    flag=true;
+                    temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+            if(!flag){
+                break;
+            }
+            else{
+                flag=false;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+}
+</code></pre>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>从待排序的数据中选出最小的元素放在起始位置，然后再从剩余的未排序元素中寻找到最小的元素，放到已排序的序列的末尾！其时间复杂度为O（n²）</p>
+<h2 id="简单理解-1"><a href="#简单理解-1" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.第一次遍历时，第一个元素，依次和后面的值比较，如果大于后面的值，就交换，否则继续比较，直到所有的比较 完毕。<br>2.第二次遍历时，第二个元素，依次和后面的值比较，如果大于后面的值，就交换，否则继续比较，直到所有的比较 完毕。</p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://upload-images.jianshu.io/upload_images/7789414-5893f3ff1b915c38.gif?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="avatar"></p>
+<h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><pre><code class="java">import java.util.Arrays;
+
+public class quick {
+    public static void main(String[] args) {
+        int [] arr ={0,6,3,5,8,9};
+        Qk(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void Qk(int []arr){
+        for(int i=0;i&lt;arr.length-1;i++)
+            for(int j=i+1;j&lt;arr.length;j++){
+                if(arr[i]&gt;arr[j])
+                    swap(arr,i,j);
+            }
+    }
+
+    private static void swap(int[] arr, int i, int j)
+    {
+        int temp;
+        temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+}
+</code></pre>
+<h1 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h1><h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因为在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间</p>
+<h2 id="简单理解-2"><a href="#简单理解-2" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.从第一个元素开始，该元素可以认为已经被排序</p>
+<p>2.取出下一个元素，在已经排序的元素序列中从后向前扫描</p>
+<p>3.如果该元素（已排序）大于新元素，将该元素移到下一位置</p>
+<p>4.重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置</p>
+<p>5.将新元素插入到该位置后</p>
+<p>重复步骤 2~5</p>
+<h2 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://images.cnblogs.com/cnblogs_com/wupeixuan/1186502/o_1609bbf94aad18b0.jpg" alt="avatar"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="java">public class inset {
+    public static void main(String[] args) {
+        int [] arr ={1,3,2,6,9,0};
+        insertionSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+    private static void insertionSort(int[] array) {
+        if (array == null || array.length == 0 || array.length == 1)
+            return;
+        int insertVal;//插入的元素
+        int index;//被插入的位置
+        // 默认array[0]是有序的，将剩下的插入到该有序数组中
+        for (int i = 1; i &lt; array.length; i++) {
+            insertVal = array[i];
+            index = i;
+            // 如果要插入的元素小于第index-1个元素,就将第index-1个元素向后移动
+            while (index &gt; 0 &amp;&amp; insertVal &lt; array[index - 1]) {
+                array[index] = array[index - 1];
+                index--;
+            }
+            array[index] = insertVal;//放置insertVal
+        }
+    }
+}
+</code></pre>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
