@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">排序算法 | GhyJn</title>
+  <title itemprop="name">archive_a: 2019/12 | GhyJn</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -341,256 +341,416 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://i.loli.net/2019/12/01/dxX68ehcpZkC1JW.jpg);" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/12/01/dxX68ehcpZkC1JW.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      排序算法</h1>
-      <p class="entry-census">
-        <span>
-          <a href="https://ghyjn0.github.io/">
-            <img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="https://ghyjn0.github.io/">君の名は</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2019-11-30<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
+      <div class="blank" style="padding-top: 75px;">
+</div>
 <div id="content" class="site-content">
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。</p>
-<h2 id="简单理解"><a href="#简单理解" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.首先可以将数组的最大值移动到最后面。<br>2.再将次大值移动到倒数第二位。<br>3.以此类推，直到将所有数排列好</p>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>假设我们有数组arr<br>1.令j为0，arr[j]和arr[j+1]比较，使这两个元素的较大值在排在后面，即若arr[j]&gt;arr[j+1]，两数交换位置，若arr[j]&lt;arr[j+1],不换。</p>
-<p>2.不管换与不换，j++。</p>
-<p>3.此时的arr[j]和arr[j+1]再进行比较，重复上述操作直到j=arr.length-1（这是整个排序过程的第一轮排序，即将整个数组中的最大值移动到最后面，所以这一轮排序是在j=arr.length-2的时候停止）</p>
-<p>4.第一轮结束后我们接着进行第二轮，即将次大值移动到数组的倒数第二个位置。那么这一轮结束的标志就是j=arr.length-3</p>
-<p>5.接着进行第三轮，第四轮…直到第二小的数排好序（你想啊，我们将其他数都排好了，最后一个肯定就是最小值啦）所以我们一共要进行arr.length-1轮排序。</p>
-<p>6.每一轮排序结束的标志是j=arr.length-1-i</p>
-<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://images2018.cnblogs.com/blog/1391679/201806/1391679-20180618163321525-1936669878.gif" alt="avatar"></p>
-<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><pre><code class="java">import java.util.Arrays;
-
-public class Buffle {
-    public static void main(String[] args) {
-        int []arr ={ 2, 8, 7, 9, 4, 1, 5, 0 };
-        int i,j,temp;
-        for(i=0;i&lt;arr.length;i++){
-            for(j=0;j&lt;arr.length-1-i;j++){
-                if (arr[j]&gt;arr[j+1]){
-                    temp=arr[j];
-                    arr[j]=arr[j+1];
-                    arr[j+1]=temp;
-                }
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-}
-</code></pre>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>1.首先可以将数组的最大值移动到最后面。<br>2.再将次大值移动到倒数第二位。<br>3.一旦发现某堂排序中，没有发生交换就停止冒泡排序<br>4.以此类推，直到将所有数排列好</p>
-<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><pre><code class="java">import java.util.Arrays;
-
-public class Buffle {
-    public static void main(String[] args) {
-        int []arr ={ 2, 8, 7, 9, 4, 1, 5, 0 };
-        int i,j,temp;
-        boolean flag=false;
-        for(i=0;i&lt;arr.length-1;i++){
-            for(j=0;j&lt;arr.length-1-i;j++){
-                if (arr[j]&gt;arr[j+1]){
-                    flag=true;
-                    temp=arr[j];
-                    arr[j]=arr[j+1];
-                    arr[j+1]=temp;
-                }
-            }
-            if(!flag){
-                break;
-            }
-            else{
-                flag=false;
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-}
-</code></pre>
-<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>从待排序的数据中选出最小的元素放在起始位置，然后再从剩余的未排序元素中寻找到最小的元素，放到已排序的序列的末尾！其时间复杂度为O（n²）</p>
-<h2 id="简单理解-1"><a href="#简单理解-1" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.第一次遍历时，第一个元素，依次和后面的值比较，如果大于后面的值，就交换，否则继续比较，直到所有的比较 完毕。<br>2.第二次遍历时，第二个元素，依次和后面的值比较，如果大于后面的值，就交换，否则继续比较，直到所有的比较 完毕。</p>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://images2018.cnblogs.com/blog/1391679/201806/1391679-20180618165535432-492010645.gif" alt="avatar"></p>
-<h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><pre><code class="java">import java.util.Arrays;
-
-public class quick {
-    public static void main(String[] args) {
-        int [] arr ={0,6,3,5,8,9};
-        Qk(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    public static void Qk(int []arr){
-        for(int i=0;i&lt;arr.length-1;i++)
-            for(int j=i+1;j&lt;arr.length;j++){
-                if(arr[i]&gt;arr[j])
-                    swap(arr,i,j);
-            }
-    }
-
-    private static void swap(int[] arr, int i, int j)
-    {
-        int temp;
-        temp=arr[i];
-        arr[i]=arr[j];
-        arr[j]=temp;
-    }
-}
-</code></pre>
-<h1 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h1><h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因为在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间</p>
-<h2 id="简单理解-2"><a href="#简单理解-2" class="headerlink" title="简单理解"></a>简单理解</h2><p>1.从第一个元素开始，该元素可以认为已经被排序</p>
-<p>2.取出下一个元素，在已经排序的元素序列中从后向前扫描</p>
-<p>3.如果该元素（已排序）大于新元素，将该元素移到下一位置</p>
-<p>4.重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置</p>
-<p>5.将新元素插入到该位置后</p>
-<p>重复步骤 2~5</p>
-<h2 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://images.cnblogs.com/cnblogs_com/wupeixuan/1186502/o_1609bbf94aad18b0.jpg" alt="avatar"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="java">public class inset {
-    public static void main(String[] args) {
-        int [] arr ={1,3,2,6,9,0};
-        insertionSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-    private static void insertionSort(int[] array) {
-        if (array == null || array.length == 0 || array.length == 1)
-            return;
-        int insertVal;//插入的元素
-        int index;//被插入的位置
-        // 默认array[0]是有序的，将剩下的插入到该有序数组中
-        for (int i = 1; i &lt; array.length; i++) {
-            insertVal = array[i];
-            index = i;
-            // 如果要插入的元素小于第index-1个元素,就将第index-1个元素向后移动
-            while (index &gt; 0 &amp;&amp; insertVal &lt; array[index - 1]) {
-                array[index] = array[index - 1];
-                index--;
-            }
-            array[index] = insertVal;//放置insertVal
-        }
-    }
-}
-</code></pre>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏<div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
+  <div id="main">
+    <header class="page-header">
+      <h1 class="cat-title">
+      归档</h1>
+      <span class="cat-des">
+        <p>
+        Archives</p>
+      </span>
+    </header>
+    <div id="main-part">
+      <article class="art">
+        <div class="art-main">
+          <div class="art-content">
+            <div id="archives">
+              <p style="text-align:right;">
+                [<span id="al_expand_collapse" style="cursor: s-resize;">
+                全部展开/收缩</span>
+              ]</p>
+              
+              
+              
+              
+              
+                
+                <h3 class="al_year">2019年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      12月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2019/12/03/查找算法/">
+                          <span style="color:#0bf;">
+                          03日10:13:43</span>
+                          查找算法
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      11月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2019/11/30/排序算法/">
+                          <span style="color:#0bf;">
+                          30日19:45:43</span>
+                          排序算法
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/30/算法复杂度/">
+                          <span style="color:#0bf;">
+                          30日15:40:20</span>
+                          算法复杂度
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/30/数据库基本知识/">
+                          <span style="color:#0bf;">
+                          30日09:18:31</span>
+                          数据库基本知识
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/29/三大范式/">
+                          <span style="color:#0bf;">
+                          29日10:32:26</span>
+                          三大范式
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/29/数据库四种模式/">
+                          <span style="color:#0bf;">
+                          29日09:28:48</span>
+                          数据库四种模式
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/29/E-R图/">
+                          <span style="color:#0bf;">
+                          29日09:28:35</span>
+                          E-R图
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/28/数据库设计/">
+                          <span style="color:#0bf;">
+                          28日21:25:20</span>
+                          数据库设计
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/28/java遗忘知识点汇总/">
+                          <span style="color:#0bf;">
+                          28日20:49:00</span>
+                          java遗忘知识点汇总
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/27/栈和递归/">
+                          <span style="color:#0bf;">
+                          27日11:49:05</span>
+                          栈和递归
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/26/囚徒困境/">
+                          <span style="color:#0bf;">
+                          26日20:39:40</span>
+                          囚徒困境
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/26/队列和链表/">
+                          <span style="color:#0bf;">
+                          26日10:33:25</span>
+                          链表，队列，稀疏矩阵
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/22/内存管理/">
+                          <span style="color:#0bf;">
+                          22日21:14:33</span>
+                          内存管理
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/13/死锁/">
+                          <span style="color:#0bf;">
+                          13日21:31:28</span>
+                          死锁
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/06/接口/">
+                          <span style="color:#0bf;">
+                          06日20:17:26</span>
+                          接口
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/02/好‘类’/">
+                          <span style="color:#0bf;">
+                          02日22:17:30</span>
+                          猴赛‘类’
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/01/类/">
+                          <span style="color:#0bf;">
+                          01日21:36:40</span>
+                          学Java好‘类’
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/11/01/java基本知识点/">
+                          <span style="color:#0bf;">
+                          01日09:54:48</span>
+                          java基本知识点
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      10月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2019/10/25/刺客伍六七/">
+                          <span style="color:#0bf;">
+                          25日11:15:51</span>
+                          刺客伍六七
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/21/火力少年王/">
+                          <span style="color:#0bf;">
+                          21日00:00:00</span>
+                          火力少年王
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/20/暖暖的新家/">
+                          <span style="color:#0bf;">
+                          20日21:32:48</span>
+                          暖暖的新家
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/19/妖精的尾巴/">
+                          <span style="color:#0bf;">
+                          19日21:32:48</span>
+                          妖精的尾巴
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/19/你的名字/">
+                          <span style="color:#0bf;">
+                          19日21:32:48</span>
+                          你的名字
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/19/进程和线程/">
+                          <span style="color:#0bf;">
+                          19日10:58:43</span>
+                          进程和线程
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/16/作系统/">
+                          <span style="color:#0bf;">
+                          16日20:05:47</span>
+                          操作系统基本介绍
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/10/16/人生要耐住寂寞/">
+                          <span style="color:#0bf;">
+                          16日18:08:59</span>
+                          人生要耐住寂寞
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
             </div>
           </div>
         </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
       </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2019/12/03/查找算法/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i0.hdslb.com/bfs/archive/9d9623de6e40b81b6e1c8ffa6fe478045f61dadc.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i0.hdslb.com/bfs/archive/9d9623de6e40b81b6e1c8ffa6fe478045f61dadc.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                查找算法</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2019/11/30/算法复杂度/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://i.loli.net/2019/12/01/fqxtAEIShDnTmcV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://i.loli.net/2019/12/01/fqxtAEIShDnTmcV.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                算法复杂度</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
-      
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "HdBastjxqIazDOi28WG5yQh6-gzGzoHsz",
-        appKey: "TVgaxtgjIotNVCjxnt8pzr3G",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="https://ghyjn0.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GhyJn0/Wcdn/img/custom/img0.jpg" itemprop="image" alt="君の名は" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="https://ghyjn0.github.io/" itemprop="url" rel="author">君の名は</a>
-            </h3>
-          </div>
-        </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>爱生活，爱自己</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+    </div>
+  </div>
 </div>
-
-
 
     </div>    
     <div class="ins-search">
