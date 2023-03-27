@@ -1,0 +1,479 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="keywords" content="滑动窗口, java,安全,python"><meta name="description" content="一个小白成长史"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="renderer" content="webkit|ie-stand|ie-comp"><meta name="mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>滑动窗口 | FSRM</title><link rel="icon" type="image/png" href="/favicon.png"><link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css"><link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css"><link rel="stylesheet" type="text/css" href="/libs/aos/aos.css"><link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css"><link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css"><link rel="stylesheet" type="text/css" href="/css/matery.css"><link rel="stylesheet" type="text/css" href="/css/my.css"><script src="/libs/jquery/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="FSRM" type="application/atom+xml"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><header class="navbar-fixed"><nav id="headNav" class="bg-color nav-transparent"><div id="navContainer" class="nav-wrapper container"><div class="brand-logo"><a href="/" class="waves-effect waves-light"><img src="/medias/logo.png" class="logo-img" alt="LOGO"> <span class="logo-span">FSRM</span></a></div><a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a><ul class="right nav-menu"><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-home" style="zoom:.6"></i> <span>首页</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/tags" class="waves-effect waves-light"><i class="fas fa-tags" style="zoom:.6"></i> <span>标签</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/categories" class="waves-effect waves-light"><i class="fas fa-bookmark" style="zoom:.6"></i> <span>分类</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/archives" class="waves-effect waves-light"><i class="fas fa-archive" style="zoom:.6"></i> <span>归档</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/about" class="waves-effect waves-light"><i class="fas fa-user-circle" style="zoom:.6"></i> <span>关于</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/contact" class="waves-effect waves-light"><i class="fas fa-comments" style="zoom:.6"></i> <span>留言板</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/friends" class="waves-effect waves-light"><i class="fas fa-address-book" style="zoom:.6"></i> <span>友情链接</span></a></li><li><a href="#searchModal" class="modal-trigger waves-effect waves-light"><i id="searchIcon" class="fas fa-search" title="搜索" style="zoom:.85"></i></a></li></ul><div id="mobile-nav" class="side-nav sidenav"><div class="mobile-head bg-color"><img src="/medias/logo.png" class="logo-img circle responsive-img"><div class="logo-name">FSRM</div><div class="logo-desc">一个小白成长史</div></div><ul class="menu-list mobile-menu-list"><li class="m-nav-item"><a href="/" class="waves-effect waves-light"><i class="fa-fw fas fa-home"></i> 首页</a></li><li class="m-nav-item"><a href="/tags" class="waves-effect waves-light"><i class="fa-fw fas fa-tags"></i> 标签</a></li><li class="m-nav-item"><a href="/categories" class="waves-effect waves-light"><i class="fa-fw fas fa-bookmark"></i> 分类</a></li><li class="m-nav-item"><a href="/archives" class="waves-effect waves-light"><i class="fa-fw fas fa-archive"></i> 归档</a></li><li class="m-nav-item"><a href="/about" class="waves-effect waves-light"><i class="fa-fw fas fa-user-circle"></i> 关于</a></li><li class="m-nav-item"><a href="/contact" class="waves-effect waves-light"><i class="fa-fw fas fa-comments"></i> 留言板</a></li><li class="m-nav-item"><a href="/friends" class="waves-effect waves-light"><i class="fa-fw fas fa-address-book"></i> 友情链接</a></li><li><div class="divider"></div></li><li><a href="https://github.com/ghyjn0" class="waves-effect waves-light" target="_blank"><i class="fab fa-github-square fa-fw"></i>Fork Me</a></li></ul></div></div><style>.nav-transparent .github-corner{display:none!important}.github-corner{position:absolute;z-index:10;top:0;right:0;border:0;transform:scale(1.1)}.github-corner svg{color:#0f9d58;fill:#fff;height:64px;width:64px}.github-corner:hover .octo-arm{animation:a .56s ease-in-out}.github-corner .octo-arm{animation:none}@keyframes a{0%,to{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}</style><a href="https://github.com/ghyjn0" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a></nav></header><div class="bg-cover pd-header post-cover" style="background-image:url(/medias/featureimages/19.jpg)"><div class="container" style="right:0;left:0"><div class="row"><div class="col s12 m12 l12"><div class="brand"><h1 class="description center-align post-title">滑动窗口</h1></div></div></div></div></div><main class="post-container content"><link rel="stylesheet" href="/libs/tocbot/tocbot.css"><style>#articleContent h1::before,#articleContent h2::before,#articleContent h3::before,#articleContent h4::before,#articleContent h5::before,#articleContent h6::before{display:block;content:" ";height:100px;margin-top:-100px;visibility:hidden}#articleContent :focus{outline:0}.toc-fixed{position:fixed;top:64px}.toc-widget{width:345px;padding-left:20px}.toc-widget .toc-title{margin:35px 0 15px 0;padding-left:17px;font-size:1.5rem;font-weight:700;line-height:1.5rem}.toc-widget ol{padding:0;list-style:none}#toc-content{height:calc(100vh - 250px);overflow:auto}#toc-content ol{padding-left:10px}#toc-content ol li{padding-left:10px}#toc-content .toc-link:hover{color:#42b983;font-weight:700;text-decoration:underline}#toc-content .toc-link::before{background-color:transparent;max-height:25px;position:absolute;right:23.5vw;display:block}#toc-content .is-active-link{color:#42b983}#floating-toc-btn{position:fixed;right:15px;bottom:76px;padding-top:15px;margin-bottom:0;z-index:998}#floating-toc-btn .btn-floating{width:48px;height:48px}#floating-toc-btn .btn-floating i{line-height:48px;font-size:1.4rem}</style><div class="row"><div id="main-content" class="col s12 m12 l9"><div id="artDetail"><div class="card"><div class="card-content article-info"><div class="row tag-cate"><div class="col s7"><div class="article-tag"><a href="/tags/leetcode/"><span class="chip bg-color">leetcode</span></a></div></div><div class="col s5 right-align"></div></div><div class="post-info"><div class="post-date info-break-policy"><i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp; 2022-10-22</div><div class="post-date info-break-policy"><i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp; 2022-10-27</div><div class="info-break-policy"><i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp; 1.1k</div><div class="info-break-policy"><i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp; 3 分</div></div></div><hr class="clearfix"><div class="card-content article-card-content"><div id="articleContent"><h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><blockquote><p>窗口概念</p></blockquote><p>假设target是9，我们的脑海中可以快速的浮现出一个从1到9的数组。这时候不妨再想象一下，<strong>数组下方有个两个指针</strong>，一个<strong>指向1，一个指向5</strong>，<strong>两个指针形成的这个数组范围</strong>，就是所谓的<strong>窗口</strong>。如下图所示：</p><p><img src="https://pic.leetcode-cn.com/b7bbf8306beaf1f05af3f46d33846a9f54543d74894ddcf81bf3e1e712dbabce-image.png" alt="image.png"></p><blockquote><p>滑动概念</p></blockquote><p><strong>左右指针通过平移，会改变了窗口的范围，从而引起窗口的滑动，这就是所谓的滑动窗口</strong></p><p><img src="https://pic.leetcode-cn.com/652fac6fe71a55076fad3550487de0574616521e0e7ea93d96e0694f0afda358-image.png" alt="image.png"></p><p>参考链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/xiang-jie-hua-dong-chuang-kou-fa-qiu-gen-fa-jian-g/">【详解】滑动窗口法 -&gt; 求根法 -&gt; 间隔法，一山还有一山高 - 和为s的连续正数序列 - 力扣（LeetCode）</a></p><blockquote><p>重要性质</p></blockquote><p>滑动窗口的重要性质是：<strong>窗口的左边界和右边界永远只能向右移动，而不能向左移</strong>动。这是为了<strong>保证滑动窗口的时间复杂度是 O(n)。</strong>如果<strong>左右边界向左移动的话，这叫做“回溯”</strong>，算法的**时间复杂度就可能不止 O(n)**。</p><blockquote><p>解决问题</p></blockquote><ol><li>数组类的滑动窗口问题<br>🅰️ 长度最小的子数组<br>🅰️ 滑动窗口的最大值<br>🅰️<strong>和为s的连续正数序列</strong><br>🅰️<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-average-subarray-i/">子数组最大平均数</a><br>上面的每一种题目，相对于字符串的问题来说更加简单，有时候甚至不需要进行哈希集合的定义，而只需要进行简单的这个左右指针的移动，维护好窗口就行。</li><li>字符串类的滑动窗口问题<br>这类问题一般可以分为两类，单个字符串；两个字符串。两个字符串当中又可以按照连续序列与非连续序列进行划分。<br>对于两个字符串而言，一般是一个字符串作为母体，另一个字符串作为比较。<br>举几个力扣中题目的例子：<br>🅰️字符串的最小覆盖字串（非连续序列）<br>🅰️字符串的排列（连续序列）<br>🅰️字符串的所有字母异位词（连续序列）<br>🅰️无重复字符的最长子串（单个字符串）<br>🅰️最多包含连个重复字符的最长字串<br>🅰️最多包含k个重复字符的最长字串<br>以字符串的最小覆盖字串题目为例</li></ol><p><code>具体的问题：求解满足某种条件的某段连续区间的最短或最长子序列（一般为子数组、子字符串等）。</code></p><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cillian_bao/article/details/124509130">(19条消息) 滑动窗口详解_cillian_bao的博客-CSDN博客_滑动窗口</a></p><h2 id="2-模板总结"><a href="#2-模板总结" class="headerlink" title="2.模板总结"></a>2.模板总结</h2><h3 id="1-最长问题"><a href="#1-最长问题" class="headerlink" title="1. 最长问题"></a>1. 最长问题</h3><pre class="language-c++"><code class="language-c++">//最长最大模板
+初始化left,right,result,bestResult
+while (右指针没有到结尾)&#123;
+     窗口扩大，加入right对应元素，更新当前result
+     while (result不满足要求)&#123;// 不满足条件时候，left右移动
+           窗口缩小，移除left对应元素
+           left右移
+     &#125;
+     更新最优结果bestResult    
+     right++
+&#125;
+返回bestResult
+</code></pre><h3 id="2-最短问题"><a href="#2-最短问题" class="headerlink" title="2. 最短问题"></a>2. 最短问题</h3><pre class="language-c++"><code class="language-c++">
+//最短最小模板
+初始化left,right,result,bestResult
+while (右指针没有到结尾)&#123;
+     窗口扩大，加入right对应元素，更新当前result
+     while (result满足要求)&#123; //满足条件时候，left右移动
+          更新最优结果bestResult
+          窗口缩小，移除left对应元素
+          left右移
+     &#125;
+     right++
+&#125;
+返回bestResult
+</code></pre><p>参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/477097574">力扣笔记-python-滑动窗口 - 知乎 (zhihu.com)</a></p><h2 id="3-固定窗口大小"><a href="#3-固定窗口大小" class="headerlink" title="3.固定窗口大小"></a>3.固定窗口大小</h2><h3 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">给定一个含有 n 个正整数的数组和一个正整数 target 。
+
+找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-size-subarray-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：target = 7, nums = [2,3,1,2,4,3]
+输出：2
+解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+示例 2：
+
+输入：target = 4, nums = [1,4,4]
+输出：1
+示例 3：
+
+输入：target = 11, nums = [1,1,1,1,1,1,1,1]
+输出：0
+ 
+
+提示：
+
+1 <= target <= 109
+1 <= nums.length <= 105
+1 <= nums[i] <= 105
+ 
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-size-subarray-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解一 暴力法</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int minSubArrayLen(int target, vector<int>& nums) &#123;
+        int i,j;
+        int length=nums.size()-1;//length为数组长度-1，即遍历的索引范围
+        int sum,subLength=0;//sum:子序列的和,subLength:子序列的长度
+        int result = INT32_MAX; // 最终的结果
+        for(i=0;i<=length;i++)&#123;//设置子序列的起始位置 为i
+            sum=0;
+            for(j=i;j<=length;j++)&#123;//设置子序列的终止位置 为j
+                sum+=nums[j];
+                if(sum>=target)&#123;//一旦发现子序列和超过target，便更新
+                    subLength=j-i+1;//取子序列的长度
+                    result=result>subLength? subLength:result;//和之前相比较取最小。
+                    break;//找到符合条件所以停止
+                &#125;
+            &#125;
+        &#125;
+        //如果result没有赋值，说明没有符合的存在返回0，否则返回本身
+        return result==INT32_MAX?0:result;
+    &#125;
+&#125;;
+</int></code></pre><pre class="language-c++"><code class="language-c++">复杂度分析
+时间复杂度：O(n^2) 双层for循环类似于 排序。
+空间复杂度：O(1)
+</code></pre><p>时间复杂度参考链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI0NjAxMDU5NA==&mid=2475918746&idx=1&sn=3fe42234a1f07fb084d11fe06fb24893&chksm=ff22e217c8556b019b9052f9d4805174385ba4c8c099216fa226dbd1b033a9a49782579e4b75&scene=21#wechat_redirect">保姆级教学！彻底学会时间复杂度和空间复杂度 (qq.com)</a></p><blockquote><p>题解二 滑动窗口</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int minSubArrayLen(int target, vector<int>& nums) &#123;
+        int i=0,j;//i滑动窗口的起始位置，j滑动窗口的终止位置
+        int length=nums.size()-1;//length为数组长度-1，即遍历的索引范围
+        int sum=0,subLength=0;//sum:滑动窗口数值之和,subLength:滑动窗口的长度
+        int result = INT32_MAX; // 最终的结果
+
+        /*
+        解释一下滑动窗口 2次循环为啥 时间复杂度为0(n)
+        首先最外层的for循环  j变量遍历一次数组长度
+        最里层的while循环  i变量遍历一次数组长度
+        双指针 可以把双层for循环 改成单循环：类似于快慢指针一样
+        因此准确来说是：2*n   
+
+        滑动窗口 类似于暴力破解的反向：恰恰因为此把原有的双层for：改变成单层的for
+        时间复杂度优化了下来
+        
+        */
+        for(j=0;j<=length;j++)&#123;//设置子序列的终止位置 为j
+            sum+=nums[j];//不断更新，知到找到符合位置
+            while(sum>=target)&#123;//发现符合位置：不断更改滑动窗口的起始位置
+                subLength=j-i+1;
+                result=result>subLength?subLength:result;
+                sum-=nums[i];
+                i++;
+            &#125;
+        &#125;
+        //如果result没有赋值，说明没有符合的存在返回0，否则返回本身
+        return result==INT32_MAX?0:result;
+    &#125;
+&#125;;
+</int></code></pre><pre class="language-c++"><code class="language-c++">复杂度分析
+
+时间复杂度：O(n)，其中 n是数组的长度。指针 start 和 end 最多各移动 nn 次。
+
+空间复杂度：O(1)
+
+作者：LeetCode-Solution
+链接：https://leetcode.cn/problems/minimum-size-subarray-sum/solution/chang-du-zui-xiao-de-zi-shu-zu-by-leetcode-solutio/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre><h3 id="904-水果成篮"><a href="#904-水果成篮" class="headerlink" title="904. 水果成篮"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">904. 水果成篮</a></h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 fruits 表示，其中 fruits[i] 是第 i 棵树上的水果 种类 。
+
+你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：
+
+你只有 两个 篮子，并且每个篮子只能装 单一类型 的水果。每个篮子能够装的水果总量没有限制。
+你可以选择任意一棵树开始采摘，你必须从 每棵 树（包括开始采摘的树）上 恰好摘一个水果 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。
+一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。
+给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。
+
+ 
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/fruit-into-baskets
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：fruits = [1,2,1]
+输出：3
+解释：可以采摘全部 3 棵树。
+示例 2：
+
+输入：fruits = [0,1,2,2]
+输出：3
+解释：可以采摘 [1,2,2] 这三棵树。
+如果从第一棵树开始采摘，则只能采摘 [0,1] 这两棵树。
+示例 3：
+
+输入：fruits = [1,2,3,2,2]
+输出：4
+解释：可以采摘 [2,3,2,2] 这四棵树。
+如果从第一棵树开始采摘，则只能采摘 [1,2] 这两棵树。
+示例 4：
+
+输入：fruits = [3,3,3,1,2,1,1,2,3,3,4]
+输出：5
+解释：可以采摘 [1,2,1,1,2] 这五棵树
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/fruit-into-baskets
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解 滑动窗口</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int totalFruit(vector<int>& fruits) &#123;
+       int slow,fast,length,size,max;
+       max=slow=fast=size=0;//slow 滑动窗口左边界，fast 滑动窗口右边界,size记录存储的种类数,max表示最大存储的树的个数
+       length=fruits.size();//fruits 长度
+       int *array =new int[length]();//初始化长度为length的数组，存储每个种类的个数
+       while(fast<length)&#123;
+           if(array[fruits[fast]]==0)//出现新的品种
+                size++;
+            array[fruits[fast]]++;//记录每一个品种的个数
+            while(size>2)&#123;//当出现第3类品种时候
+                array[fruits[slow]]--;//窗口左边移动，每一个品种数减一
+                if(array[fruits[slow]]==0)//直到第一类全部清除。
+                    size--;//品种数减一
+                slow++;//窗口左边移动
+            &#125;
+            max=max>(fast-slow+1)?max:fast-slow+1;//这个是每一次移动都会比较。
+            fast++;
+       &#125;
+    return max;
+    &#125;
+
+&#125;;
+/*
+集合判断元素是否存在;
+country.count("china")
+删除元素
+country.erase("china");
+ //删除“china”无效，因为集合中不存在这样的元素
+ 插入元素
+country.insert("china");     //&#123;"china"&#125;
+获取集合元素的个数
+country.size()
+*/
+</int></code></pre><pre class="language-c++"><code class="language-c++">还有一个问题是我在c++中初始化数组的方式。
+int* array = new int[length] ()
+nt* array = new int[length]
+有无括号的区别在于，有括号的话会将元素初始化为0，没括号就不会初始化。
+复杂度分析
+
+时间复杂度：O(n)，其中 n 是数组 fruits 的长度。
+
+空间复杂度：O(n)，创建一个数组n
+作者：LeetCode-Solution
+链接：https://leetcode.cn/problems/fruit-into-baskets/solution/shui-guo-cheng-lan-by-leetcode-solution-1uyu/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre><h3 id="剑指-Offer-57-II-和为s的连续正数序列"><a href="#剑指-Offer-57-II-和为s的连续正数序列" class="headerlink" title="剑指 Offer 57 - II. 和为s的连续正数序列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/">剑指 Offer 57 - II. 和为s的连续正数序列</a></h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。
+
+序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：target = 9
+输出：[[2,3,4],[4,5]]
+示例 2：
+
+输入：target = 15
+输出：[[1,2,3,4,5],[4,5,6],[7,8]]
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解 滑动窗口</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    vector<vector<int>> findContinuousSequence(int target) &#123;
+        vector<vector<int>>res;
+        vector<int>ans;
+        int slow,fast,length,sum;//sum 计算fast求和的值
+        slow=fast=1;//fast，slow滑动窗口左右两边
+        length=target/2+1;//遍历只需要到中间值，因为要连续，两个
+        sum=0;//计算每一次fast移动的值
+        while(fast<target )&#123; sum+="fast;" while(sum>=target)&#123;// 如果sum值大于等于target值，移动窗口左边界。
+                if(sum==target)&#123;//如果当前值等于target值，就要加入vector
+                    for(int j=slow;j<=fast;j++)
+                        ans.push_back(j);
+                    res.push_back(ans);
+                    ans.clear();
+                    break;
+                &#125;
+                else if(sum> target)&#123;//继续移动左边界
+                    sum=sum-slow;
+                    slow++;
+                &#125;
+                else //sum<  target 则停止遍历
+                    break;
+            &#125;
+            fast++;
+        &#125;
+        return res;
+    &#125;
+&#125;;
+</target></int></int></int></code></pre><h3 id="643-子数组最大平均数-I：固定窗口"><a href="#643-子数组最大平均数-I：固定窗口" class="headerlink" title="643. 子数组最大平均数 I：固定窗口"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-average-subarray-i/">643. 子数组最大平均数 I</a>：固定窗口</h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">给你一个由 n 个元素组成的整数数组 nums 和一个整数 k 。
+
+请你找出平均数最大且 长度为 k 的连续子数组，并输出该最大平均数。
+
+任何误差小于 10-5 的答案都将被视为正确答
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/maximum-average-subarray-i
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：nums = [1,12,-5,-6,50,3], k = 4
+输出：12.75
+解释：最大平均数 (12-5-6+50)/4 = 51/4 = 12.75
+示例 2：
+
+输入：nums = [5], k = 1
+输出：5.00000
+ 
+
+提示：
+
+n == nums.length
+1 <= k <= n <= 105
+-104 <= nums[i] <= 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/maximum-average-subarray-i
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解一 一层循环</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    double findMaxAverage(vector<int>& nums, int k) &#123;
+        int slow,fast;//定义滑动窗口 左右边界
+        int length=nums.size();//数组长度
+        slow=fast=0;//初始化 快慢指针
+        double sum;//avg 为平均值，sum为滑动窗口中的求和
+        double avg;              
+        sum=0;
+        avg=-1000000;
+        for(;fast<length;fast++)&#123;
+            sum+=nums[fast];
+           // cout<<sum<<endl;
+            if((fast-slow+1)==k)&#123;//
+                avg=avg>sum? avg:sum;
+                sum-=nums[slow];
+                slow++;
+            &#125;
+        &#125;
+        return avg/k;
+
+    &#125;
+&#125;
+</int></code></pre><pre class="language-c++"><code class="language-c++">- 时间复杂度：O(n)，其中 n 是数组 nums 的长度。遍历数组一次。
+- 空间复杂度：O(1)。
+</code></pre><blockquote><p>题解二 二层循环</p></blockquote><pre class="language-c++"><code class="language-c++">
+class Solution &#123;
+public:
+    double findMaxAverage(vector<int>& nums, int k) &#123;
+        int slow,fast;//定义滑动窗口 左右边界
+        int length=nums.size();//数组长度
+        slow=fast=0;//初始化 快慢指针
+        double sum;//avg 为平均值，sum为滑动窗口中的求和
+        double avg;              
+        sum=0;
+        avg=-1000000;
+        for(;fast<length;fast++)&#123;
+            sum+=nums[fast];
+           // cout<<sum<<endl ; while((fast-slow+1)>=k)&#123;
+                if((fast-slow+1)==k)
+                    avg=avg>sum? avg:sum;
+                sum-=nums[slow];
+                slow++;
+            &#125;
+        &#125;
+        return avg/k;
+
+    &#125;
+&#125;;
+</endl></int></code></pre><h3 id="offer57-和643题解总结-固定窗口"><a href="#offer57-和643题解总结-固定窗口" class="headerlink" title="offer57 和643题解总结:固定窗口"></a>offer57 和643题解总结:固定窗口</h3><pre class="language-c++"><code class="language-c++">相同点：都可以简化为1层循环
+        时间复杂度都一样。
+</code></pre><h3 id="1984-学生分数的最小差值-固定窗口"><a href="#1984-学生分数的最小差值-固定窗口" class="headerlink" title="1984. 学生分数的最小差值:固定窗口"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-difference-between-highest-and-lowest-of-k-scores/">1984. 学生分数的最小差值</a>:固定窗口</h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">给你一个 下标从 0 开始 的整数数组 nums ，其中 nums[i] 表示第 i 名学生的分数。另给你一个整数 k 。
+
+从数组中选出任意 k 名学生的分数，使这 k 个分数间 最高分 和 最低分 的 差值 达到 最小化 。
+
+返回可能的 最小差值 
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-difference-between-highest-and-lowest-of-k-scores
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：nums = [90], k = 1
+输出：0
+解释：选出 1 名学生的分数，仅有 1 种方法：
+- [90] 最高分和最低分之间的差值是 90 - 90 = 0
+可能的最小差值是 0
+示例 2：
+
+输入：nums = [9,4,1,7], k = 2
+输出：2
+解释：选出 2 名学生的分数，有 6 种方法：
+- [9,4,1,7] 最高分和最低分之间的差值是 9 - 4 = 5
+- [9,4,1,7] 最高分和最低分之间的差值是 9 - 1 = 8
+- [9,4,1,7] 最高分和最低分之间的差值是 9 - 7 = 2
+- [9,4,1,7] 最高分和最低分之间的差值是 4 - 1 = 3
+- [9,4,1,7] 最高分和最低分之间的差值是 7 - 4 = 3
+- [9,4,1,7] 最高分和最低分之间的差值是 7 - 1 = 6
+可能的最小差值是 2
+ 
+提示：
+
+1 <= k <= nums.length <= 1000
+0 <= nums[i] <= 105
+通过次数43,048提交次数69,1
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-difference-between-highest-and-lowest-of-k-scores
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解（先排序再滑动窗口）</p></blockquote><pre class="language-c++"><code class="language-c++">怎么寻找 k 个数字的最大值和最小值的差呢？这让我们想到，对数组进行排序，然后利用大小为 k 的滑动窗口遍历整个数组。滑动窗口最右边的值就是窗口内的最大值，滑动窗口最左边的值就是窗口内的最小值。
+​
+
+因此，我们要寻找的就是已经排序的数组中，所有大小为 k 的滑动窗口中，最右端数字 - 最左端数字 的最小结果
+</code></pre><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int minimumDifference(vector<int>& nums, int k) &#123;
+        int n = nums.size();//计算数组长度
+        sort(nums.begin(), nums.end());//对数组进行排序
+        int ans = INT_MAX;//ans 作为最小差值 初始化为INT_MAX;
+        for(int i=k-1;i<n;i++)&#123;//维持一个窗口大小为k。
+            ans=min(ans,nums[i]-nums[i-k+1]);//选择最小
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+
+
+</int></code></pre><pre class="language-c++"><code class="language-c++">时间复杂度分析：
+空间复杂度为排序时所需要的临时数组0(n).
+时间复杂度为排序时所需要的0（nlogn）
+</code></pre><h3 id="2269-找到一个数字的-K-美丽值-固定窗口"><a href="#2269-找到一个数字的-K-美丽值-固定窗口" class="headerlink" title="2269. 找到一个数字的 K 美丽值:固定窗口"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-k-beauty-of-a-number/">2269. 找到一个数字的 K 美丽值</a>:固定窗口</h3><blockquote><p>题目描述</p></blockquote><pre class="language-c++"><code class="language-c++">一个整数 num 的 k 美丽值定义为 num 中符合以下条件的 子字符串 数目：
+
+子字符串长度为 k 。
+子字符串能整除 num 。
+给你整数 num 和 k ，请你返回 num 的 k 美丽值。
+
+注意：
+
+允许有 前缀 0 。
+0 不能整除任何值。
+一个 子字符串 是一个字符串里的连续
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/find-the-k-beauty-of-a-number
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>示例</p></blockquote><pre class="language-c++"><code class="language-c++">示例 1：
+
+输入：num = 240, k = 2
+输出：2
+解释：以下是 num 里长度为 k 的子字符串：
+- "240" 中的 "24" ：24 能整除 240 。
+- "240" 中的 "40" ：40 能整除 240 。
+所以，k 美丽值为 2 。
+示例 2：
+
+输入：num = 430043, k = 2
+输出：2
+解释：以下是 num 里长度为 k 的子字符串：
+- "430043" 中的 "43" ：43 能整除 430043 。
+- "430043" 中的 "30" ：30 不能整除 430043 。
+- "430043" 中的 "00" ：0 不能整除 430043 。
+- "430043" 中的 "04" ：4 不能整除 430043 。
+- "430043" 中的 "43" ：43 能整除 430043 。
+所以，k 美丽值为 2 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/find-the-k-beauty-of-a-number
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</code></pre><blockquote><p>题解</p></blockquote><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int divisorSubstrings(int num, int k) &#123;
+        string n=to_string(num);
+        int slow, fast,length;
+        length=n.size();
+        slow=fast=0;
+        int sum=0;
+        int count=0;
+        for(fast=0;fast<length;fast++)&#123;
+            sum=sum*10+n[fast]-'0'; //n[fast]-'0'转换成int
+            if((fast-slow+1)==k)&#123;//固定窗口
+                if(sum!=0&& num%sum==0)   
+                        count++;
+               sum=sum-(int)(n[slow]-'0')*pow(10,k-1);//sum-slow操作
+                slow++;
+            &#125;
+        &#125;
+        return count;
+    &#125;
+&#125;;
+</code></pre><h3 id="1984和2269-总结：固定窗口"><a href="#1984和2269-总结：固定窗口" class="headerlink" title="1984和2269 总结：固定窗口"></a>1984和2269 总结：固定窗口</h3><pre class="language-c++"><code class="language-c++">class Solution &#123;
+public:
+    int divisorSubstrings(int num, int k) &#123;  固定窗口大小k
+        string n=to_string(num);
+        int slow,fast,length;
+        length=n.size();
+        slow=fast=0;
+        int i=0;
+        int sum=0;
+        int count=0;
+        
+        for(fast=0;fast<length;fast++)&#123;
+            sum和n[fast]和关系
+            if((fast-slow+1)==k)&#123;//达到固定窗口   
+                     满足题目中条件最主要的逻辑
+               sum和n[slow]的差关系
+               slow++;
+            &#125;
+        &#125;
+        
+        return count;
+    &#125;
+&#125;;
+</code></pre><h2 id="leetcode-滑动窗口推荐"><a href="#leetcode-滑动窗口推荐" class="headerlink" title="leetcode 滑动窗口推荐"></a>leetcode 滑动窗口推荐</h2><p><a target="_blank" rel="noopener" href="https://github.com/SharingSource/LogicStack-LeetCode/wiki/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3">滑动窗口 · SharingSource/LogicStack-LeetCode Wiki · GitHub</a></p><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/solution/by-ac_oier-c5jm/">【宫水三叶】前缀和 + 二分 运用题 - 长度最小的子数组 - 力扣（LeetCode）</a></p><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/solution/chang-du-zui-xiao-de-zi-shu-zu-by-leetcode-solutio/">长度最小的子数组 - 长度最小的子数组 - 力扣（LeetCode）</a></p><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/solution/zhua-wa-mou-si-by-muse-77-bkd2/">【爪哇缪斯】图解LeetCode - 水果成篮 - 力扣（LeetCode）</a></p></div><hr><div class="reprint" id="reprint-statement"><div class="reprint__author"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-user">文章作者: </i></span><span class="reprint-info"><a href="/about" rel="external nofollow noreferrer">FSRM</a></span></div><div class="reprint__type"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-link">文章链接: </i></span><span class="reprint-info"><a href="https://hexofox.gitee.io/2022/10/22/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">https://hexofox.gitee.io/2022/10/22/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</a></span></div><div class="reprint__notice"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-copyright">版权声明: </i></span><span class="reprint-info">本博客所有文章除特別声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a> 许可协议。转载请注明来源 <a href="/about" target="_blank">FSRM</a> !</span></div></div><script async defer>function navToReprintStatement(){$("html, body").animate({scrollTop:$("#reprint-statement").offset().top-80},800)}document.addEventListener("copy",function(t){M.toast({html:'<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>'})})</script><div class="tag_share" style="display:block"><div class="post-meta__tag-list" style="display:inline-block"><div class="article-tag"><a href="/tags/leetcode/"><span class="chip bg-color">leetcode</span></a></div></div><div class="post_share" style="zoom:80%;width:fit-content;display:inline-block;float:right;margin:-.15rem 0"><link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css"><div id="article-share"><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/libs/share/js/social-share.min.js"></script></div></div></div></div></div><article id="prenext-posts" class="prev-next articles"><div class="row article-row"><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge left-badge text-color"><i class="fas fa-chevron-left"></i>&nbsp;上一篇</div><div class="card"><a href="/2022/10/22/%E8%B7%91%E6%AD%A5/"><div class="card-image"><img src="/medias/featureimages/4.jpg" class="responsive-img" alt="跑步"> <span class="card-title">跑步</span></div></a><div class="card-content article-content"><div class="summary block-with-text">跑步相关知识1.跑步姿势1.前脚掌2. 后脚掌3.错误 “刹车效应”2.鞋子挑选3.不正确的跑步1.心率2.膝盖</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2022-10-22 </span><span class="publish-author"><i class="fas fa-user fa-fw"></i> FSRM</span></div></div><div class="card-action article-tags"><a href="/tags/%E7%94%9F%E6%B4%BB/"><span class="chip bg-color">生活</span></a></div></div></div><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge right-badge text-color">下一篇&nbsp;<i class="fas fa-chevron-right"></i></div><div class="card"><a href="/2022/10/20/KNN/"><div class="card-image"><img src="/medias/featureimages/13.jpg" class="responsive-img" alt="K近邻法:KNN"> <span class="card-title">K近邻法:KNN</span></div></a><div class="card-content article-content"><div class="summary block-with-text">K近邻法 （KNN）1.简介K近邻（K-Nearest Neighbor, KNN）是一种最经典和最简单的有监督学习方法之一，K-近邻算法是最简单的分类器。 K近邻算法既能够用来解决分类问题，也能够用来解决回归问题。当对数据的分布只有很少或</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2022-10-20 </span><span class="publish-author"><i class="fas fa-user fa-fw"></i> FSRM</span></div></div><div class="card-action article-tags"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="chip bg-color">机器学习</span></a></div></div></div></div></article></div><script>$("#articleContent").on("copy",function(e){var n,t,o,i;void 0===window.getSelection||(""+(n=window.getSelection())).length<Number.parseInt("120")||(t=document.getElementsByTagName("body")[0],(o=document.createElement("div")).style.position="absolute",o.style.left="-99999px",t.appendChild(o),o.appendChild(n.getRangeAt(0).cloneContents()),"PRE"===n.getRangeAt(0).commonAncestorContainer.nodeName&&(o.innerHTML="<pre>"+o.innerHTML+"</pre>"),i=document.location.href,o.innerHTML+='<br />来源: FSRM<br />文章作者: FSRM<br />文章链接: <a href="'+i+'">'+i+"</a><br />本文章著作权归作者所有，任何形式的转载都请注明出处。",n.selectAllChildren(o),window.setTimeout(function(){t.removeChild(o)},200))})</script><script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script><script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script><script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script><script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script><style type="text/css">code[class*=language-],pre[class*=language-]{white-space:pre!important}</style></div><div id="toc-aside" class="expanded col l3 hide-on-med-and-down"><div class="toc-widget"><div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div><div id="toc-content"></div></div></div></div><div id="floating-toc-btn" class="hide-on-med-and-down"><a class="btn-floating btn-large bg-color"><i class="fas fa-list-ul"></i></a></div><script src="/libs/tocbot/tocbot.min.js"></script><script>$(function(){tocbot.init({tocSelector:"#toc-content",contentSelector:"#articleContent",headingsOffset:-(.4*$(window).height()-45),collapseDepth:Number("0"),headingSelector:"h2, h3, h4"});let t=0,e="toc-heading-",n=($("#toc-content a").each(function(){$(this).attr("href","#"+e+ ++t)}),t=0,$("#articleContent").children("h2, h3, h4").each(function(){$(this).attr("id",e+ ++t)}),parseInt(.4*$(window).height()-64)),o=$(".toc-widget");$(window).scroll(function(){$(window).scrollTop()>n?o.addClass("toc-fixed"):o.removeClass("toc-fixed")});const i="expanded";let c=$("#toc-aside"),a=$("#main-content");$("#floating-toc-btn .btn-floating").click(function(){c.hasClass(i)?(c.removeClass(i).hide(),a.removeClass("l9")):(c.addClass(i).show(),a.addClass("l9"));{var t,n="prenext-posts";let e=$("#"+"artDetail");if(0!==e.length){let t=e.width();450<=t?t+=21:350<=t&&t<450?t+=18:300<=t&&t<350?t+=16:t+=14,$("#"+n).width(t)}return}})})</script></main><footer class="page-footer bg-color"><div class="container row center-align" style="margin-bottom:0!important"><div class="col s12 m8 l8 copy-right">Copyright&nbsp;&copy; <span id="year">2020</span> <a href="/about" target="_blank">FSRM</a> |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a><br>&nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">65.2k</span>&nbsp;字<br><br></div><div class="col s12 m4 l4 social-link"><a href="https://github.com/GhyJn0" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"><i class="fab fa-github"></i> </a><a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"><i class="fas fa-rss"></i></a></div></div></footer><div class="progress-bar"></div><div id="searchModal" class="modal"><div class="modal-content"><div class="search-header"><span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span> <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input"></div><div id="searchResult"></div></div></div><script src="/js/search.js"></script><script type="text/javascript">$(function(){searchFunc("/search.xml","searchInput","searchResult")})</script><div id="backTop" class="top-scroll"><a class="btn-floating btn-large waves-effect waves-light" href="#!"><i class="fas fa-arrow-up"></i></a></div><script src="/libs/materialize/materialize.min.js"></script><script src="/libs/masonry/masonry.pkgd.min.js"></script><script src="/libs/aos/aos.js"></script><script src="/libs/scrollprogress/scrollProgress.min.js"></script><script src="/libs/lightGallery/js/lightgallery-all.min.js"></script><script src="/js/matery.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0],e=(t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js",document.getElementsByTagName("script")[0]);e.parentNode.insertBefore(t,e)}()</script><script src="/libs/others/clicklove.js" async></script><script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async></script><script src="/libs/instantpage/instantpage.js" type="module"></script></body></html>
